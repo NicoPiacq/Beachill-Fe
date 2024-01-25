@@ -5,7 +5,6 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { MenuComponent } from './components/menu/menu.component';
 import { FooterComponent } from './components/footer/footer.component';
-import { ListTournamentsComponent } from './components/list-tournaments/list-tournaments.component';
 import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
