@@ -1,0 +1,33 @@
+<div class="container-fluid ">
+    <h1 class="hover-effect">Tutti i team iscritti:</h1>
+    </div>
+    <div class="container-fluid px">     
+        <table class="table table-dark table-striped table-hover">
+          <thead>
+            <tr>
+              <th>Nome del Team</th>
+              <th>Girone</th>
+            
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let team of teams">
+                <td>{{team.teamName}}</td>
+                <td>{{team.round}}</td>
+                
+              <!-- <td>{{ t.id }}</td>
+              <td>{{ t.tournamentName }}</td>
+              <td>{{ t.startDate }}</td>
+              <td>{{ t.endDate }}</td>
+              <td>{{ t.tournamentTypeName }}</td>
+              <td>{{ t.place }}</td> -->
+              
+    
+              <!-- <td>
+              <button class="btn btn-primary hover-effect small-btn" (click)="deleteCourse(c.id!)"><i class="bi bi-trash"></i></button>
+            </td> -->
+            </tr>
+          </tbody>
+        </table>
+    </div>
+    

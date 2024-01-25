@@ -15,6 +15,10 @@ export class TournamentsService {
 
     getAllTournaments(): Observable<TournamentDto[]> {
         return this.http.get<TournamentDto[]>(`${this.URL}/all`);
-      }
+    }
+
+    getTournament(id: number): Observable<TournamentDto> {
+      return this.http.get<TournamentDto>(`${this.URL}/${id}`);
+    }
 
 }

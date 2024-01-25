@@ -3,17 +3,16 @@ import { TournamentsService } from '../../../services/tournaments.service';
 import { TournamentDto } from '../../../model/dtos/tournament';
 
 @Component({
-  selector: 'app-list-tournaments',
-  templateUrl: './list-tournaments.component.html',
-  styleUrl: './list-tournaments.component.css'
+  selector: 'app-tournaments-list',
+  templateUrl: './tournaments-list.component.html',
+  styleUrl: './tournaments-list.component.css'
 })
-export class ListTournamentsComponent implements OnInit{
+export class TournamentsListComponent implements OnInit{
+
   tournaments!: TournamentDto[];
 
-  constructor(private tournamentService: TournamentsService){
+  constructor(private tournamentService: TournamentsService){}
 
-  }
-  
   ngOnInit(){
     this.fetchAllTournaments();
   }
@@ -29,4 +28,5 @@ export class ListTournamentsComponent implements OnInit{
         }
     });
   }
+
 }
