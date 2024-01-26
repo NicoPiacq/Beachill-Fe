@@ -7,5 +7,5 @@ import { TournamentDto } from '../../../../model/dtos/tournament';
   styleUrl: './tournament-details.component.css'
 })
 export class TournamentDetailsComponent {
-@Input('tournamentDetailsProp') tournamentDetails!: TournamentDto
+  @Input('tournamentDetailsProp') tournamentDetails!: TournamentDto
 }

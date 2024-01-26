@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
+import { TournamentDto } from '../../../../../../model/dtos/tournament';
 
 @Component({
   selector: 'app-tournament-details-admin',
@@ -6,5 +7,5 @@ import { Component } from '@angular/core';
   styleUrl: './tournament-details-admin.component.css'
 })
 export class TournamentDetailsAdminComponent {
-
+  @Input('tournamentDetailsProp') tournamentDetails!: TournamentDto
 }

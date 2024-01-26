@@ -6,32 +6,43 @@ import { AppComponent } from './app.component';
 import { MenuComponent } from './components/menu/menu.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { HttpClientModule } from '@angular/common/http';
+
 import { TournamentsListComponent } from './components/tournaments-list/tournaments-list.component';
 
+import { TeamAdminContainerComponent } from './components/admin-container/team-admin-container/team-admin-container.component';
+import { UserAdminContainerComponent } from './components/admin-container/user-admin-container/user-admin-container.component';
+import { TournamentsListAdminComponent } from './components/admin-container/tournament-admin-container/tournaments-list-admin/tournaments-list-admin.component';
+import { TournamentDetailsAdminContainerComponent } from './components/admin-container/tournament-admin-container/tournament-details-admin-container/tournament-details-admin-container.component';
+import { EnrolledTeamsListAdminComponent } from './components/admin-container/tournament-admin-container/tournament-details-admin-container/enrolled-teams-list-admin/enrolled-teams-list-admin.component';
+import { MatchesTournamentListAdminComponent } from './components/admin-container/tournament-admin-container/tournament-details-admin-container/matches-tournament-list-admin/matches-tournament-list-admin.component';
+import { TournamentDetailsAdminComponent } from './components/admin-container/tournament-admin-container/tournament-details-admin-container/tournament-details-admin/tournament-details-admin.component';
 import { TournamentDetailsComponent } from './components/tournament-details-container/tournament-details/tournament-details.component';
+import { TournamentDetailsContainerComponent } from './components/tournament-details-container/tournament-details-container.component';
 import { EnrolledTeamsListComponent } from './components/tournament-details-container/enrolled-teams-list/enrolled-teams-list.component';
 import { MatchesTournamentListComponent } from './components/tournament-details-container/matches-tournament-list/matches-tournament-list.component';
-import { TournamentDetailsContainerComponent } from './components/tournament-details-container/tournament-details-container.component';
 import { HomeComponent } from './components/home/home.component';
-import { AdminPanelContainerComponent } from './components/admin-panel-container/admin-panel-container.component';
-import { TournamentAdminContainerComponent } from './components/admin-panel-container/tournament-admin-container/tournament-admin-container.component';
-import { TournamentsListAdminComponent } from './components/admin-panel-container/tournament-admin-container/tournaments-list-admin/tournaments-list-admin.component';
-import { TournamentDetailsAdminComponent } from './components/admin-panel-container/tournament-admin-container/tournament-details-admin/tournament-details-admin.component';
+import { AdminContainerComponent } from './components/admin-container/admin-container.component';
+import { TournamentAdminContainerComponent } from './components/admin-container/tournament-admin-container/tournament-admin-container.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     MenuComponent,
+    HomeComponent,
     FooterComponent,
     TournamentsListComponent,
     TournamentDetailsComponent,
     TournamentDetailsContainerComponent,
     EnrolledTeamsListComponent,
     MatchesTournamentListComponent,
-    HomeComponent,
-    AdminPanelContainerComponent,
+    AdminContainerComponent,
     TournamentAdminContainerComponent,
+    TeamAdminContainerComponent,
+    UserAdminContainerComponent,
     TournamentsListAdminComponent,
+    TournamentDetailsAdminContainerComponent,
+    EnrolledTeamsListAdminComponent,
+    MatchesTournamentListAdminComponent,
     TournamentDetailsAdminComponent
   ],
   imports: [

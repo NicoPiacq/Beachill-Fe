@@ -1,0 +1,33 @@
+<div class="container-fluid ">
+    <h1 class="hover-effect">Tutti i tornei disponibili:</h1>
+    </div>
+    <div class="container-fluid px">     
+        <table class="table table-dark table-striped table-hover">
+          <thead>
+            <tr>
+              <th>Id</th>
+              <th>Nome</th>
+              <th>Inizio</th>
+              <th>Fine</th>
+              <th>Tipo</th>
+              <th>Luogo</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+            
+              <td>{{ tournamentDetails.id }}</td>
+              <td>{{ tournamentDetails.tournamentName }}</td>
+              <td>{{ tournamentDetails.startDate }}</td>
+              <td>{{ tournamentDetails.endDate }}</td>
+              <td>{{ tournamentDetails.tournamentTypeName }}</td>
+              <td>{{ tournamentDetails.place }}</td>
+              
+    
+              <!-- <td>
+              <button class="btn btn-primary hover-effect small-btn" (click)="deleteCourse(c.id!)"><i class="bi bi-trash"></i></button>
+            </td> -->
+            </tr>
+          </tbody>
+        </table>
+    </div>
