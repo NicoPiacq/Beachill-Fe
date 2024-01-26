@@ -11,8 +11,7 @@ import { AdminService } from '../../../../services/admin.service';
 export class TournamentAdminContainerComponent {
   tournaments!: TournamentDto[];
 
-  constructor(private tournamentService: TournamentsService){}
-  // private adminService: AdminService
+  constructor(private tournamentService: TournamentsService, private adminService: AdminService){}
 
   ngOnInit(){
     this.fetchAllTournaments();
@@ -31,7 +30,6 @@ export class TournamentAdminContainerComponent {
   }
 
   deleteTournament(id: number){
-    console.log("funziona: " + id);
-    //this.adminService.deleteTournament(id).subscribe({});
+    this.adminService.deleteTournament(id).subscribe({});
   }
 }

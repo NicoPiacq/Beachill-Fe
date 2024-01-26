@@ -1,9 +1,22 @@
+import { HttpClient } from "@angular/common/http";
+import { Injectable } from "@angular/core";
+import { Observable } from "rxjs";
+import { TournamentDto } from "../model/dtos/tournament";
 
-//da implementareeee!!!
+@Injectable({
+    providedIn: 'root'
+  })
 
 export class AdminService {
-//   deleteTournament(id: number) {
-//     ;
-//   }
+    private URL = 'http://localhost:8080/api/admin';
+    constructor(private http: HttpClient) { }
+  
+    createTournament(tournament: TournamentDto): Observable<void> {
+        return this.http.post<void>(`${this.URL}/tournament/create`, tournament);
+    }
+  
+    deleteTournament(id: number): Observable<any> {
+        return this.http.delete(`${this.URL}/tournament/delete/${id}`);
+    }
 
 }
