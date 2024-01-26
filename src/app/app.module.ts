@@ -13,6 +13,10 @@ import { EnrolledTeamsListComponent } from './components/tournament-details-cont
 import { MatchesTournamentListComponent } from './components/tournament-details-container/matches-tournament-list/matches-tournament-list.component';
 import { TournamentDetailsContainerComponent } from './components/tournament-details-container/tournament-details-container.component';
 import { HomeComponent } from './components/home/home.component';
+import { AdminPanelContainerComponent } from './components/admin-panel-container/admin-panel-container.component';
+import { TournamentAdminContainerComponent } from './components/admin-panel-container/tournament-admin-container/tournament-admin-container.component';
+import { TournamentsListAdminComponent } from './components/admin-panel-container/tournament-admin-container/tournaments-list-admin/tournaments-list-admin.component';
+import { TournamentDetailsAdminComponent } from './components/admin-panel-container/tournament-admin-container/tournament-details-admin/tournament-details-admin.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +28,11 @@ import { HomeComponent } from './components/home/home.component';
     TournamentDetailsContainerComponent,
     EnrolledTeamsListComponent,
     MatchesTournamentListComponent,
-    HomeComponent
+    HomeComponent,
+    AdminPanelContainerComponent,
+    TournamentAdminContainerComponent,
+    TournamentsListAdminComponent,
+    TournamentDetailsAdminComponent
   ],
   imports: [
     BrowserModule,
