@@ -24,15 +24,11 @@
               <td>{{ t.tournamentTypeName }}</td>
               <td>{{ t.place }}</td>
               <td><a class="btn btn-outline-info" [routerLink]="['/admin/tournament', t.id]">Gestisci</a>
-              <button class="btn btn-outline-info" (click)="deleteTournament(t.id)">Elimina</button></td>
-              
-    
-              <!-- <td>
-              <button class="btn btn-primary hover-effect small-btn" (click)="deleteCourse(c.id!)"><i class="bi bi-trash"></i></button>
-            </td> -->
+              <button class="btn btn-outline-info" *ngIf="t.id !== undefined" (click)="deleteTournament(t.id)">Elimina</button></td>
+
             </tr>
-            <a class="btn btn-outline-info" [routerLink]="['/add-tournament-form']">CREA UN NUOVO TORNEO</a>
           </tbody>
         </table>
+        <a class="btn btn-outline-info" [routerLink]="['/add-tournament-form']">CREA UN NUOVO TORNEO</a>
     </div>
     

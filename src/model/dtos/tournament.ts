@@ -1,5 +1,5 @@
 export interface TournamentDto {
-    id: number;
+    id?: number;
     tournamentName: string;
     startDate: Date;
     endDate: Date;

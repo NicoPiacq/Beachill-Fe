@@ -23,6 +23,8 @@ import { MatchesTournamentListComponent } from './components/tournament-details-
 import { HomeComponent } from './components/home/home.component';
 import { AdminContainerComponent } from './components/admin-container/admin-container.component';
 import { TournamentAdminContainerComponent } from './components/admin-container/tournament-admin-container/tournament-admin-container.component';
+import { AddTournamentFormComponent } from './components/add-tournament-form/add-tournament-form.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -43,12 +45,15 @@ import { TournamentAdminContainerComponent } from './components/admin-container/
     TournamentDetailsAdminContainerComponent,
     EnrolledTeamsListAdminComponent,
     MatchesTournamentListAdminComponent,
-    TournamentDetailsAdminComponent
+    TournamentDetailsAdminComponent,
+    AddTournamentFormComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    ReactiveFormsModule,
+    FormsModule
   ],
   providers: [
     provideClientHydration()

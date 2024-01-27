@@ -9,7 +9,7 @@ import { AdminService } from '../../../../services/admin.service';
   styleUrl: './tournament-admin-container.component.css'
 })
 export class TournamentAdminContainerComponent {
-  tournaments!: TournamentDto[];
+  tournaments: TournamentDto[] = [];
 
   constructor(private tournamentService: TournamentsService, private adminService: AdminService){}
 
