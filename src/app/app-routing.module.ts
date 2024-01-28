@@ -5,6 +5,7 @@ import { HomeComponent } from './components/home/home.component';
 import { TournamentDetailsContainerComponent } from './components/tournament-details-container/tournament-details-container.component';
 import { AdminContainerComponent } from './components/admin-container/admin-container.component';
 import { AddTournamentFormComponent } from './components/add-tournament-form/add-tournament-form.component';
+import { SuccessAddTournamentFormComponent } from './success-add-tournament-form/success-add-tournament-form.component';
 
 
 const routes: Routes = [
@@ -13,7 +14,8 @@ const routes: Routes = [
   {path: 'tournament/:id', component: TournamentDetailsContainerComponent},
   {path: 'admin', component: AdminContainerComponent},
   {path: 'admin/tournament/:id', component: TournamentDetailsContainerComponent},
-  {path: 'add-tournament-form', component: AddTournamentFormComponent}
+  {path: 'add-tournament-form', component: AddTournamentFormComponent},
+  {path: 'success-add-tournament-form', component: SuccessAddTournamentFormComponent}
 ];
 
 @NgModule({

@@ -25,6 +25,7 @@ import { AdminContainerComponent } from './components/admin-container/admin-cont
 import { TournamentAdminContainerComponent } from './components/admin-container/tournament-admin-container/tournament-admin-container.component';
 import { AddTournamentFormComponent } from './components/add-tournament-form/add-tournament-form.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { SuccessAddTournamentFormComponent } from './success-add-tournament-form/success-add-tournament-form.component';
 
 @NgModule({
   declarations: [
@@ -46,7 +47,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     EnrolledTeamsListAdminComponent,
     MatchesTournamentListAdminComponent,
     TournamentDetailsAdminComponent,
-    AddTournamentFormComponent
+    AddTournamentFormComponent,
+    SuccessAddTournamentFormComponent
   ],
   imports: [
     BrowserModule,

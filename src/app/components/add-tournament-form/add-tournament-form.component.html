@@ -1,5 +1,6 @@
 <p>add-tournament-form works!</p>
-<form class = "" (ngsubmit)="createNewTournament()" [formGroup]="tournamentForm">
+<div class="container-fluid px">
+<form class = "row g-3" (ngSubmit)="createNewTournament()" [formGroup]="tournamentForm">
     
         <div class="col-md-6">
             <label for="tournamentName" class="form-label">Scegli il nome del torneo:</label>
@@ -19,18 +20,21 @@
         <label for="tournamentTypeName" class="form-label">Scegli il tipo del torneo:</label>
         <select id="tournamentTypeName" class="form-control" formControlName = "tournamentTypeName">
             <option selected value="">Seleziona: </option>
-            <option [value]="t.id" *ngFor="let t of tournamentTypes"> {{t.id}} </option>
+            <option [value]="t.tournamentTypeName" *ngFor="let t of tournamentTypes"> {{t.tournamentTypeName}} </option>
+            
+
         </select>
 
         <label for="place" class="form-label">Scegli il luogo del torneo:</label>
         <select id="place" class="form-control" formControlName = "place">
             <option selected value="">Seleziona: </option>
-            <option [value]="p.id" *ngFor="let p of places"> {{p.id}} </option>
+            <option [value]="p.place" *ngFor="let p of places"> {{p.place}} </option>
         </select>
 
         <div class="col-12">
-            <button type="submit" class="btn btn-primary">CREA</button>
+            <button type="submit" class="btn btn-primary">CREA TORNEO</button>
           </div>
     
-
+        
 </form>
+</div>

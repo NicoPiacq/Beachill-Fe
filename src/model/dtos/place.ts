@@ -1,5 +1,5 @@
 export interface PlaceDto {
-    id: string;
+    place: string;
     address: string;
     fieldNumber: number;    
 }

@@ -32,12 +32,12 @@ export class AddTournamentFormComponent implements OnInit{
 
 
   ngOnInit(): void {
-    this.getAllTournamentTypes();
+    this.buildFullForm();
   }
 
   buildFullForm(){
+    this.getAllTournamentTypes();
     this.getAllPlaces();
-    this.buildFullForm();
     this.tournamentForm = this.formBuilder.group({
       tournamentName: ['', Validators.required],
       startDate: ['', Validators.required],
@@ -54,12 +54,26 @@ export class AddTournamentFormComponent implements OnInit{
   }
   getAllPlaces(){
     this.placesService.getAllPlaces().subscribe({
-      next: places => this.places = this.places
+      next: places => this.places = places
     })
   }
 
   createNewTournament(){
-
+    if(this.tournamentForm.valid){
+      console.log("sono dentro createNewTournament");
+      this.tournamentData = {...this.tournamentForm.value};
+      this.adminService.createTournament(this.tournamentData).subscribe({
+        next: ed => {
+          this.router.navigate(["success-add-tournament-form"]);
+        },
+        error: error => {
+          console.error('Errore durante la creazione del torneo:', error);
+        }
+      })
+    }
+    else {
+      console.error('Form non valido.');
+    }
   }
 
 }

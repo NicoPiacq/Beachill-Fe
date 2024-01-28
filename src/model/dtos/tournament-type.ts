@@ -1,4 +1,4 @@
 export interface TournamentTypeDto {
-    id: string;
+    tournamentTypeName: string;
     tournamentDescription: string;
 }
