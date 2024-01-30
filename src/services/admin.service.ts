@@ -8,6 +8,7 @@ import { TournamentDto } from "../model/dtos/tournament";
   })
 
 export class AdminService {
+    
     private URL = 'http://localhost:8080/api/admin';
     constructor(private http: HttpClient) { }
   
@@ -19,4 +20,8 @@ export class AdminService {
         return this.http.delete(`${this.URL}/tournament/delete/${id}`);
     }
 
+    generateMatchTournament(id: number): Observable<any> {
+      console.log("sono quaaaaa");
+      return this.http.post<void>(`${this.URL}/tournament/generate/${id}`, null);
+    }
 }

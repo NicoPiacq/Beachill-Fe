@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { MatchDto } from '../../../../../model/dtos/match';
 import { EnrolledTeamsDto } from '../../../../../model/dtos/enrolled-teams';
 import { TournamentDto } from '../../../../../model/dtos/tournament';
@@ -6,6 +6,7 @@ import { TournamentsService } from '../../../../../services/tournaments.service'
 import { EnrolledTeamsService } from '../../../../../services/enrolled-teams.service';
 import { MatchesService } from '../../../../../services/matches.service';
 import { ActivatedRoute } from '@angular/router';
+import { AdminService } from '../../../../../services/admin.service';
 
 @Component({
   selector: 'app-tournament-details-admin-container',
@@ -17,9 +18,10 @@ export class TournamentDetailsAdminContainerComponent {
   tournamentId!: number;
   teams: EnrolledTeamsDto[] = [];
   matches!: MatchDto[];
+  
 
   constructor(private tournamentsService: TournamentsService, private enrolledTeamsService: EnrolledTeamsService,
-              private matchsService: MatchesService, private route: ActivatedRoute){}
+              private matchsService: MatchesService, private route: ActivatedRoute, private adminService: AdminService){}
 
   ngOnInit(): void {
     this.tournamentId = this.route.snapshot.params['id'];
@@ -64,4 +66,10 @@ export class TournamentDetailsAdminContainerComponent {
       }
     })
   }
+
+  generateMatchTournament(id: number){
+    console.log("sono nella funzione di tournament admin container")
+    this.adminService.generateMatchTournament(id).subscribe({});
+  }
+
 }

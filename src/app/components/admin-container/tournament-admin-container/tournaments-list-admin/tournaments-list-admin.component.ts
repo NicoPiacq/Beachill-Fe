@@ -14,4 +14,5 @@ export class TournamentsListAdminComponent {
   deleteTournament(id: number){
     this.deleteTournamentClicked.emit(id);
   }
+
 }

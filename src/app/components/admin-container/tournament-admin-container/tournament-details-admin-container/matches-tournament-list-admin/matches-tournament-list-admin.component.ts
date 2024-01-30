@@ -1,5 +1,6 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { MatchDto } from '../../../../../../model/dtos/match';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-matches-tournament-list-admin',
@@ -8,4 +9,5 @@ import { MatchDto } from '../../../../../../model/dtos/match';
 })
 export class MatchesTournamentListAdminComponent {
   @Input('matchesProp') matches: MatchDto[] = [];
+
 }

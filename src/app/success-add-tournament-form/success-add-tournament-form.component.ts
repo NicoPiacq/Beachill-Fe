@@ -11,7 +11,7 @@ export class SuccessAddTournamentFormComponent {
 
   ngOnInit(): void {
     setTimeout(() => {
-      this.router.navigate(['/tournaments']); 
+      this.router.navigate(['/admin']); 
     }, 2000);
   }
 

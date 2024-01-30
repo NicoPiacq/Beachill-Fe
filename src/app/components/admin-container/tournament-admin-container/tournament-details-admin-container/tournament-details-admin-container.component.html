@@ -1,7 +1,12 @@
 <p>tournament-details-admin-container works!</p>
+<app-tournament-details-admin [tournamentDetailsProp]="tournament" [matchesProp]="matches" *ngIf = "tournamentId" (generateMatchTournamentProp)="generateMatchTournament($event)">
+
+</app-tournament-details-admin>
+
 <app-enrolled-teams-list-admin [enrolledTeamsProp]="teams">
 
 </app-enrolled-teams-list-admin>
+
 
 <div class = "container-fluid px text-center" *ngIf="matches.length < 1">
     <h1 class = "text-light bg-dark">Non sono ancora presenti match per questo torneo</h1>

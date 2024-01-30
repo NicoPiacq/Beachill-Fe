@@ -32,4 +32,5 @@ export class TournamentAdminContainerComponent {
   deleteTournament(id: number){
     this.adminService.deleteTournament(id).subscribe({});
   }
+
 }

@@ -6,6 +6,7 @@ import { TournamentDetailsContainerComponent } from './components/tournament-det
 import { AdminContainerComponent } from './components/admin-container/admin-container.component';
 import { AddTournamentFormComponent } from './components/add-tournament-form/add-tournament-form.component';
 import { SuccessAddTournamentFormComponent } from './success-add-tournament-form/success-add-tournament-form.component';
+import { TournamentDetailsAdminContainerComponent } from './components/admin-container/tournament-admin-container/tournament-details-admin-container/tournament-details-admin-container.component';
 
 
 const routes: Routes = [
@@ -13,7 +14,7 @@ const routes: Routes = [
   {path: 'tournaments', component: TournamentsListComponent},
   {path: 'tournament/:id', component: TournamentDetailsContainerComponent},
   {path: 'admin', component: AdminContainerComponent},
-  {path: 'admin/tournament/:id', component: TournamentDetailsContainerComponent},
+  {path: 'admin/tournament/:id', component: TournamentDetailsAdminContainerComponent},
   {path: 'add-tournament-form', component: AddTournamentFormComponent},
   {path: 'success-add-tournament-form', component: SuccessAddTournamentFormComponent}
 ];

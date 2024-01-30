@@ -26,6 +26,7 @@
               <td><a class="btn btn-outline-info" [routerLink]="['/admin/tournament', t.id]">Gestisci</a>
               <button class="btn btn-outline-info" *ngIf="t.id !== undefined" (click)="deleteTournament(t.id)">Elimina</button></td>
 
+
             </tr>
           </tbody>
         </table>
