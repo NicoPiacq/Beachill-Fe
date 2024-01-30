@@ -40,8 +40,8 @@ export class AddTournamentFormComponent implements OnInit{
     this.getAllPlaces();
     this.tournamentForm = this.formBuilder.group({
       tournamentName: ['', Validators.required],
-      startDate: ['', Validators.required],
-      endDate: ['', Validators.required],
+      startDate: [''],
+      endDate: [''],
       tournamentTypeName: ['', Validators.required],
       place: ['', Validators.required],
     });
