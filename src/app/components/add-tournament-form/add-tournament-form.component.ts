@@ -42,8 +42,8 @@ export class AddTournamentFormComponent implements OnInit{
       tournamentName: ['', Validators.required],
       startDate: [''],
       endDate: [''],
-      tournamentTypeName: ['', Validators.required],
-      place: ['', Validators.required],
+      tournamentTypeName: [''],
+      place: [''],
     });
   }
 
