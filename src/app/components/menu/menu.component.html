@@ -40,6 +40,39 @@
           <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
           <button class="btn btn-outline-success" type="submit">Search</button>
         </form>
+         <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+          Accedi
+        </button> 
+        <button type="button" class="btn btn-secondary" (click)="logout()">
+          Logout
+        </button>
       </div>
     </div>
   </nav>
+
+  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="exampleModalLabel">Effettua l'accesso</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <form (ngSubmit)="login()" [formGroup]="loginForm">
+        <div class="modal-body">
+          <div class="col-md-6">
+            <label for="email">Indirizzo email</label>
+            <input type="text" id="email" name="email" formControlName="email">
+          </div>
+          <div class="col-md-6">
+            <label for="email">Password</label>
+            <input type="password" id="password" name="password" formControlName="password">
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="submit" class="btn btn-primary">Accedi</button>
+        </div>
+        </form>
+      </div>
+    </div>
+  </div>
+

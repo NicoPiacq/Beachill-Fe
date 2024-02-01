@@ -5,7 +5,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { MenuComponent } from './components/menu/menu.component';
 import { FooterComponent } from './components/footer/footer.component';
-import { HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 
 import { TournamentsListComponent } from './components/tournaments-list/tournaments-list.component';
 
@@ -26,6 +26,8 @@ import { TournamentAdminContainerComponent } from './components/admin-container/
 import { AddTournamentFormComponent } from './components/add-tournament-form/add-tournament-form.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { SuccessAddTournamentFormComponent } from './success-add-tournament-form/success-add-tournament-form.component';
+import { RegisterUserFormComponent } from './components/register-user-form/register-user-form.component';
+import { AuthInterceptorService } from '../services/interceptor.service';
 
 @NgModule({
   declarations: [
@@ -48,7 +50,8 @@ import { SuccessAddTournamentFormComponent } from './success-add-tournament-form
     MatchesTournamentListAdminComponent,
     TournamentDetailsAdminComponent,
     AddTournamentFormComponent,
-    SuccessAddTournamentFormComponent
+    SuccessAddTournamentFormComponent,
+    RegisterUserFormComponent
   ],
   imports: [
     BrowserModule,
@@ -58,7 +61,12 @@ import { SuccessAddTournamentFormComponent } from './success-add-tournament-form
     FormsModule
   ],
   providers: [
-    provideClientHydration()
+    provideClientHydration(),
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AuthInterceptorService,
+      multi: true
+    }
   ],
   bootstrap: [AppComponent]
 })
