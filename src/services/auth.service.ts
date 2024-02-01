@@ -33,7 +33,7 @@ export class AuthService {
             catchError(this.handleError),
             tap(resData => {
                 this.handleAuthentication(resData);
-                alert("HO FATTO L'ACCESSO CORRETTAMENTE!");
+                //alert("HO FATTO L'ACCESSO CORRETTAMENTE!");
             })
         );
     }

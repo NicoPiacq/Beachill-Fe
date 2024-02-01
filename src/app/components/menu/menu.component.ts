@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { LoginDto } from '../../../model/dtos/login';
 import { AuthService } from '../../../services/auth.service';
 import { map, take } from 'rxjs';
+import { bootstrapApplication } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-menu',
@@ -16,6 +17,8 @@ export class MenuComponent implements OnInit {
     email: '',
     password: ''
   }
+  hasLoggedIn: boolean = false;
+  loginModal: any;
 
   constructor(private formBuilder: FormBuilder, private authService: AuthService) {}
 
@@ -24,35 +27,28 @@ export class MenuComponent implements OnInit {
         email: ['', Validators.required],
         password: ['', Validators.required]
       });
+      this.checkUser();
   }
 
   login() {
     if(this.loginForm.valid) {
       this.loginData = {...this.loginForm.value};
-      this.authService.login(this.loginData).subscribe();
+      this.authService.login(this.loginData).subscribe({
+        next: _ => this.checkUser()
+      });
     }
   }
 
   logout() {
     this.authService.logout();
-  }
-
-  pippo() {
-    console.log("CAZZO CHE PROBLEMA SE ESCO PIU' DI UNA VOLTA!");
+    this.checkUser();
   }
 
   checkUser() {
-    return this.authService.authenticatedUser.pipe(
-      take(1),
-      map(user => {
-        const hasLoggedIn = !!user;
-        if(hasLoggedIn) {
-          console.log("true");
-          return true;
-        }
-        console.log("false");
-        return false;
-      })
-    )
+    if(this.authService.authenticatedUser.value) {
+      this.hasLoggedIn = true;
+      return;
+    }
+    this.hasLoggedIn = false;
   }
 }

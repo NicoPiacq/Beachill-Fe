@@ -18,10 +18,10 @@
           <li class="nav-item">
             <a class="nav-link" href="#">Team</a>
           </li>
-          <li class="nav-item">
+          <li class="nav-item" *ngIf="hasLoggedIn">
             <a class="nav-link active" aria-current="page" routerLink="/admin">Admin</a>
           </li>
-          <li class="nav-item dropdown">
+          <li class="nav-item dropdown" *ngIf="hasLoggedIn">
             <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
               Dropdown
             </a>
@@ -40,21 +40,23 @@
           <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
           <button class="btn btn-outline-success" type="submit">Search</button>
         </form>
-         <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+         <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#loginModal" *ngIf="!hasLoggedIn; else logoutBtn">
           Accedi
-        </button> 
-        <button type="button" class="btn btn-secondary" (click)="logout()">
-          Logout
         </button>
+        <ng-template #logoutBtn>        
+          <button type="button" class="btn btn-secondary" (click)="logout()" *ngIf="hasLoggedIn">
+            Logout
+          </button>
+        </ng-template> 
       </div>
     </div>
   </nav>
 
-  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="loginModalLabel" aria-hidden="true">
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
-          <h1 class="modal-title fs-5" id="exampleModalLabel">Effettua l'accesso</h1>
+          <h1 class="modal-title fs-5" id="loginModalLabel">Effettua l'accesso</h1>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <form (ngSubmit)="login()" [formGroup]="loginForm">
@@ -69,7 +71,7 @@
           </div>
         </div>
         <div class="modal-footer">
-          <button type="submit" class="btn btn-primary">Accedi</button>
+          <button type="submit" class="btn btn-primary" data-bs-dismiss="loginModal">Accedi</button>
         </div>
         </form>
       </div>
