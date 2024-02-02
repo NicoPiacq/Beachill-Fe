@@ -18,10 +18,10 @@
           <li class="nav-item">
             <a class="nav-link" href="#">Team</a>
           </li>
-          <li class="nav-item" *ngIf="hasLoggedIn">
+          <li class="nav-item" *ngIf="hasLoggedIn && checkRoleAdmin()">
             <a class="nav-link active" aria-current="page" routerLink="/admin">Admin</a>
           </li>
-          <li class="nav-item dropdown" *ngIf="hasLoggedIn">
+          <li class="nav-item dropdown" *ngIf="hasLoggedIn"> <!-- sono un coglione con la firma -->
             <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
               Dropdown
             </a>
@@ -44,10 +44,11 @@
           Accedi
         </button>
         <ng-template #logoutBtn>        
-          <button type="button" class="btn btn-secondary" (click)="logout()" *ngIf="hasLoggedIn">
+          <button type="button" class="btn btn-secondary" (click)="logout()">
             Logout
           </button>
-        </ng-template> 
+          <p>Sei loggato come: {{ getUserData()?.user?.email }}</p>
+        </ng-template>
       </div>
     </div>
   </nav>

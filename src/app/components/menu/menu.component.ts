@@ -18,6 +18,7 @@ export class MenuComponent implements OnInit {
     password: ''
   }
   hasLoggedIn: boolean = false;
+  isAdmin: boolean = false;
   loginModal: any;
 
   constructor(private formBuilder: FormBuilder, private authService: AuthService) {}
@@ -50,5 +51,17 @@ export class MenuComponent implements OnInit {
       return;
     }
     this.hasLoggedIn = false;
+  }
+
+  checkRoleAdmin() {
+    const role = this.authService.authenticatedUser.value?.user.role;
+    if(role === 'ADMIN' || role === 'SUPERADMIN') {
+      return true;
+    }
+    return false;
+  }
+
+  getUserData() {
+    return this.authService.authenticatedUser.value;
   }
 }
