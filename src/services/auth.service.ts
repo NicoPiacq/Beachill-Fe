@@ -68,22 +68,24 @@ export class AuthService {
         localStorage.removeItem('userData');
     }
 
+    // TECNICAMENTE VA RISCRITTO PER ESSERE IGNORATO DA ANGULAR, PERCHE' ALTRIMENTI DICE CHE IL SITO NON E' STABILE...
     autoLogout(expirationDuration: number) {
         this.tokenExpirationTimer = setTimeout(() =>
             this.logout(), expirationDuration);
     }
+    ////////////////////////////////////////////////////////
 
     private handleError(errorRes: HttpErrorResponse) {
         let errorMessage = 'Errore sconosciuto!';
-        if (!errorRes.error || !errorRes.error.error) {
+        if (!errorRes.error) {
           return throwError(() => errorMessage);
         }
-        switch (errorRes.error.error.message) {
+        switch (errorRes.error) {
           case 'EMAIL_EXISTS':
-            errorMessage = 'Questa email già esiste';
+            errorMessage = 'Questa email è già stata registrata';
             break;
-          case 'EMAIL_NOT_FOUND':
-            errorMessage = 'Questa email non esiste';
+          case 'CREDENTIALS_NOT_VALID':
+            errorMessage = 'Email o password errata';
             break;
         }
         return throwError(() => errorMessage);
