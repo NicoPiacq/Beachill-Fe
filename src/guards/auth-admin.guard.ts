@@ -27,7 +27,7 @@ import { AuthService } from '../services/auth.service';
         take(1),
         map(user => {
           const isAuth = !!user;
-          if (isAuth && user.user.role == "ADMIN") {
+          if (isAuth && (user.user.role == "ADMIN" || user.user.role == "SUPERADMIN")) {
             return true;
           }
           return this.router.createUrlTree(['/']);
