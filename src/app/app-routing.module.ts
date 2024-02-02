@@ -5,10 +5,12 @@ import { HomeComponent } from './components/home/home.component';
 import { TournamentDetailsContainerComponent } from './components/tournament-details-container/tournament-details-container.component';
 import { AdminContainerComponent } from './components/admin-container/admin-container.component';
 import { AddTournamentFormComponent } from './components/add-tournament-form/add-tournament-form.component';
-import { SuccessAddTournamentFormComponent } from './success-add-tournament-form/success-add-tournament-form.component';
+import { SuccessAddTournamentFormComponent } from './components/success-add-tournament-form/success-add-tournament-form.component';
 import { TournamentDetailsAdminContainerComponent } from './components/admin-container/tournament-admin-container/tournament-details-admin-container/tournament-details-admin-container.component';
 import { RegisterUserFormComponent } from './components/register-user-form/register-user-form.component';
 import { AuthAdminGuard } from '../guards/auth-admin.guard';
+import { TeamsListComponent } from './components/teams-list/teams-list.component';
+import { TeamDetailsContainerComponent } from './components/team-details-container/team-details-container.component';
 
 // IL ROUTING VA RISCRITTO CON LE CHILDREN, ALTRIMENTI VA RIEMPITO DI CANACTIVATE!
 const routes: Routes = [
@@ -19,7 +21,9 @@ const routes: Routes = [
   {path: 'admin/tournament/:id', component: TournamentDetailsAdminContainerComponent, canActivate: [AuthAdminGuard]},
   {path: 'add-tournament-form', component: AddTournamentFormComponent},
   {path: 'registration', component: RegisterUserFormComponent},
-  {path: 'success-add-tournament-form', component: SuccessAddTournamentFormComponent}
+  {path: 'success-add-tournament-form', component: SuccessAddTournamentFormComponent},
+  {path: 'teams', component: TeamsListComponent},
+  {path: 'team/:id', component: TeamDetailsContainerComponent}
 ];
 
 @NgModule({

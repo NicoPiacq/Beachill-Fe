@@ -16,7 +16,7 @@
             <a class="nav-link active" aria-current="page" routerLink="/tournaments">Tornei</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">Team</a>
+            <a class="nav-link" routerLink="/teams">Team</a>
           </li>
           <li class="nav-item" *ngIf="hasLoggedIn && checkRoleAdmin()">
             <a class="nav-link active" aria-current="page" routerLink="/admin">Admin</a>

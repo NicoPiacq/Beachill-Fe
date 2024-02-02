@@ -8,10 +8,16 @@ import { TeamDto } from "../model/dtos/team";
   })
 
   export class TeamsService {
+    
     private URL = 'http://localhost:8080/api/team';
     constructor(private http: HttpClient) { }
 
-    getEnrolledTeamsByTournament(id: number): Observable<TeamDto[]>{
-        return this.http.get<TeamDto[]>(`${this.URL}/all/tournament/${id}`);
+
+    getAllTeams(): Observable<TeamDto[]> {
+      return this.http.get<TeamDto[]>(`${this.URL}/all`);
+    }
+
+    getTeam(id: number): Observable<TeamDto> {
+      return this.http.get<TeamDto>(`${this.URL}/${id}`);
     }
   }

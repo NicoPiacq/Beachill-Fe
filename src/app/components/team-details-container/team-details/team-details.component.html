@@ -1,0 +1,29 @@
+<div class="container-fluid ">
+    <h1 class="hover-effect">Dettagli team:</h1>
+    </div>
+    <div class="container-fluid px">     
+        <table class="table table-dark table-striped table-hover">
+          <thead>
+            <tr>
+                <th>Id</th>
+                <th>Nome</th>
+                <th>Team Leader</th>
+                <th>Score</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+            
+                <td>{{ teamDetails.id }}</td>
+                <td>{{ teamDetails.teamName }}</td>
+                <td>{{ teamDetails.teamLeaderName}} {{teamDetails.teamLeaderSurname}}</td>
+                <td>{{ teamDetails.score }}</td>
+              
+    
+              <!-- <td>
+              <button class="btn btn-primary hover-effect small-btn" (click)="deleteCourse(c.id!)"><i class="bi bi-trash"></i></button>
+            </td> -->
+            </tr>
+          </tbody>
+        </table>
+    </div>

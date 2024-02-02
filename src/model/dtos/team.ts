@@ -1,6 +1,8 @@
 export interface TeamDto {
     id: number;
     teamName: string;
-    teamLeader: string;
+    teamLeaderName: string;
+    teamLeaderSurname: string;
+    idTeamLeader: number;
     score: number;
 }

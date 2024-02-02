@@ -1,0 +1,27 @@
+<div class="container-fluid ">
+    <h1 class="hover-effect">Tutti i team:</h1>
+    </div>
+    <div class="container-fluid px">     
+        <table class="table table-dark table-striped table-hover">
+          <thead>
+            <tr>
+              <th>Id</th>
+              <th>Nome</th>
+              <th>Team Leader</th>
+              <th>Score</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let t of teams">
+            
+              <td>{{ t.id }}</td>
+              <td>{{ t.teamName }}</td>
+              <td>{{ t.teamLeaderName}} {{t.teamLeaderSurname}}</td>
+              <td>{{ t.score }}</td>
+              <td><a class="btn btn-outline-info" [routerLink]="['/team', t.id]">Info</a></td>
+              
+            </tr>
+          </tbody>
+        </table>
+    </div>

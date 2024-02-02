@@ -1,4 +1,4 @@
-import { Player } from "./player";
+import { PlayerDto } from "./player";
 
 export interface User {
     id: number;
@@ -8,6 +8,6 @@ export interface User {
     password: string;
     registrationDate: Date;
     lastLogin: Date;
-    player: Player;
+    player: PlayerDto;
     role: string;
 }

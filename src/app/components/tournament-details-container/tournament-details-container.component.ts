@@ -1,10 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { TournamentDto } from '../../../model/dtos/tournament';
-import { TeamDto } from '../../../model/dtos/team';
 import { MatchDto } from '../../../model/dtos/match';
 import { ActivatedRoute } from '@angular/router';
 import { TournamentsService } from '../../../services/tournaments.service';
-import { TeamsService } from '../../../services/teams.service';
 import { MatchesService } from '../../../services/matches.service';
 import { EnrolledTeamsDto } from '../../../model/dtos/enrolled-teams';
 import { EnrolledTeamsService } from '../../../services/enrolled-teams.service';
@@ -16,8 +14,8 @@ import { EnrolledTeamsService } from '../../../services/enrolled-teams.service';
   styleUrl: './tournament-details-container.component.css'
 })
 export class TournamentDetailsContainerComponent implements OnInit {
-  tournament!: TournamentDto;
   tournamentId!: number;
+  tournament!: TournamentDto;
   teams: EnrolledTeamsDto[] = [];
   matches!: MatchDto[];
 
