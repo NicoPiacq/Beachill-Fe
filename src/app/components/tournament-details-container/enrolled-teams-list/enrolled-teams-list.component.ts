@@ -8,5 +8,5 @@ import { EnrolledTeamsDto } from '../../../../model/dtos/enrolled-teams';
   styleUrl: './enrolled-teams-list.component.css'
 })
 export class EnrolledTeamsListComponent {
-  @Input('enrolledTeamsProp') teams: EnrolledTeamsDto[] = [];
+  @Input('enrolledTeamsProp') teams!: EnrolledTeamsDto[];
 }

@@ -24,7 +24,7 @@ export class TournamentsListComponent implements OnInit{
             console.log(this.tournaments);
         },
         error: (error) => {
-            console.error('Errore nel recupero dei corsi:', error);
+            console.error('Errore nel recupero dei tornei:', error);
         }
     });
   }

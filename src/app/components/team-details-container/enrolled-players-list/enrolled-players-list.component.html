@@ -1,1 +1,24 @@
-<p>enrolled-players-list works!</p>
+<div class="container-fluid ">
+    <h1 class="hover-effect">Tutti i player iscritti al team:</h1>
+    </div>
+    <div class="container-fluid px">     
+        <table class="table table-dark table-striped table-hover">
+          <thead>
+            <tr>
+              <th>Id</th>
+              <th>Nome:</th>
+              <th>Punteggio:</th>
+            
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let player of players">
+                <td>{{player.id}}</td>
+                <td>{{player.userName}} {{player.userSurname}}</td>
+                <td>{{player.score}}</td>
+            </tr>
+          </tbody>
+        </table>
+    </div>
+    
+

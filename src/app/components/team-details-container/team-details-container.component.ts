@@ -4,6 +4,7 @@ import { PlayerDto } from '../../../model/dtos/player';
 import { MatchDto } from '../../../model/dtos/match';
 import { ActivatedRoute } from '@angular/router';
 import { TeamsService } from '../../../services/teams.service';
+import { PlayersService } from '../../../services/players.service';
 
 @Component({
   selector: 'app-team-details-container',
@@ -13,10 +14,10 @@ import { TeamsService } from '../../../services/teams.service';
 export class TeamDetailsContainerComponent implements OnInit{
   teamId!: number;
   team!: TeamDto;
-  players!: PlayerDto;
-  matches!: MatchDto;
+  players!: PlayerDto[];
+  matches!: MatchDto[];
 
-  constructor(private route: ActivatedRoute, private teamsService: TeamsService){}
+  constructor(private route: ActivatedRoute, private teamsService: TeamsService, private playersService: PlayersService){}
 
   ngOnInit(): void {
       this.teamId = this.route.snapshot.params['id'];
@@ -25,7 +26,8 @@ export class TeamDetailsContainerComponent implements OnInit{
       this.loadEnrolledPlayers();
       this.loadMatches();
   }
-  loadMatches() {
+
+  loadTeamDetails() {
     this.teamsService.getTeam(this.teamId).subscribe({
       next: team => {
         this.team = team;
@@ -36,10 +38,22 @@ export class TeamDetailsContainerComponent implements OnInit{
       }
     })
   }
+
   loadEnrolledPlayers() {
+    this.playersService.getAllPlayerByTeamId(this.teamId).subscribe({
+      next: players => {
+        this.players = players;
+        console.log(this.players);
+      },
+      error: err => {
+        console.error('Errore nel recupero dei player iscritti al team:', err);
+      }
+    })
+  }
+
+  loadMatches() {
     // throw new Error('Method not implemented.');
   }
-  loadTeamDetails() {
-    // throw new Error('Method not implemented.');
-  }
+  
+  
 }
