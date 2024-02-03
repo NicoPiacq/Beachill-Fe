@@ -1,3 +1,5 @@
+import { User } from "./user";
+
 export interface TournamentDto {
     id?: number;
     tournamentName: string;
@@ -5,4 +7,6 @@ export interface TournamentDto {
     endDate: Date;
     tournamentTypeName: string;
     place: string;
+    status: number;
+    userDto: User;
 }

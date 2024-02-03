@@ -7,15 +7,15 @@
             <tr>
               <th>Id</th>
               <th>Nome:</th>
-              <th>Punteggio:</th>
+              <th>Status:</th>
             
             </tr>
           </thead>
           <tbody>
             <tr *ngFor="let player of players">
                 <td>{{player.id}}</td>
-                <td>{{player.userName}} {{player.userSurname}}</td>
-                <td>{{player.score}}</td>
+                <td>{{player.playerName}} {{player.playerSurname}}</td>
+                <td>{{player.status}}</td>
             </tr>
           </tbody>
         </table>

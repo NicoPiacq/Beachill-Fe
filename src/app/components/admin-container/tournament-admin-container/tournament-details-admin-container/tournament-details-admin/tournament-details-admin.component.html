@@ -11,7 +11,8 @@
               <th>Fine</th>
               <th>Tipo</th>
               <th>Luogo</th>
-              <th></th>
+              <th>Status</th>
+              <th>Manager</th>
             </tr>
           </thead>
           <tbody>
@@ -23,6 +24,8 @@
               <td>{{ tournamentDetails.endDate }}</td>
               <td>{{ tournamentDetails.tournamentTypeName }}</td>
               <td>{{ tournamentDetails.place }}</td>
+              <td>{{ tournamentDetails.status }}</td>
+              <td>{{tournamentDetails.userDto.name}} {{tournamentDetails.userDto.surname}}</td>
               <td><button class="btn btn-outline-info" *ngIf="tournamentDetails.id !== undefined && matches.length < 1 " (click)="generateMatchTournament(tournamentDetails.id)">Genera-Match</button></td>
 
               

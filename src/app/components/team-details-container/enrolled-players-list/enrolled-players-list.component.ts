@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { PlayerDto } from '../../../../model/dtos/player';
+import { TeamComponentDto } from '../../../../model/dtos/team-component';
 
 @Component({
   selector: 'app-enrolled-players-list',
@@ -7,5 +7,5 @@ import { PlayerDto } from '../../../../model/dtos/player';
   styleUrl: './enrolled-players-list.component.css'
 })
 export class EnrolledPlayersListComponent {
-  @Input("enrolledPlayersProp") players!: PlayerDto[];
+  @Input("enrolledPlayersProp") players!: TeamComponentDto[];
 }

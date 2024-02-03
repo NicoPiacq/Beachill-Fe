@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { TeamDto } from '../../../model/dtos/team';
-import { PlayerDto } from '../../../model/dtos/player';
 import { MatchDto } from '../../../model/dtos/match';
 import { ActivatedRoute } from '@angular/router';
 import { TeamsService } from '../../../services/teams.service';
 import { PlayersService } from '../../../services/players.service';
+import { TeamComponentDto } from '../../../model/dtos/team-component';
 
 @Component({
   selector: 'app-team-details-container',
@@ -14,7 +14,7 @@ import { PlayersService } from '../../../services/players.service';
 export class TeamDetailsContainerComponent implements OnInit{
   teamId!: number;
   team!: TeamDto;
-  players!: PlayerDto[];
+  players!: TeamComponentDto[];
   matches!: MatchDto[];
 
   constructor(private route: ActivatedRoute, private teamsService: TeamsService, private playersService: PlayersService){}

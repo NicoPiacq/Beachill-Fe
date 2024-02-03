@@ -2,6 +2,7 @@ import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { PlayerDto } from "../model/dtos/player";
 import { Observable } from "rxjs";
+import { TeamComponentDto } from "../model/dtos/team-component";
 
 @Injectable({
     providedIn: 'root'
@@ -15,7 +16,7 @@ import { Observable } from "rxjs";
         return this.http.get<PlayerDto[]>(`${this.URL}/all`);
     }
   
-    getAllPlayerByTeamId(id: number): Observable<PlayerDto[]> {
-        return this.http.get<PlayerDto[]>(`${this.URL}/enrolled/${id}`);
+    getAllPlayerByTeamId(id: number): Observable<TeamComponentDto[]> {
+        return this.http.get<TeamComponentDto[]>(`${this.URL}/enrolled/${id}`);
     }
   }
