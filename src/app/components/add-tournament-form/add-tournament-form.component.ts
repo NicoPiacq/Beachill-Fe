@@ -23,7 +23,9 @@ export class AddTournamentFormComponent implements OnInit{
     startDate: new Date,
     endDate: new Date,
     tournamentTypeName: '',
-    place: ''
+    place: '',
+    status: -1,
+    userDto: null
   };
 
   constructor(private formBuilder: FormBuilder, private adminService: AdminService, 

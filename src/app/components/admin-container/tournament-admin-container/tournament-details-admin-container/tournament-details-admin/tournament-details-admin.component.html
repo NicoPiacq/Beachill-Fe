@@ -25,7 +25,7 @@
               <td>{{ tournamentDetails.tournamentTypeName }}</td>
               <td>{{ tournamentDetails.place }}</td>
               <td>{{ tournamentDetails.status }}</td>
-              <td>{{tournamentDetails.userDto.name}} {{tournamentDetails.userDto.surname}}</td>
+              <td>{{tournamentDetails.userDto?.name}} {{tournamentDetails.userDto?.surname}}</td>
               <td><button class="btn btn-outline-info" *ngIf="tournamentDetails.id !== undefined && matches.length < 1 " (click)="generateMatchTournament(tournamentDetails.id)">Genera-Match</button></td>
 
               

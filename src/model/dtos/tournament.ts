@@ -8,5 +8,5 @@ export interface TournamentDto {
     tournamentTypeName: string;
     place: string;
     status: number;
-    userDto: User;
+    userDto: User | null;
 }
