@@ -87,6 +87,9 @@ export class AuthService {
           case 'CREDENTIALS_NOT_VALID':
             errorMessage = 'Email o password errata';
             break;
+          default:
+            errorMessage = errorRes.error;
+            break;    
         }
         return throwError(() => errorMessage);
       }
