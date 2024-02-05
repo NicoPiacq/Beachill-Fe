@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { TournamentDto } from '../../../model/dtos/tournament';
 import { PlaceDto } from '../../../model/dtos/place';
 import { FormBuilder, Validators, FormGroup} from '@angular/forms';
 import { AdminService } from '../../../services/admin.service';
@@ -7,6 +6,7 @@ import { Router } from '@angular/router';
 import { TournamentTypeDto } from '../../../model/dtos/tournament-type';
 import { TournamentsTypesService } from '../../../services/tournaments-types.service';
 import { PlacesService } from '../../../services/places.service';
+import { TournamentAdminDto } from '../../../model/dtos/tournament-admin';
 
 @Component({
   selector: 'app-add-tournament-form',
@@ -18,7 +18,7 @@ export class AddTournamentFormComponent implements OnInit{
   tournamentTypes: TournamentTypeDto[] = [];
   places: PlaceDto[] = [];
 
-  tournamentData: TournamentDto = {
+  tournamentData: TournamentAdminDto = {
     tournamentName: '',
     startDate: new Date,
     endDate: new Date,

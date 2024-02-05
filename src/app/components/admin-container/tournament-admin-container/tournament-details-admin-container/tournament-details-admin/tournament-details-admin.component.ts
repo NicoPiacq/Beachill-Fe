@@ -1,6 +1,6 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { TournamentDto } from '../../../../../../model/dtos/tournament';
 import { MatchDto } from '../../../../../../model/dtos/match';
+import { TournamentAdminDto } from '../../../../../../model/dtos/tournament-admin';
 
 @Component({
   selector: 'app-tournament-details-admin',
@@ -9,7 +9,7 @@ import { MatchDto } from '../../../../../../model/dtos/match';
 })
 export class TournamentDetailsAdminComponent {
   
-  @Input('tournamentDetailsProp') tournamentDetails!: TournamentDto
+  @Input('tournamentDetailsProp') tournamentDetails!: TournamentAdminDto
   @Input('matchesProp') matches: MatchDto[] = [];
   @Output('generateMatchTournamentProp') generateMatchTournamentClicked: EventEmitter<number> = new EventEmitter<number>();
 

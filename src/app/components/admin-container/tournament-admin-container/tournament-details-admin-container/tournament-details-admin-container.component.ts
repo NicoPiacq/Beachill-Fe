@@ -1,12 +1,12 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { MatchDto } from '../../../../../model/dtos/match';
 import { EnrolledTeamsDto } from '../../../../../model/dtos/enrolled-teams';
-import { TournamentDto } from '../../../../../model/dtos/tournament';
 import { TournamentsService } from '../../../../../services/tournaments.service';
 import { EnrolledTeamsService } from '../../../../../services/enrolled-teams.service';
 import { MatchesService } from '../../../../../services/matches.service';
 import { ActivatedRoute } from '@angular/router';
 import { AdminService } from '../../../../../services/admin.service';
+import { TournamentAdminDto } from '../../../../../model/dtos/tournament-admin';
 
 @Component({
   selector: 'app-tournament-details-admin-container',
@@ -14,7 +14,7 @@ import { AdminService } from '../../../../../services/admin.service';
   styleUrl: './tournament-details-admin-container.component.css'
 })
 export class TournamentDetailsAdminContainerComponent {
-  tournament!: TournamentDto;
+  tournament!: TournamentAdminDto;
   tournamentId!: number;
   teams: EnrolledTeamsDto[] = [];
   matches!: MatchDto[];
@@ -32,7 +32,7 @@ export class TournamentDetailsAdminContainerComponent {
   }
 
   loadTournamentDetails(){
-    this.tournamentsService.getTournament(this.tournamentId).subscribe({
+    this.adminService.getTournament(this.tournamentId).subscribe({
       next: tournament => {
         this.tournament = tournament;
         console.log(this.tournament);

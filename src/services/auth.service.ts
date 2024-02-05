@@ -91,4 +91,5 @@ export class AuthService {
         return throwError(() => errorMessage);
       }
 
+      //GET ROLE -> fa una richiesta al backend e riceve il ruolo dell' utente.
 }

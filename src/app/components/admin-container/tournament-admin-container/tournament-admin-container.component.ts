@@ -1,7 +1,7 @@
 import { Component, Input } from '@angular/core';
-import { TournamentDto } from '../../../../model/dtos/tournament';
 import { TournamentsService } from '../../../../services/tournaments.service';
 import { AdminService } from '../../../../services/admin.service';
+import { TournamentAdminDto } from '../../../../model/dtos/tournament-admin';
 
 @Component({
   selector: 'app-tournament-admin-container',
@@ -9,7 +9,7 @@ import { AdminService } from '../../../../services/admin.service';
   styleUrl: './tournament-admin-container.component.css'
 })
 export class TournamentAdminContainerComponent {
-  tournaments: TournamentDto[] = [];
+  tournaments: TournamentAdminDto[] = [];
 
   constructor(private tournamentService: TournamentsService, private adminService: AdminService){}
 
@@ -18,7 +18,7 @@ export class TournamentAdminContainerComponent {
   }
 
   fetchAllTournaments() {
-    this.tournamentService.getAllTournaments().subscribe({
+    this.adminService.getAllTournaments().subscribe({
         next: cs => {
             this.tournaments = cs;
             console.log(this.tournaments);

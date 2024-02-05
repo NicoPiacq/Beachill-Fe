@@ -27,6 +27,7 @@ import { AuthService } from '../services/auth.service';
         take(1),
         map(user => {
           const isAuth = !!user;
+          //chiamo il servizio e controllo il ruolo dell' utente dal backend
           if (isAuth && (user.user.role == "ADMIN" || user.user.role == "SUPERADMIN")) {
             return true;
           }
