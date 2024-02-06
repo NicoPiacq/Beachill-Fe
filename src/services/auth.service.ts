@@ -51,7 +51,7 @@ export class AuthService {
         if(user.token) {
             this.authenticatedUser.next(user);
             const expirationDate = new Date(user.expirationDate).getTime() - new Date().getTime();
-            this.autoLogout(expirationDate);
+            //this.autoLogout(expirationDate);
         }
     }
 
@@ -59,7 +59,7 @@ export class AuthService {
         userData.expirationDate = userData.expirationDate + new Date().getTime();
         this.authenticatedUser.next(userData);
         localStorage.setItem('userData', JSON.stringify(userData));
-        this.autoLogout(userData.expirationDate);
+        //this.autoLogout(userData.expirationDate);
     }
 
     logout() {
@@ -69,10 +69,10 @@ export class AuthService {
     }
 
     // TECNICAMENTE VA RISCRITTO PER ESSERE IGNORATO DA ANGULAR, PERCHE' ALTRIMENTI DICE CHE IL SITO NON E' STABILE...
-    autoLogout(expirationDuration: number) {
-        this.tokenExpirationTimer = setTimeout(() =>
-            this.logout(), expirationDuration);
-    }
+    // autoLogout(expirationDuration: number) {
+    //     this.tokenExpirationTimer = setTimeout(() =>
+    //         this.logout(), expirationDuration);
+    // }
     ////////////////////////////////////////////////////////
 
     private handleError(errorRes: HttpErrorResponse) {
