@@ -8,7 +8,7 @@ import { Observable } from "rxjs";
   })
 
   export class PlacesService {
-    private URL = 'http://localhost:8080/api/place';
+    private URL = 'http://localhost:8080/api/tournament-place';
     constructor(private http: HttpClient) { }
 
     getAllPlaces(): Observable<PlaceDto[]> {
