@@ -4,6 +4,8 @@ import { LoginDto } from '../../../model/dtos/login';
 import { AuthService } from '../../../services/auth.service';
 import { map, take } from 'rxjs';
 import { bootstrapApplication } from '@angular/platform-browser';
+import { RegistrationDto } from '../../../model/dtos/registration';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-menu',
@@ -19,15 +21,31 @@ export class MenuComponent implements OnInit {
   }
   hasLoggedIn: boolean = false;
   isAdmin: boolean = false;
-  loginModal: any;
 
-  constructor(private formBuilder: FormBuilder, private authService: AuthService) {}
+  registrationForm!: FormGroup;
+  registrationData: RegistrationDto = {
+    name: '',
+    surname: '',
+    email: '',
+    password: '',
+    role: 'USER'
+  }
+
+  constructor(private formBuilder: FormBuilder, private authService: AuthService, private router: Router) {}
 
   ngOnInit(): void {
       this.loginForm = this.formBuilder.group({
         email: ['', Validators.required],
         password: ['', Validators.required]
       });
+      this.registrationForm = this.formBuilder.group({
+        name: ['', Validators.required],
+        surname: ['', Validators.required],
+        email: ['', Validators.required],
+        password: ['', Validators.required],
+        repeatPassword: ['', Validators.required]
+      }
+    );
       this.checkUser();
   }
 
@@ -41,8 +59,8 @@ export class MenuComponent implements OnInit {
   }
 
   logout() {
-    this.authService.logout();
     this.checkUser();
+    this.router.navigate(['/']);
   }
 
   checkUser() {
@@ -63,5 +81,13 @@ export class MenuComponent implements OnInit {
 
   getUserData() {
     return this.authService.authenticatedUser.value;
+  }
+
+  register() {
+    if(this.registrationForm.valid) {
+      this.registrationData = {...this.registrationForm.value};
+      this.registrationData.role = 'USER';
+      this.authService.register(this.registrationData).subscribe();
+    }
   }
 }

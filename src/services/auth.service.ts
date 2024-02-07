@@ -28,12 +28,10 @@ export class AuthService {
     }
 
     login(userData: LoginDto) {
-        console.log(userData);
         return this.http.post<UserAuthenticatedDto>(`${this.URL}/login`, userData).pipe(
             catchError(this.handleError),
             tap(resData => {
                 this.handleAuthentication(resData);
-                //alert("HO FATTO L'ACCESSO CORRETTAMENTE!");
             })
         );
     }

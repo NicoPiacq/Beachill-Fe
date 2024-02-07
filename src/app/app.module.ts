@@ -26,13 +26,13 @@ import { TournamentAdminContainerComponent } from './components/admin-container/
 import { AddTournamentFormComponent } from './components/add-tournament-form/add-tournament-form.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { SuccessAddTournamentFormComponent } from './components/success-add-tournament-form/success-add-tournament-form.component';
-import { RegisterUserFormComponent } from './components/register-user-form/register-user-form.component';
 import { AuthInterceptorService } from '../services/interceptor.service';
 import { TeamsListComponent } from './components/teams-list/teams-list.component';
 import { TeamDetailsContainerComponent } from './components/team-details-container/team-details-container.component';
 import { TeamDetailsComponent } from './components/team-details-container/team-details/team-details.component';
 import { EnrolledPlayersListComponent } from './components/team-details-container/enrolled-players-list/enrolled-players-list.component';
 import { MatchesListComponent } from './components/team-details-container/matches-list/matches-list.component';
+import { ProfilePageComponent } from './components/profile-page/profile-page.component';
 
 @NgModule({
   declarations: [
@@ -56,12 +56,12 @@ import { MatchesListComponent } from './components/team-details-container/matche
     TournamentDetailsAdminComponent,
     AddTournamentFormComponent,
     SuccessAddTournamentFormComponent,
-    RegisterUserFormComponent,
     TeamsListComponent,
     TeamDetailsContainerComponent,
     TeamDetailsComponent,
     EnrolledPlayersListComponent,
-    MatchesListComponent
+    MatchesListComponent,
+    ProfilePageComponent
   ],
   imports: [
     BrowserModule,

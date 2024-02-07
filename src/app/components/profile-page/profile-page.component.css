@@ -1,0 +1,16 @@
+.paperino {
+    max-width: 200px;
+}
+
+.topolino {
+    margin-top: 25px;
+}
+
+h2 {
+    max-width: 200px;
+    margin-left: 20px;
+}
+
+.nav-link active {
+    font-weight: 800;
+}
