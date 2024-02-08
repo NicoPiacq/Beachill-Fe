@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
+import { ReservationPlaceDto } from '../../../../model/dtos/reservations-place';
 
 @Component({
   selector: 'app-reservation-places-list',
@@ -6,5 +7,5 @@ import { Component } from '@angular/core';
   styleUrl: './reservation-places-list.component.css'
 })
 export class ReservationPlacesListComponent {
-
+	@Input('reservationPlacesProp') reservationPlaces!:ReservationPlaceDto[];
 }

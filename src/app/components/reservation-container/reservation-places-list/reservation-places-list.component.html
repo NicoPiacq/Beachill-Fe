@@ -1,1 +1,25 @@
 <p>reservation-places-list works!</p>
+<div class="container-fluid ">
+    <h1 class="hover-effect">Tutte le strutture:</h1>
+    </div>
+    <div class="container-fluid px">     
+        <table class="table table-dark table-striped table-hover">
+          <thead>
+            <tr>
+              <th>Nome della struttura</th>
+              <th>Sport</th>
+			  <th>Numero del campo</th>
+            
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let reservationPlace of reservationPlaces">
+                <td>{{reservationPlace.name}}</td>
+                <td>{{reservationPlace.sportName}}</td>
+				<td>{{reservationPlace.fieldNumber}}</td>
+                
+
+            </tr>
+          </tbody>
+        </table>
+    </div>
