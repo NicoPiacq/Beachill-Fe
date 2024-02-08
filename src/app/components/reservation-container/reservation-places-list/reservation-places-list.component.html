@@ -6,19 +6,16 @@
         <table class="table table-dark table-striped table-hover">
           <thead>
             <tr>
-              <th>Nome della struttura</th>
-              <th>Sport</th>
-			  <th>Numero del campo</th>
-            
+              <th>Nome</th>
+              <th>Città</th>
+              <th></th>
             </tr>
           </thead>
           <tbody>
             <tr *ngFor="let reservationPlace of reservationPlaces">
-                <td>{{reservationPlace.name}}</td>
-                <td>{{reservationPlace.sportName}}</td>
-				<td>{{reservationPlace.fieldNumber}}</td>
-                
-
+                <td>{{ reservationPlace.name }}</td>
+                <td>{{ reservationPlace.city }} ({{ reservationPlace.province }})</td>
+                <td><button class="btn btn-primary" [routerLink]="['/reservation-places', reservationPlace.id]">Visualizza</button></td>
             </tr>
           </tbody>
         </table>

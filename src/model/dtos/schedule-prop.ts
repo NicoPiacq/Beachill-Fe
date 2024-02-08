@@ -1,6 +1,6 @@
 export interface SchedulePropDto {
 	id: number;
-	placeId: number
+	fieldId: number
 	starTime: Date;
 	endTime: Date;
 	duration: number;

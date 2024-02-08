@@ -1,1 +1,48 @@
-<p>reservation-place-details works!</p>
+<div class="container-fluid ">
+  <h1 class="hover-effect">Dettaglio struttura</h1>
+</div>
+<div class="container-fluid px">     
+  <table class="table table-dark table-striped table-hover">
+    <thead>
+      <tr>
+        <th>Nome</th>
+        <th>Città</th>
+        <th>Indirizzo</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngIf="reservationDetails">
+        <td>{{ reservationDetails.name }}</td>
+        <td>{{ reservationDetails.city }} ({{ reservationDetails.province }})</td>
+        <td>{{ reservationDetails.address }}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<div class="col-md-3">
+  <label for="reservationDate" class="form-label">Data di prenotazione:</label>
+  <input [(ngModel)]="date" type="date" id="reservationDate" class="form-control">
+</div>
+
+<div class="container-fluid ">
+  <h1 class="hover-effect">Campi disponibili</h1>
+</div>
+<div class="container-fluid px">     
+  <table class="table table-dark table-striped table-hover">
+    <thead>
+      <tr>
+        <th>Campo</th>
+        <th>Sport</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody *ngIf="fieldList">
+      <tr *ngFor="let field of fieldList; let i = index">
+        <td>Campo {{ i+1 }}</td>
+        <td>{{ field.sportName }}</td>
+        <td><button type="submit" class="btn btn-primary" (click)="getReservationDetails(field.id)">Visualizza slot</button></td>
+      </tr>
+    </tbody>
+  </table>
+</div>

@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { ReservationPlaceDto } from '../../../model/dtos/reservations-place';
-import { reservationPlacesService } from '../../../services/reservation-places.service';
+import { ReservationPlacesService } from '../../../services/reservation-places.service';
 
 @Component({
   selector: 'app-reservation-container',
@@ -10,7 +10,7 @@ import { reservationPlacesService } from '../../../services/reservation-places.s
 export class ReservationContainerComponent {
 	reservationPlaces!: ReservationPlaceDto[];
 
-	constructor(private reservationPlacesService: reservationPlacesService){}
+	constructor(private reservationPlacesService: ReservationPlacesService){}
 	ngOnInit(){
 		this.fetchAllReservationPlaces();
 	}
