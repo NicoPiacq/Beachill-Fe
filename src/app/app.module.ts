@@ -33,6 +33,11 @@ import { TeamDetailsComponent } from './components/team-details-container/team-d
 import { EnrolledPlayersListComponent } from './components/team-details-container/enrolled-players-list/enrolled-players-list.component';
 import { MatchesListComponent } from './components/team-details-container/matches-list/matches-list.component';
 import { ProfilePageComponent } from './components/profile-page/profile-page.component';
+import { ReservationContainerComponent } from './components/reservation-container/reservation-container.component';
+import { ReservationPlacesListComponent } from './components/reservation-container/reservation-places-list/reservation-places-list.component';
+import { ReservationPlaceDetailsContainerComponent } from './components/reservation-container/reservation-place-details-container/reservation-place-details-container.component';
+import { ReservationPlaceDetailsComponent } from './components/reservation-container/reservation-place-details-container/reservation-place-details/reservation-place-details.component';
+import { ReservationsDetailsContainerComponent } from './components/reservation-container/reservation-place-details-container/reservations-details-container/reservations-details-container.component';
 
 @NgModule({
   declarations: [
@@ -61,7 +66,12 @@ import { ProfilePageComponent } from './components/profile-page/profile-page.com
     TeamDetailsComponent,
     EnrolledPlayersListComponent,
     MatchesListComponent,
-    ProfilePageComponent
+    ProfilePageComponent,
+    ReservationContainerComponent,
+    ReservationPlacesListComponent,
+    ReservationPlaceDetailsContainerComponent,
+    ReservationPlaceDetailsComponent,
+    ReservationsDetailsContainerComponent
   ],
   imports: [
     BrowserModule,
