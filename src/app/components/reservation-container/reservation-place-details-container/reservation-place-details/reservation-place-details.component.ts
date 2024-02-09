@@ -3,6 +3,8 @@ import { ReservationPlaceDto } from '../../../../../model/dtos/reservations-plac
 import { FieldDto } from '../../../../../model/dtos/field';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ReservationService } from '../../../../../services/reservation.service';
+import { SchedulePropDto } from '../../../../../model/dtos/schedule-prop';
+import { ReservationSlotDto } from '../../../../../model/dtos/reservation-slot';
 
 @Component({
   selector: 'app-reservation-place-details',
@@ -17,6 +19,8 @@ export class ReservationPlaceDetailsComponent implements OnInit {
   constructor(private formBuilder: FormBuilder, private reservationService: ReservationService) {}
 
   date!: any;
+  slots!: ReservationSlotDto[];
+  showAvailableSlots: boolean = false;
 
   ngOnInit(): void {
     
@@ -46,7 +50,9 @@ export class ReservationPlaceDetailsComponent implements OnInit {
     console.log(this.date);
     this.reservationService.getReservationDetails(fieldId, this.date).subscribe({
       next: details => {
-        console.log(details)
+        console.log(details);
+        this.slots = details;
+        this.showAvailableSlots = true;
       },
       error: error => console.error(error)
     });

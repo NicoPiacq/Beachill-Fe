@@ -46,3 +46,33 @@
     </tbody>
   </table>
 </div>
+
+<div *ngIf="showAvailableSlots">
+  <div class="container-fluid">
+    <h1 class="hover-effect">Slot disponibili</h1>
+  </div>
+  <div class="container-fluid px">     
+    <table class="table table-dark table-striped table-hover">
+      <thead>
+        <tr>
+          <th>Data</th>
+          <th>Orario inizio</th>
+          <th>Orario fine</th>
+          <th>Status</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let slot of slots">
+          <td>{{ slot.reservationDate }}</td>
+          <td>{{ slot.startTime }}</td>
+          <td>{{ slot.endTime }}</td>
+          <td *ngIf="slot.reserved">Prenotato</td>
+          <td *ngIf="!slot.reserved">Libero</td>
+          <td><button type="submit" class="btn btn-primary" *ngIf="!slot.reserved">Prenota</button></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
