@@ -1,0 +1,48 @@
+<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" />
+
+<div class="container">
+    <div class="row">
+        <div class="col-12 mb-3 mb-lg-5">
+            <div class="overflow-hidden card table-nowrap table-card">
+                <div class="card-header d-flex justify-content-between align-items-center">
+                    <h5 class="mb-0">I tuoi inviti</h5>
+                </div>
+                <div class="table-responsive">
+                    <table class="table mb-0" *ngIf="invitesList.length > 0">
+                        <thead class="small text-uppercase bg-body text-muted">
+                            <tr>
+                                <th>Nome team</th>
+                                <th>Capitano</th>
+                                <th>Punteggio</th>
+                                <th class="text-end"></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr class="align-middle" *ngFor="let invite of invitesList">
+                                <td>
+                                    <div class="d-flex align-items-center">
+                                        <img src="https://bootdey.com/img/Content/avatar/avatar1.png" class="avatar sm rounded-pill me-3 flex-shrink-0" alt="Customer">
+                                        <div>
+                                            <a [routerLink]="['/team', invite.teamDto.id]"><div class="h6 mb-0 lh-1">{{ invite.teamDto.teamName }}</div></a>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td>{{ invite.teamDto.teamLeaderName }} {{ invite.teamDto.teamLeaderSurname }}</td>
+                                <td> <span class="d-inline-block align-middle">{{ invite.teamDto.score }}</span></td>
+                                <td class="text-end">
+                                    <button type="button" class="btn btn-success" (click)="setInvitationResponse(invite.teamDto.id, invite.id, 1)">Accetta</button>
+                                    <button type="button" class="btn btn-danger" (click)="setInvitationResponse(invite.teamDto.id, invite.id, 0)">Rifiuta</button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <div class="card" *ngIf="invitesList.length === 0">
+                        <div class="card-body">
+                            <span>Non hai nessun invito</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

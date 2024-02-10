@@ -38,6 +38,8 @@ import { ReservationPlacesListComponent } from './components/reservation-contain
 import { ReservationPlaceDetailsContainerComponent } from './components/reservation-container/reservation-place-details-container/reservation-place-details-container.component';
 import { ReservationPlaceDetailsComponent } from './components/reservation-container/reservation-place-details-container/reservation-place-details/reservation-place-details.component';
 import { ReservationsDetailsContainerComponent } from './components/reservation-container/reservation-place-details-container/reservations-details-container/reservations-details-container.component';
+import { ProfilePageTablepaneComponent } from './components/profile-page/profile-page-tablepane/profile-page-tablepane.component';
+import { InvitesListComponent } from './components/invites-list/invites-list.component';
 
 @NgModule({
   declarations: [
@@ -71,7 +73,9 @@ import { ReservationsDetailsContainerComponent } from './components/reservation-
     ReservationPlacesListComponent,
     ReservationPlaceDetailsContainerComponent,
     ReservationPlaceDetailsComponent,
-    ReservationsDetailsContainerComponent
+    ReservationsDetailsContainerComponent,
+    ProfilePageTablepaneComponent,
+    InvitesListComponent
   ],
   imports: [
     BrowserModule,

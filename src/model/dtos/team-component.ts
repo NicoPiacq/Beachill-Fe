@@ -1,6 +1,8 @@
+import { TeamDto } from "./team";
+
 export interface TeamComponentDto {
     id: number;
-    teamId: number;
+    teamDto: TeamDto;
     playerId: number;
     playerName: string;
     playerSurname: string;

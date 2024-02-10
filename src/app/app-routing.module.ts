@@ -14,6 +14,7 @@ import { ProfilePageComponent } from './components/profile-page/profile-page.com
 import { AuthGuard } from '../guards/auth.guard';
 import { ReservationContainerComponent } from './components/reservation-container/reservation-container.component';
 import { ReservationPlaceDetailsContainerComponent } from './components/reservation-container/reservation-place-details-container/reservation-place-details-container.component';
+import { InvitesListComponent } from './components/invites-list/invites-list.component';
 
 // IL ROUTING VA RISCRITTO CON LE CHILDREN, ALTRIMENTI VA RIEMPITO DI CANACTIVATE!
 const routes: Routes = [
@@ -25,10 +26,11 @@ const routes: Routes = [
   {path: 'add-tournament-form', component: AddTournamentFormComponent},
   {path: 'success-add-tournament-form', component: SuccessAddTournamentFormComponent},
   {path: 'teams', component: TeamsListComponent},
-  {path: 'profile/:id', component: ProfilePageComponent, canActivate: [AuthGuard]},
+  {path: 'profile', component: ProfilePageComponent, canActivate: [AuthGuard]},
   {path: 'team/:id', component: TeamDetailsContainerComponent},
   {path: 'reservation-places', component: ReservationContainerComponent},
   {path: 'reservation-places/:id', component: ReservationPlaceDetailsContainerComponent},
+  {path: 'invites', component: InvitesListComponent, canActivate: [AuthGuard]},
   
   //non mettere roba dopo gli asterischi pd
   {path: '**', component: HomeComponent}

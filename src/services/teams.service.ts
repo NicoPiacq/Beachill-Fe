@@ -2,6 +2,9 @@ import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { Observable } from "rxjs";
 import { TeamDto } from "../model/dtos/team";
+import { ObjectEncodingOptions } from "fs";
+import { TeamComponentDto } from "../model/dtos/team-component";
+import { InvitationResponseDto } from "../model/dtos/invitation-response";
 
   @Injectable({
     providedIn: 'root'
@@ -20,4 +23,17 @@ import { TeamDto } from "../model/dtos/team";
     getTeam(id: number): Observable<TeamDto> {
       return this.http.get<TeamDto>(`${this.URL}/${id}`);
     }
+
+    getTeamsByPlayer(id: number | undefined): Observable<TeamDto[]> {
+      return this.http.get<TeamDto[]>(`${this.URL}/my-enrolled/${id}`);
+    }
+
+    getInvitationsByPlayer(): Observable<TeamComponentDto[]> {
+      return this.http.get<TeamComponentDto[]>(`${this.URL}/invite`);
+    }
+
+    setInvitationStatus(response: InvitationResponseDto): Observable<any> {
+      return this.http.patch<any>(`${this.URL}/invite`, response);
+    }
+
   }
