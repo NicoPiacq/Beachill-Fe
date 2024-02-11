@@ -3,7 +3,7 @@
         <div class="tab-content p-4">
             <div class="tab-pane active show" id="team-tab" role="tabpanel">
                 <h4 class="card-title mb-4">I tuoi team <button class="createTeam btn btn-primary">Crea un team</button></h4>
-                <div class="row">
+                <div class="row" *ngIf="joinedTeams.length > 0">
                     <div class="col-xl-4 col-md-6" *ngFor="let team of joinedTeams">
                         <a [routerLink]="['/team', team.id]">
                             <div class="card">
@@ -16,6 +16,13 @@
                                 </div><!-- end card-body -->
                             </div><!-- end card -->
                         </a>
+                    </div><!-- end col -->
+                </div><!-- end row -->
+                <div class="row" *ngIf="joinedTeams.length < 1">
+                    <div class="col-xl-4 col-md-6">
+                        <div>
+                            <span>Non sei unito a nessun team</span>
+                        </div>
                     </div><!-- end col -->
                 </div><!-- end row -->
             </div><!-- end team pane -->

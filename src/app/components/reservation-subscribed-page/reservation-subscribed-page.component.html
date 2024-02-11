@@ -1,0 +1,46 @@
+<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" />
+
+<div class="container">
+    <div class="row">
+        <div class="col-12 mt-3 mb-3 mb-lg-5">
+            <div class="overflow-hidden card table-nowrap table-card">
+                <div class="card-header d-flex justify-content-between align-items-center">
+                    <h5 class="mb-0">Le tue prenotazioni</h5>
+                </div>
+                <div class="table-responsive">
+                    <table class="table mb-0" *ngIf="reservationList.length > 0">
+                        <thead class="small text-uppercase bg-body text-muted">
+                            <tr>
+                                <th>Luogo</th>
+                                <th>Sport</th>
+                                <th>Data</th>
+                                <th>Orario inizio</th>
+                                <th>Orario fine</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr class="align-middle" *ngFor="let reservation of reservationList">
+                                <td>
+                                    <div class="d-flex align-items-center">
+                                        <div>
+                                            <a><div class="h6 mb-0 lh-1">{{ reservation.fieldDto.reservationPlace.name }} <i>({{ reservation.fieldDto.reservationPlace.city }})</i></div></a>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td>{{ reservation.fieldDto.sportName }}</td>
+                                <td>{{ reservation.date }}</td>
+                                <td>{{ reservation.start }}</td>
+                                <td>{{ reservation.end }}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <div class="card" *ngIf="reservationList.length < 1">
+                        <div class="card-body">
+                            <span><i class="mdi mdi-close"></i>Non hai effettuato prenotazioni</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

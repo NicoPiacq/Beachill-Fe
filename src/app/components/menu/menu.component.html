@@ -30,7 +30,7 @@
               <li><hr class="dropdown-divider"></li>
               <li><a class="dropdown-item" [routerLink]="['/profile']">Il tuo profilo</a></li>
               <li><a class="dropdown-item" [routerLink]="['/invites']">Visualizza inviti</a></li>
-              <li><a class="dropdown-item" href="#">Prenotazioni effettuate</a></li>
+              <li><a class="dropdown-item" [routerLink]="['/reservations']">Prenotazioni effettuate</a></li>
             </ul>
           </li>
           <li class="nav-item" *ngIf="hasLoggedIn && checkRoleAdmin()">

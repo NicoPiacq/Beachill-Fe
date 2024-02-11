@@ -69,7 +69,7 @@
           <td>{{ slot.endTime }}</td>
           <td *ngIf="slot.reserved">Prenotato</td>
           <td *ngIf="!slot.reserved">Libero</td>
-          <td><button type="submit" class="btn btn-primary" *ngIf="!slot.reserved">Prenota</button></td>
+          <td><button type="submit" class="btn btn-primary" *ngIf="!slot.reserved" (click)="createNewReservation(slot.fieldId, slot.reservationDate, slot.startTime, slot.endTime)">Prenota</button></td>
         </tr>
       </tbody>
     </table>
