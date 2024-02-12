@@ -1,9 +1,10 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit, TemplateRef } from '@angular/core';
 import { TeamDto } from '../../../../model/dtos/team';
 import { AuthService } from '../../../../services/auth.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { TeamsService } from '../../../../services/teams.service';
 import { Router } from '@angular/router';
+import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
 
 @Component({
   selector: 'app-profile-page-tablepane',
@@ -15,6 +16,7 @@ export class ProfilePageTablepaneComponent implements OnInit {
   @Input("joinedTeamsProp") joinedTeams!: TeamDto[];
 
   createTeamForm!: FormGroup;
+  modalRef!: BsModalRef;
   teamData: TeamDto = {
     teamName: '',
     teamLeaderName: '',
@@ -24,7 +26,8 @@ export class ProfilePageTablepaneComponent implements OnInit {
   };
 
   constructor(private authService: AuthService, private teamsService: TeamsService, 
-              private formBuilder: FormBuilder, private router: Router) {}
+              private formBuilder: FormBuilder, private router: Router,
+              private modalService: BsModalService) {}
 
   ngOnInit(): void {
       this.createTeamForm = this.formBuilder.group({
@@ -57,6 +60,14 @@ export class ProfilePageTablepaneComponent implements OnInit {
 
   getUserData() {
     return this.authService.authenticatedUser.value;
+  }
+
+  openModal(template: TemplateRef<any>) {
+    this.modalRef = this.modalService.show(template);
+  }
+
+  closeModal() {
+    this.modalRef.hide();
   }
 
 }

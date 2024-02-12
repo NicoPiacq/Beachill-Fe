@@ -1,3 +1,4 @@
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/MaterialDesign-Webfont/7.2.96/css/materialdesignicons.min.css" integrity="sha512-LX0YV/MWBEn2dwXCYgQHrpa9HJkwB+S+bnBpifSOTO1No27TqNMKYoAn6ff2FBh03THAzAiiCwQ+aPX+/Qt/Ow==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 <nav class="navbar navbar-expand-xl bg-body-tertiary">
     <div class="container-fluid">
         
@@ -25,7 +26,7 @@
             <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
               Menù account
             </a>
-            <ul class="dropdown-menu">
+            <ul class="dropdown-menu fade">
               <li class="dropdown-item-text" disabled><b>Ciao, {{ getUserData()?.user?.name }}</b></li>
               <li><hr class="dropdown-divider"></li>
               <li><a class="dropdown-item" [routerLink]="['/profile']">Il tuo profilo</a></li>
@@ -41,24 +42,17 @@
           <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
           <button class="btn btn-outline-success" type="submit">Search</button>
         </form> -->
-         <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#loginModal" *ngIf="!hasLoggedIn">
-          Accedi
-        </button>
-        <button type="button" class="btn btn-secondary" (click)="logout()" *ngIf="hasLoggedIn">
-          Logout
-        </button>
+         <button type="button" class="btn btn-primary" (click)="openModal(loginModal)" *ngIf="!hasLoggedIn"><i class="mdi mdi mdi-login-variant me-1"></i><b>Accedi</b></button>
+          <button type="button" class="btn btn-secondary" (click)="logout()" *ngIf="hasLoggedIn"><i class="mdi mdi-exit-to-app me-1"></i><b>Esci</b></button>
       </div>
     </div>
   </nav>
 
-
-
-  <div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="loginModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-dialog-centered" role="document">
+<ng-template #loginModal>
       <div class="modal-content">
         <div class="modal-header">
           <h5 class="modal-title" id="loginModalLabel">Accedi o Registrati</h5>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Chiudi"></button>
+          <button type="button" class="btn-close" (click)="closeModal()" aria-label="Chiudi"></button>
         </div>
         <div class="modal-body">
           <ul class="nav nav-tabs" role="tablist">
@@ -83,7 +77,7 @@
                       <input type="password" id="password" name="password" class="form-control" formControlName="password">
                     </div>
                     <div class="col-12">
-                      <button type="submit" class="btn btn-primary" data-bs-dismiss="modal">Accedi</button>
+                      <button type="submit" class="btn btn-primary">Accedi</button>
                     </div>
                   </form>
                 </div>
@@ -126,5 +120,4 @@
           </div>
         </div>
       </div>
-    </div>
-  </div>
+</ng-template>

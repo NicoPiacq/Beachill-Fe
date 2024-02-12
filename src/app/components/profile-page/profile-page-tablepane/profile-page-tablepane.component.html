@@ -1,8 +1,7 @@
-
     <div class="card">
         <div class="tab-content p-4">
             <div class="tab-pane active show" id="team-tab" role="tabpanel">
-                <h4 class="card-title mb-4">I tuoi team <button class="createTeam btn btn-primary" data-bs-toggle="modal" data-bs-target="#createTeamModal">Crea un team</button></h4>
+                <h4 class="card-title mb-4">I tuoi team <button class="createTeam btn btn-primary" (click)="openModal(addMemberModal)"><i class="mdi mdi-account-multiple-plus"></i>Crea un team</button></h4>
                 <div class="row" *ngIf="joinedTeams.length > 0">
                     <div class="col-xl-4 col-md-6" *ngFor="let team of joinedTeams">
                         <a [routerLink]="['/team', team.id]">
@@ -45,12 +44,11 @@
         </div>
     </div><!-- end card -->
 
-    <div class="modal fade" id="createTeamModal" tabindex="-1" aria-labelledby="createTeamModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered" role="document">
+    <ng-template #addMemberModal>
           <div class="modal-content">
             <div class="modal-header">
               <h5 class="modal-title" id="createTeamModalLabel">Crea un team</h5>
-              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Chiudi"></button>
+              <button type="button" class="btn-close" (click)="closeModal()" aria-label="Chiudi"></button>
             </div>
             <div class="modal-body">
               <div class="tab-content">
@@ -71,5 +69,4 @@
               </div>
             </div>
           </div>
-        </div>
-      </div>
+      </ng-template>

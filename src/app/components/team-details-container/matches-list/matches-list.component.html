@@ -1,7 +1,7 @@
 <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" />
 <div class="container">
     <div class="row">
-        <div class="card mb-3"> <!-- CUFFIE MORTE :) -->
+        <div class="card">
             <div class="card-body mb-3 pb-0">
                 <div class="col-13 mt-1">
                     <div class="overflow-hidden card table-nowrap table-card">
@@ -21,7 +21,7 @@
                                 </thead>
                                 <tbody>
                                     <tr class="align-middle" *ngFor="let match of matchesList!">
-                                        <td>{{ match.startDate! }}</td>
+                                        <td>{{ match.startDate! | date: 'dd/MM/yyyy'  }}</td>
                                         <td>{{ getMatchType(match.matchType) }}</td>
                                         <td>{{ match.tournamentName! }}</td>
                                         <td><b>{{ match.homeTeamName! }}</b> vs {{ match.awayTeamName! }}</td>

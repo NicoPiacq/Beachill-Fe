@@ -20,8 +20,8 @@
                             <div class="row my-4">
                                 <div class="col-md-12">
                                     <div>
-                                        <p class="text-muted mb-2 fw-medium"><i class="mdi mdi-email-outline me-2"></i>{{ getUserData()?.user?.email }}</p>
-                                        <p class="text-muted fw-medium mb-0"><i class="mdi mdi-timer"></i>  {{ getUserData()?.user?.lastLogin }}</p>
+                                        <p class="text-muted mb-2 fw-medium"><i class="mdi mdi-email-outline me-2"></i>Email: {{ getUserData()?.user?.email }}</p>
+                                        <p class="text-muted fw-medium mb-0"><i class="mdi mdi-alarm me-1"></i> Ultimo accesso: {{ getUserData()?.user?.lastLogin | date: 'dd/MM/yyyy' }}</p>
                                     </div>
                                 </div><!-- end col -->
                             </div><!-- end row -->

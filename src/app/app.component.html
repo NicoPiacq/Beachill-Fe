@@ -1,4 +1,14 @@
-<app-menu></app-menu>
-<router-outlet>  
-</router-outlet>
-<app-footer></app-footer>
+<div class="page-wrapper">
+    <div class="sticky-header">
+        <app-menu></app-menu>
+    </div>
+    <div class="content-wrapper">
+        <div class="content">
+            <router-outlet>  
+            </router-outlet>
+        </div>
+        <div class="footer">
+            <app-footer></app-footer>
+        </div>
+    </div>
+</div>

@@ -1,11 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, TemplateRef } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { LoginDto } from '../../../model/dtos/login';
 import { AuthService } from '../../../services/auth.service';
-import { map, take } from 'rxjs';
-import { bootstrapApplication } from '@angular/platform-browser';
 import { RegistrationDto } from '../../../model/dtos/registration';
 import { Router } from '@angular/router';
+import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
+
 
 @Component({
   selector: 'app-menu',
@@ -13,14 +13,14 @@ import { Router } from '@angular/router';
   styleUrl: './menu.component.css'
 })
 export class MenuComponent implements OnInit {
-  
+
   loginForm!: FormGroup;
   loginData: LoginDto = {
     email: '',
     password: ''
   }
   hasLoggedIn: boolean = false;
-  isAdmin: boolean = false;
+  modalRef!: BsModalRef;
 
   registrationForm!: FormGroup;
   registrationData: RegistrationDto = {
@@ -31,7 +31,7 @@ export class MenuComponent implements OnInit {
     role: 'USER'
   }
 
-  constructor(private formBuilder: FormBuilder, private authService: AuthService, private router: Router) {}
+  constructor(private formBuilder: FormBuilder, private authService: AuthService, private router: Router, private modalService: BsModalService) {}
 
   ngOnInit(): void {
       this.loginForm = this.formBuilder.group({
@@ -49,11 +49,22 @@ export class MenuComponent implements OnInit {
       this.checkUser();
   }
 
+  openModal(template: TemplateRef<any>) {
+    this.modalRef = this.modalService.show(template);
+  }
+
+  closeModal() {
+    this.modalRef.hide();
+  }
+
   login() {
     if(this.loginForm.valid) {
       this.loginData = {...this.loginForm.value};
       this.authService.login(this.loginData).subscribe({
-        next: _ => this.checkUser()
+        next: () => {
+          this.checkUser();
+          this.modalRef.hide();
+        }
       });
     }
   }

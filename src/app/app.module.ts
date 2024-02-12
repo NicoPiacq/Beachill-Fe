@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { NgModule, RendererFactory2 } from '@angular/core';
 import { BrowserModule, provideClientHydration } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -46,6 +46,7 @@ import { MatchDetailsComponent } from './components/match-container/match-detail
 import { MatchSetListComponent } from './components/match-container/match-set-list/match-set-list.component';
 import { MatchesCreatedListComponent } from './components/profile-page/matches-created-list/matches-created-list.component';
 import { TeamStatsComponent } from './components/team-details-container/team-stats/team-stats.component';
+import { BsModalService, ModalModule } from 'ngx-bootstrap/modal';
 
 @NgModule({
   declarations: [
@@ -94,10 +95,12 @@ import { TeamStatsComponent } from './components/team-details-container/team-sta
     AppRoutingModule,
     HttpClientModule,
     ReactiveFormsModule,
-    FormsModule
+    FormsModule,
+    ModalModule
   ],
   providers: [
     provideClientHydration(),
+    BsModalService,
     {
       provide: HTTP_INTERCEPTORS,
       useClass: AuthInterceptorService,
