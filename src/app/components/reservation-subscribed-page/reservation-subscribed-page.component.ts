@@ -24,4 +24,7 @@ export class ReservationSubscribedPageComponent implements OnInit {
     });
   }
 
+  printSportName(sport: string) {
+    return sport[0].toUpperCase() + sport.substring(1).toLowerCase();
+  }
 }

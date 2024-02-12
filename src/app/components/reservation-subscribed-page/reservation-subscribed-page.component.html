@@ -26,7 +26,7 @@
                                         </div>
                                     </div>
                                 </td>
-                                <td>{{ reservation.fieldDto.sportName }}</td>
+                                <td>{{ printSportName(reservation.fieldDto.sportName) }}</td>
                                 <td>{{ reservation.date | date: 'dd/MM/yyyy' }}</td>
                                 <td>{{ reservation.start }}</td>
                                 <td>{{ reservation.end }}</td>
