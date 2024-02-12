@@ -23,6 +23,7 @@ export class ReservationPlaceDetailsComponent implements OnInit {
   date!: any;
   slots!: ReservationSlotDto[];
   showAvailableSlots: boolean = false;
+  today!: string;
 
   reservationRequest: ReservationRequestDto = {
     fieldId: -1,
@@ -38,7 +39,7 @@ export class ReservationPlaceDetailsComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    
+    this.today = new Date().toISOString().substring(0, 10);
   }
 
   getReservationDetails(fieldId: number) {
@@ -48,10 +49,10 @@ export class ReservationPlaceDetailsComponent implements OnInit {
       return;
     }
 
-    if(new Date(this.date).getTime() <= Date.now()) {
+    /*if(new Date(this.date).getTime() < todayDate.getTime) {
       alert("Inserisci una data valida");
       return;
-    }
+    }*/
     console.log(this.date);
     this.reservationService.getReservationDetails(fieldId, this.date).subscribe({
       next: details => {

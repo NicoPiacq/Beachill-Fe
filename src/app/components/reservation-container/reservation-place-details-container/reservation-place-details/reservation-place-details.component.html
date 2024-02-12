@@ -22,7 +22,7 @@
 
 <div class="col-md-3">
   <label for="reservationDate" class="form-label">Data di prenotazione:</label>
-  <input [(ngModel)]="date" type="date" id="reservationDate" class="form-control">
+  <input [(ngModel)]="date" type="date" id="reservationDate" class="form-control" min="{{ today }}">
 </div>
 
 <div class="container-fluid ">
