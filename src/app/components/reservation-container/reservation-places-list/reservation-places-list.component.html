@@ -1,22 +1,35 @@
-<p>reservation-places-list works!</p>
-<div class="container-fluid ">
-    <h1 class="hover-effect">Tutte le strutture:</h1>
+<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" />
+<div class="container">
+    <div class="row">
+        <div class="col-12 mt-3 mb-3 mb-lg-5">
+            <div class="overflow-hidden card table-nowrap table-card">
+                <div class="card-header d-flex justify-content-between align-items-center">
+                    <h5 class="mb-0">Strutture disponibili</h5>
+                </div>
+                <div class="table-responsive">
+                    <table class="table mb-0" *ngIf="reservationPlaces.length > 0">
+                        <thead class="small text-uppercase bg-body text-muted">
+                          <tr>
+                            <th>Nome</th>
+                            <th>Città</th>
+                            <th></th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr *ngFor="let reservationPlace of reservationPlaces">
+                            <td>{{ reservationPlace.name }}</td>
+                            <td>{{ reservationPlace.city }} ({{ reservationPlace.province }})</td>
+                            <td><button class="btn btn-primary" [routerLink]="['/reservation-places', reservationPlace.id]">Visualizza</button></td>
+                        </tr>
+                        </tbody>
+                    </table>
+                    <div class="card" *ngIf="reservationPlaces.length < 1">
+                        <div class="card-body">
+                            <span><i class="mdi mdi-close"></i>Nessuna struttura disponibile attualmente</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
-    <div class="container-fluid px">     
-        <table class="table table-dark table-striped table-hover">
-          <thead>
-            <tr>
-              <th>Nome</th>
-              <th>Città</th>
-              <th></th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr *ngFor="let reservationPlace of reservationPlaces">
-                <td>{{ reservationPlace.name }}</td>
-                <td>{{ reservationPlace.city }} ({{ reservationPlace.province }})</td>
-                <td><button class="btn btn-primary" [routerLink]="['/reservation-places', reservationPlace.id]">Visualizza</button></td>
-            </tr>
-          </tbody>
-        </table>
-    </div>
+</div>

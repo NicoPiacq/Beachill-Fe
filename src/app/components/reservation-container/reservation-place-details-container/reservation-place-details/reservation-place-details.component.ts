@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input, OnInit, TemplateRef } from '@angular/core';
 import { ReservationPlaceDto } from '../../../../../model/dtos/reservations-place';
 import { FieldDto } from '../../../../../model/dtos/field';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
@@ -7,6 +7,7 @@ import { ReservationSlotDto } from '../../../../../model/dtos/reservation-slot';
 import { Time } from '@angular/common';
 import { ReservationRequestDto } from '../../../../../model/dtos/reservation-request';
 import { Router } from '@angular/router';
+import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
 
 @Component({
   selector: 'app-reservation-place-details',
@@ -16,14 +17,16 @@ import { Router } from '@angular/router';
 export class ReservationPlaceDetailsComponent implements OnInit {
 
   @Input("reservationPlaceDetailsProp") reservationDetails!: ReservationPlaceDto;
-  @Input("fieldProp") fieldList!: FieldDto[];
+  @Input("fieldProp") fieldList: FieldDto[] = [];
 
-  constructor(private formBuilder: FormBuilder, private reservationService: ReservationService, private router: Router) {}
+  constructor(private formBuilder: FormBuilder, private reservationService: ReservationService, 
+              private router: Router, private modalService: BsModalService) {}
 
   date!: any;
-  slots!: ReservationSlotDto[];
-  showAvailableSlots: boolean = false;
+  fieldId!: number;
+  slots: ReservationSlotDto[] = [];
   today!: string;
+  modalRef!: BsModalRef;
 
   reservationRequest: ReservationRequestDto = {
     fieldId: -1,
@@ -42,35 +45,41 @@ export class ReservationPlaceDetailsComponent implements OnInit {
     this.today = new Date().toISOString().substring(0, 10);
   }
 
-  getReservationDetails(fieldId: number) {
+  getReservationDetails(template: TemplateRef<any>) { 
 
-    if(!this.date) {
-      alert("Inserisci una data");
+    if(!this.date || !this.fieldId) {
+      this.modalRef = this.modalService.show(template);
       return;
     }
 
-    /*if(new Date(this.date).getTime() < todayDate.getTime) {
-      alert("Inserisci una data valida");
-      return;
-    }*/
     console.log(this.date);
-    this.reservationService.getReservationDetails(fieldId, this.date).subscribe({
+    this.reservationService.getReservationDetails(this.fieldId, this.date).subscribe({
       next: details => {
         console.log(details);
         this.slots = details;
-        this.showAvailableSlots = true;
       },
       error: error => console.error(error)
     });
   }
 
-  createNewReservation(fieldId: number, date: Date, start: Time, end: Time) {
+  createNewReservation(fieldId: number, date: Date, start: Time, end: Time, template: TemplateRef<any>) {
     this.reservationRequest.fieldId = fieldId;
     this.reservationRequest.date = date;
     this.reservationRequest.start = start;
     this.reservationRequest.end = end;
 
-    this.reservationService.createNewReservation(this.reservationRequest).subscribe();
-    this.router.navigate(['/reservations']);
+    this.reservationService.createNewReservation(this.reservationRequest).subscribe({
+      next: () => {
+        this.modalRef = this.modalService.show(template, {
+          ignoreBackdropClick: true,
+          keyboard: false
+        });
+      },
+      error: error => console.error(error)
+    });
+    setTimeout(() => {
+      this.modalRef.hide();
+      this.router.navigate(['/reservations']);
+    }, 4000);
   }
 }

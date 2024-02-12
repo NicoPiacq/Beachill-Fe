@@ -7,5 +7,5 @@ import { ReservationPlaceDto } from '../../../../model/dtos/reservations-place';
   styleUrl: './reservation-places-list.component.css'
 })
 export class ReservationPlacesListComponent {
-	@Input('reservationPlacesProp') reservationPlaces!:ReservationPlaceDto[];
+	@Input('reservationPlacesProp') reservationPlaces: ReservationPlaceDto[] = [];
 }

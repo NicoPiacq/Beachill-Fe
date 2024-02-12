@@ -5,7 +5,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { MenuComponent } from './components/menu/menu.component';
 import { FooterComponent } from './components/footer/footer.component';
-import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClientModule, provideHttpClient } from '@angular/common/http';
 
 import { TournamentsListComponent } from './components/tournaments-list/tournaments-list.component';
 
@@ -37,7 +37,6 @@ import { ReservationContainerComponent } from './components/reservation-containe
 import { ReservationPlacesListComponent } from './components/reservation-container/reservation-places-list/reservation-places-list.component';
 import { ReservationPlaceDetailsContainerComponent } from './components/reservation-container/reservation-place-details-container/reservation-place-details-container.component';
 import { ReservationPlaceDetailsComponent } from './components/reservation-container/reservation-place-details-container/reservation-place-details/reservation-place-details.component';
-import { ReservationsDetailsContainerComponent } from './components/reservation-container/reservation-place-details-container/reservations-details-container/reservations-details-container.component';
 import { ProfilePageTablepaneComponent } from './components/profile-page/profile-page-tablepane/profile-page-tablepane.component';
 import { InvitesListComponent } from './components/invites-list/invites-list.component';
 import { ReservationSubscribedPageComponent } from './components/reservation-subscribed-page/reservation-subscribed-page.component';
@@ -80,7 +79,6 @@ import { BsModalService, ModalModule } from 'ngx-bootstrap/modal';
     ReservationPlacesListComponent,
     ReservationPlaceDetailsContainerComponent,
     ReservationPlaceDetailsComponent,
-    ReservationsDetailsContainerComponent,
     ProfilePageTablepaneComponent,
     InvitesListComponent,
     ReservationSubscribedPageComponent,
@@ -101,6 +99,7 @@ import { BsModalService, ModalModule } from 'ngx-bootstrap/modal';
   providers: [
     provideClientHydration(),
     BsModalService,
+    provideHttpClient(),
     {
       provide: HTTP_INTERCEPTORS,
       useClass: AuthInterceptorService,
