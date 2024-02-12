@@ -3,6 +3,7 @@ import { AuthService } from '../../../services/auth.service';
 import { TeamDto } from '../../../model/dtos/team';
 import { TeamsService } from '../../../services/teams.service';
 import { get } from 'http';
+import { MatchDto } from '../../../model/dtos/match';
 
 @Component({
   selector: 'app-profile-page',
@@ -11,7 +12,8 @@ import { get } from 'http';
 })
 export class ProfilePageComponent implements OnInit {
 
-  joinedTeams!: TeamDto[];
+  joinedTeams: TeamDto[] = [];
+  matchesList: MatchDto[] = [];
 
   constructor(private authService: AuthService, private teamsService: TeamsService) {}
 

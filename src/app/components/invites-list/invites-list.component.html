@@ -30,8 +30,8 @@
                                 <td>{{ invite.teamDto.teamLeaderName }} {{ invite.teamDto.teamLeaderSurname }}</td>
                                 <td> <span class="d-inline-block align-middle">{{ invite.teamDto.score }}</span></td>
                                 <td class="text-end">
-                                    <button type="button" class="btn btn-success" (click)="setInvitationResponse(invite.teamDto.id, invite.id, 1)">Accetta</button>
-                                    <button type="button" class="btn btn-danger" (click)="setInvitationResponse(invite.teamDto.id, invite.id, 0)">Rifiuta</button>
+                                    <button type="button" class="btn btn-success" (click)="setInvitationResponse(invite.teamDto.id!, invite.id, 1)">Accetta</button>
+                                    <button type="button" class="btn btn-danger" (click)="setInvitationResponse(invite.teamDto.id!, invite.id, 0)">Rifiuta</button>
                                 </td>
                             </tr>
                         </tbody>

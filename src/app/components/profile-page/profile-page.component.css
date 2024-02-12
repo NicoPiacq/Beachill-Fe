@@ -43,6 +43,11 @@ body{
     margin-left: 69%;
 }
 
+.createMatch {
+    display: inline;
+    margin-left: 67.9%;
+}
+
 .bg-soft-primary {
     background-color: rgba(3,142,220,.15)!important;
 }

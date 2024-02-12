@@ -62,7 +62,6 @@ export class AddTournamentFormComponent implements OnInit{
 
   createNewTournament(){
     if(this.tournamentForm.valid){
-      console.log("sono dentro createNewTournament");
       this.tournamentData = {...this.tournamentForm.value};
       this.adminService.createTournament(this.tournamentData).subscribe({
         next: ed => {

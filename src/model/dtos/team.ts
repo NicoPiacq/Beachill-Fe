@@ -1,5 +1,5 @@
 export interface TeamDto {
-    id: number;
+    id?: number;
     teamName: string;
     teamLeaderName: string;
     teamLeaderSurname: string;

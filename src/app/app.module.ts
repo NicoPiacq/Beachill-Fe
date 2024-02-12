@@ -41,6 +41,11 @@ import { ReservationsDetailsContainerComponent } from './components/reservation-
 import { ProfilePageTablepaneComponent } from './components/profile-page/profile-page-tablepane/profile-page-tablepane.component';
 import { InvitesListComponent } from './components/invites-list/invites-list.component';
 import { ReservationSubscribedPageComponent } from './components/reservation-subscribed-page/reservation-subscribed-page.component';
+import { MatchContainerComponent } from './components/match-container/match-container.component';
+import { MatchDetailsComponent } from './components/match-container/match-details/match-details.component';
+import { MatchSetListComponent } from './components/match-container/match-set-list/match-set-list.component';
+import { MatchesCreatedListComponent } from './components/profile-page/matches-created-list/matches-created-list.component';
+import { TeamStatsComponent } from './components/team-details-container/team-stats/team-stats.component';
 
 @NgModule({
   declarations: [
@@ -77,7 +82,12 @@ import { ReservationSubscribedPageComponent } from './components/reservation-sub
     ReservationsDetailsContainerComponent,
     ProfilePageTablepaneComponent,
     InvitesListComponent,
-    ReservationSubscribedPageComponent
+    ReservationSubscribedPageComponent,
+    MatchContainerComponent,
+    MatchDetailsComponent,
+    MatchSetListComponent,
+    MatchesCreatedListComponent,
+    TeamStatsComponent,
   ],
   imports: [
     BrowserModule,

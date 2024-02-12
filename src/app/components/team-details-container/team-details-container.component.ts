@@ -5,6 +5,7 @@ import { ActivatedRoute } from '@angular/router';
 import { TeamsService } from '../../../services/teams.service';
 import { PlayersService } from '../../../services/players.service';
 import { TeamComponentDto } from '../../../model/dtos/team-component';
+import { MatchesService } from '../../../services/matches.service';
 
 @Component({
   selector: 'app-team-details-container',
@@ -14,10 +15,11 @@ import { TeamComponentDto } from '../../../model/dtos/team-component';
 export class TeamDetailsContainerComponent implements OnInit{
   teamId!: number;
   team!: TeamDto;
-  players!: TeamComponentDto[];
-  matches!: MatchDto[];
+  players: TeamComponentDto[] = [];
+  matches: MatchDto[] = [];
 
-  constructor(private route: ActivatedRoute, private teamsService: TeamsService, private playersService: PlayersService){}
+  constructor(private route: ActivatedRoute, private teamsService: TeamsService, 
+              private playersService: PlayersService, private matchService: MatchesService){}
 
   ngOnInit(): void {
       this.teamId = this.route.snapshot.params['id'];
@@ -31,7 +33,6 @@ export class TeamDetailsContainerComponent implements OnInit{
     this.teamsService.getTeam(this.teamId).subscribe({
       next: team => {
         this.team = team;
-        console.log(this.team);
       },
       error: err => {
         console.error('Errore nel recupero dei dettagli del team:', err);
@@ -43,7 +44,6 @@ export class TeamDetailsContainerComponent implements OnInit{
     this.playersService.getAllPlayerByTeamId(this.teamId).subscribe({
       next: players => {
         this.players = players;
-        console.log(this.players);
       },
       error: err => {
         console.error('Errore nel recupero dei player iscritti al team:', err);
@@ -52,8 +52,11 @@ export class TeamDetailsContainerComponent implements OnInit{
   }
 
   loadMatches() {
-    // throw new Error('Method not implemented.');
+    this.matchService.getAllMatchesByTeam(this.teamId).subscribe({
+      next: matches => {
+        this.matches = matches;
+      },
+      error: error => console.log(error)
+    });
   }
-  
-  
 }

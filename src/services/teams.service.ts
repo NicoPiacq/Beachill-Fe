@@ -36,4 +36,8 @@ import { InvitationResponseDto } from "../model/dtos/invitation-response";
       return this.http.patch<any>(`${this.URL}/invite`, response);
     }
 
+    createTeam(teamData: TeamDto): Observable<any> {
+      return this.http.post<any>(`${this.URL}`, teamData);
+    }
+
   }

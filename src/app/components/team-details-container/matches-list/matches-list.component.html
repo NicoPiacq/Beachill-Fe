@@ -1,1 +1,43 @@
-<p>matches-list works!</p>
+<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" />
+<div class="container">
+    <div class="row">
+        <div class="card mb-3"> <!-- CUFFIE MORTE :) -->
+            <div class="card-body mb-3 pb-0">
+                <div class="col-13 mt-1">
+                    <div class="overflow-hidden card table-nowrap table-card">
+                        <div class="card-header d-flex justify-content-between align-items-center">
+                            <h5 class="mb-0">Match di questa squadra</h5>
+                        </div>
+                        <div class="table-responsive">
+                            <table class="table mb-0" *ngIf="matchesList.length! > 0">
+                                <thead class="small text-uppercase bg-body text-muted">
+                                    <tr>
+                                        <th>Data incontro</th>
+                                        <th>Tipo</th>
+                                        <th>Torneo</th>
+                                        <th>Squadre</th>
+                                        <th>Vincitore</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr class="align-middle" *ngFor="let match of matchesList!">
+                                        <td>{{ match.startDate! }}</td>
+                                        <td>{{ getMatchType(match.matchType) }}</td>
+                                        <td>{{ match.tournamentName! }}</td>
+                                        <td><b>{{ match.homeTeamName! }}</b> vs {{ match.awayTeamName! }}</td>
+                                        <td>{{ match.winnerTeam! }}</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <div class="card" *ngIf="matchesList.length! < 1">
+                                <div class="card-body">
+                                    <span><i class="mdi mdi-close"></i>Questa squadra non ha match</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

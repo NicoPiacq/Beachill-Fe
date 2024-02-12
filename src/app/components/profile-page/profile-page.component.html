@@ -1,47 +1,3 @@
-<!-- <div class="container-fluid topolino shadow-sm pb-5 mb-5 bg-body rounded">
-    <div class="top">    
-        <h2>Il tuo profilo</h2>
-    </div>
-        <div class="d-flex minnie">
-            <div class="container-fluid paperino">
-                <nav class="nav flex-column" role="tablist">
-                    <a class="nav-link active" data-bs-toggle="tab" href="#info" role="tab">Informazioni</a>
-                    <a class="nav-link" data-bs-toggle="tab" href="#changepass" role="tab">Cambia Password</a>
-                    <a class="nav-link disabled" data-bs-toggle="tab" href="#" role="tab">Elimina account</a>
-                </nav>
-            </div>
-            <div class="vr"></div>
-            <div class="container-fluid pippo tab-content">
-                <div class="tab-pane active" id="info" role="tabpanel">
-                    <div class="container-fluid">
-                        <div class="col-md-6">
-                        <label for="name" class="label">Nome</label> <br>
-                            <span><b>{{ getUserData()?.user?.name }}</b></span>
-                        </div>
-                        <div class="col-md-12">
-                        <label for="name" class="label">Cognome</label> <br>
-                            <span><b>{{ getUserData()?.user?.surname }}</b></span>
-                        </div>
-                        <div class="col-md-6">
-                        <label for="name" class="label">Indirizzo email</label> <br>
-                            <span><b>{{ getUserData()?.user?.email }}</b></span>
-                        </div>
-                        <div class="col-md-6">
-                        <label for="name" class="label">Ultimo accesso effettuato:</label> <br>
-                            <span><b>{{ getUserData()?.user?.lastLogin }}</b></span>
-                        </div>                                                                        
-                    </div>
-                </div>
-                <div class="tab-pane" id="changepass" role="tabpanel">
-                    <span>sono in pass!</span>
-                </div>
-                <div class="tab-pane" id="delete" role="tabpanel">
-                    <span>Non disponibile adesso</span>
-                </div>
-            </div>
-        </div>
-</div> -->
-
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/MaterialDesign-Webfont/7.2.96/css/materialdesignicons.min.css" integrity="sha512-LX0YV/MWBEn2dwXCYgQHrpa9HJkwB+S+bnBpifSOTO1No27TqNMKYoAn6ff2FBh03THAzAiiCwQ+aPX+/Qt/Ow==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 <div class="container mt-3">
 <div class="row">
@@ -96,9 +52,11 @@
             </div><!-- end card body -->
         </div><!-- end card -->
         <app-profile-page-tablepane [joinedTeamsProp]="joinedTeams" ></app-profile-page-tablepane>
+        <app-matches-created-list [matchesListProp]="matchesList" ></app-matches-created-list>
     </div>
+    
 
-    <div class="col-xl-4">
+<div class="col-xl-4">
         <div class="card">
             <div class="card-body">
                 <div class="pb-2">
