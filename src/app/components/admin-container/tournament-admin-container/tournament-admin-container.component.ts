@@ -6,7 +6,7 @@ import { TournamentAdminDto } from '../../../../model/dtos/tournament-admin';
 @Component({
   selector: 'app-tournament-admin-container',
   templateUrl: './tournament-admin-container.component.html',
-  styleUrl: './tournament-admin-container.component.css'
+  styleUrl: '../admin-container.component.css'
 })
 export class TournamentAdminContainerComponent {
   tournaments: TournamentAdminDto[] = [];
@@ -31,6 +31,7 @@ export class TournamentAdminContainerComponent {
 
   deleteTournament(id: number){
     this.adminService.deleteTournament(id).subscribe({});
+    location.reload();
   }
 
 }

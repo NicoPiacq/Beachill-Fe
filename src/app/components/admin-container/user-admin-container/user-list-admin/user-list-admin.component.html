@@ -1,0 +1,59 @@
+<link rel="stylesheet" type="text/css" href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css">
+<div class="row">
+    <form>
+        <div class="col-lg-9">
+            <label for="search" class="form-label">Cerca un utente</label>
+            <input type="text" id="search" name="search" placeholder="Inserisci l'email o il nome utente" class="form-control">
+        </div>
+        <div clas="col-lg-3">
+            <button type="submit" class="btn btn-outline-info">Cerca</button>
+        </div>
+    </form>
+</div>
+<hr>
+<div class="container bootstrap snippets bootdey">
+    <div class="row">
+        <div class="col-lg-12">
+                    <div class="table-responsive">
+                        <table class="table user-list">
+                            <thead>
+                                <tr>
+                                    <th><span>Utente</span></th>
+                                    <th><span>Ruolo</span></th>
+                                    <th><span>Email</span></th>
+                                    <th><span>Creato</span></th>
+                                    <th><span>Ultimo login</span></th>
+                                    <th>&nbsp;</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>
+                                        <span>Full name 1</span>
+                                    </td>
+                                    <td>
+                                        <span class="badge bg-primary">Utente</span>
+                                    </td>
+                                    <td>
+                                        
+                                    </td>
+                                    <td>
+                                        <span></span>
+                                    </td>
+                                    <td>
+
+                                    </td>
+                                    <td>
+
+                                    </td>
+                                    <td style="width: 20%;">
+                                        <button class="btn btn-outline-info me-1" [routerLink]="['/admin/user/']">Gestisci</button>
+                                        <button class="btn btn-outline-info">Elimina</button>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>

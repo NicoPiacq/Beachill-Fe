@@ -1,8 +1,7 @@
-<p>add-tournament-form works!</p>
 <div class="container-fluid px">
 <form class = "row g-3" (ngSubmit)="createNewTournament()" [formGroup]="tournamentForm">
     
-        <div class="col-md-6">
+        <div class="col-md-12">
             <label for="tournamentName" class="form-label">Scegli il nome del torneo:</label>
             <input type="text" id="tournamentName" class="form-control" formControlName = "tournamentName">
         </div>
@@ -13,7 +12,7 @@
         </div>
 
         <div class="col-md-6">
-            <label for="endDate" class="form-label">Data di inizio:</label>
+            <label for="endDate" class="form-label">Data di fine:</label>
             <input type="date" id="endDate" class="form-control" formControlName="endDate">
         </div>
 
@@ -31,8 +30,8 @@
             <option [value]="p.place" *ngFor="let p of places"> {{p.place}} </option>
         </select>
 
-        <div class="col-12">
-            <button type="submit" class="btn btn-primary">CREA TORNEO</button>
+        <div class="col-12 text-center">
+            <button type="submit" class="btn btn-primary"><b>CREA TORNEO</b></button>
           </div>
     
         

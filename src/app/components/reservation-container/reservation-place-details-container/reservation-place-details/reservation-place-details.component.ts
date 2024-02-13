@@ -62,6 +62,10 @@ export class ReservationPlaceDetailsComponent implements OnInit {
     });
   }
 
+  closeModal() {
+    this.modalRef.hide();
+  }
+
   createNewReservation(fieldId: number, date: Date, start: Time, end: Time, template: TemplateRef<any>) {
     this.reservationRequest.fieldId = fieldId;
     this.reservationRequest.date = date;

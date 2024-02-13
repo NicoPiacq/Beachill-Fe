@@ -1,8 +1,39 @@
-<p>tournament-admin-container works!</p>
-
-
-
-<app-tournaments-list-admin [tournamentsProp] = "tournaments" (deleteTournamentProp)="deleteTournament($event)">
-
-</app-tournaments-list-admin>
+<div class="row">
+    <div class="col-lg-8">
+        <!-- Change password card-->
+        <div class="card mb-4">
+            <div class="card-header">Crea un nuovo torneo</div>
+            <div class="card-body">
+                <app-add-tournament-form></app-add-tournament-form>
+            </div>
+        </div>
+        <!-- Existing tournaments -->
+    </div>
+    <div class="col-lg-4">
+        <!-- Tournament undergoing -->
+        <div class="card mb-4">
+            <div class="card-header">Tornei in corso</div>
+            <div class="card-body">
+                <p>Si vedrà una minilista di tornei in corso qui. 
+                    <br>Under construction!</p>
+            </div>
+        </div>
+        <!-- BOH A QUALCOSA SERVIRA' -->
+        <div class="card mb-4">
+            <div class="card-header">Spazio personalizzato</div>
+            <div class="card-body">
+                <p>Cosa vogliamo fare qui Fede? O la facciamo saltare in aria? :)</p>
+                <!-- <button class="btn btn-danger-soft text-danger" type="button">I understand, delete my account</button> -->
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-12">
+        <div class="card mb-4">
+            <div class="card-header">Tornei creati</div>
+            <div class="card-body">
+                <app-tournaments-list-admin [tournamentsProp] = "tournaments" (deleteTournamentProp)="deleteTournament($event)"></app-tournaments-list-admin>
+            </div>
+        </div>
+    </div>
+</div>
 

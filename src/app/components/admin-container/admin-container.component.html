@@ -1,10 +1,27 @@
-<p>admin-container works!</p>
+<div class="container-xl px-4 mt-4">
+    <!-- Navigation bar -->
+    <nav class="nav nav-borders" role="tablist">
+        <a class="nav-link active" data-bs-toggle="tab" href="#tournament-tab" role="tab">Tornei</a>
+        <a class="nav-link" data-bs-toggle="tab" href="#users-tab" role="tab">Utenti</a>
+        <a class="nav-link" data-bs-toggle="tab" href="#teams-tab" role="tab">Squadre</a>
+        <a class="nav-link" data-bs-toggle="tab" href="#website-tab" role="tab">Impostazioni sito</a>
+    </nav>
+    <hr class="mt-0 mb-4">
+    <div class="tab-content">
+        <div class="tab-pane active show" id="tournament-tab" role="tabpanel">
+            <app-tournament-admin-container></app-tournament-admin-container>
+        </div>
+        <div class="tab-pane show" id="users-tab" role="tabpanel">
+            <app-user-admin-container></app-user-admin-container>
+        </div>
+        <div class="tab-pane show" id="teams-tab" role="tabpanel">
+            <app-team-admin-container></app-team-admin-container>
+        </div>
+        <div class="tab-pane show" id="website-tab" role="tabpanel">
+            <span>Under construction</span>
+        </div>
+    </div>
+</div>
 
-<app-user-admin-container>
-</app-user-admin-container>
 
-<app-team-admin-container>
-</app-team-admin-container>
 
-<app-tournament-admin-container>   
-</app-tournament-admin-container>

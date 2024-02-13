@@ -1,35 +1,42 @@
-<div class="container-fluid ">
-    <h1 class="hover-effect">Tutti i tornei disponibili:</h1>
+<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" />
+<div class="container">
+    <div class="row">
+        <div class="col-12 mt-3 mb-3 mb-lg-5">
+            <div class="overflow-hidden card table-nowrap table-card">
+                <div class="table-responsive">
+                    <table class="table mb-0" *ngIf="tournaments.length > 0">
+                        <thead class="small text-uppercase bg-body text-muted">
+                          <tr>
+                            <th>Id</th>
+                            <th>Nome</th>
+                            <th>Inizio</th>
+                            <th>Fine</th>
+                            <th>Tipo</th>
+                            <th>Luogo</th>
+                            <th></th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                            <tr class="align-middle" *ngFor="let t of tournaments">
+                                <td>{{ t.id }}</td>
+                                <td>{{ t.tournamentName }}</td>
+                                <td>{{ t.startDate }}</td>
+                                <td>{{ t.endDate }}</td>
+                                <td>{{ t.tournamentTypeName }}</td>
+                                <td>{{ t.place }}</td>
+                                <td><a class="btn btn-outline-info" [routerLink]="['/admin/tournament', t.id]">Gestisci</a> <!-- sarà una modal -->
+                                <button class="btn btn-outline-info" *ngIf="t.id !== undefined" (click)="deleteTournament(t.id)">Elimina</button></td>
+                              </tr>
+                        </tbody>
+                    </table>
+                    <div class="card" *ngIf="tournaments.length < 1">
+                        <div class="card-body">
+                            <span><i class="mdi mdi-close"></i>Non ci sono tornei</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
-    <div class="container-fluid px">     
-        <table class="table table-dark table-striped table-hover">
-          <thead>
-            <tr>
-              <th>Id</th>
-              <th>Nome</th>
-              <th>Inizio</th>
-              <th>Fine</th>
-              <th>Tipo</th>
-              <th>Luogo</th>
-              <th></th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr *ngFor="let t of tournaments">
-            
-              <td>{{ t.id }}</td>
-              <td>{{ t.tournamentName }}</td>
-              <td>{{ t.startDate }}</td>
-              <td>{{ t.endDate }}</td>
-              <td>{{ t.tournamentTypeName }}</td>
-              <td>{{ t.place }}</td>
-              <td><a class="btn btn-outline-info" [routerLink]="['/admin/tournament', t.id]">Gestisci</a>
-              <button class="btn btn-outline-info" *ngIf="t.id !== undefined" (click)="deleteTournament(t.id)">Elimina</button></td>
-
-
-            </tr>
-          </tbody>
-        </table>
-        <a class="btn btn-outline-info" [routerLink]="['/add-tournament-form']">CREA UN NUOVO TORNEO</a>
-    </div>
+</div>
     
