@@ -11,6 +11,9 @@ export class TournamentsListAdminComponent {
   @Input('tournamentsProp') tournaments!: TournamentDto[];
   @Output('deleteTournamentProp') deleteTournamentClicked: EventEmitter<number> = new EventEmitter<number>();
 
+  itemsPerPage: number = 5;
+  currentPage: number = 1;
+
   deleteTournament(id: number){
     this.deleteTournamentClicked.emit(id);
   }

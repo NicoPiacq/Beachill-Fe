@@ -17,18 +17,22 @@
                           </tr>
                         </thead>
                         <tbody>
-                            <tr class="align-middle" *ngFor="let t of tournaments">
+                            <tr class="align-middle" *ngFor="let t of tournaments | slice: (currentPage - 1) * itemsPerPage : currentPage * itemsPerPage">
+                                
                                 <td>{{ t.id }}</td>
                                 <td>{{ t.tournamentName }}</td>
                                 <td>{{ t.startDate }}</td>
                                 <td>{{ t.endDate }}</td>
                                 <td>{{ t.tournamentTypeName }}</td>
                                 <td>{{ t.place }}</td>
-                                <td><a class="btn btn-outline-info" [routerLink]="['/admin/tournament', t.id]">Gestisci</a> <!-- sarà una modal -->
+                                <td><a class="btn btn-outline-info" [routerLink]="['/admin/tournament', t.id]">Gestisci</a>
                                 <button class="btn btn-outline-info" *ngIf="t.id !== undefined" (click)="deleteTournament(t.id)">Elimina</button></td>
                               </tr>
                         </tbody>
                     </table>
+                    <div class="d-flex align-items-center justify-content-center mt-3" *ngIf="tournaments.length > 5">
+                        <pagination [totalItems]="tournaments.length" [(ngModel)]="currentPage" [itemsPerPage]="itemsPerPage"></pagination>
+                    </div>
                     <div class="card" *ngIf="tournaments.length < 1">
                         <div class="card-body">
                             <span><i class="mdi mdi-close"></i>Non ci sono tornei</span>

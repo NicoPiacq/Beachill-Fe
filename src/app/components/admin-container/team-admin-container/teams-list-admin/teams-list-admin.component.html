@@ -1,11 +1,11 @@
 <link rel="stylesheet" type="text/css" href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css">
 <div class="row">
-    <form>
+    <form class="row">
         <div class="col-lg-9">
             <label for="search" class="form-label">Cerca una squadra</label>
-            <input type="text" id="search" name="search" placeholder="Inserisci il nome della squadra" class="form-control">
+            <input type="text" id="search" name="search" placeholder="Inserisci il nome della squadra o il suo capitano" class="form-control">
         </div>
-        <div clas="col-lg-3">
+        <div class="col-lg-3 d-flex align-items-end">
             <button type="submit" class="btn btn-outline-info">Cerca</button>
         </div>
     </form>
@@ -26,24 +26,18 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr>
+                                <tr *ngFor="let team of teams | slice: (currentPage - 1) * itemsPerPage : currentPage * itemsPerPage">
                                     <td>
-                                        <span>Full name 1</span>
+                                        <span>{{ team.teamName }}</span>
                                     </td>
                                     <td>
-                                        
+                                        {{ team.teamLeaderName }} {{ team.teamLeaderSurname }}
                                     </td>
                                     <td>
-                                        
+                                        <span>Non esiste ancora ^^</span>
                                     </td>
                                     <td>
-                                        
-                                    </td>
-                                    <td>
-
-                                    </td>
-                                    <td>
-
+                                        {{ team.score }}
                                     </td>
                                     <td style="width: 20%;">
                                         <button class="btn btn-outline-info me-1" [routerLink]="['/admin/team/']">Gestisci</button>
@@ -52,6 +46,9 @@
                                 </tr>
                             </tbody>
                         </table>
+                    </div>
+                    <div class="d-flex align-items-center justify-content-center" *ngIf="teams.length > 0">
+                        <pagination [totalItems]="teams.length" [(ngModel)]="currentPage" [itemsPerPage]="itemsPerPage"></pagination>
                     </div>
                 </div>
             </div>

@@ -46,6 +46,7 @@ import { MatchSetListComponent } from './components/match-container/match-set-li
 import { MatchesCreatedListComponent } from './components/profile-page/matches-created-list/matches-created-list.component';
 import { TeamStatsComponent } from './components/team-details-container/team-stats/team-stats.component';
 import { BsModalService, ModalModule } from 'ngx-bootstrap/modal';
+import { PaginationModule, PaginationConfig } from 'ngx-bootstrap/pagination';
 import { UserListAdminComponent } from './components/admin-container/user-admin-container/user-list-admin/user-list-admin.component';
 import { TeamsListAdminComponent } from './components/admin-container/team-admin-container/teams-list-admin/teams-list-admin.component';
 
@@ -98,11 +99,13 @@ import { TeamsListAdminComponent } from './components/admin-container/team-admin
     HttpClientModule,
     ReactiveFormsModule,
     FormsModule,
-    ModalModule
+    ModalModule,
+    PaginationModule.forRoot()
   ],
   providers: [
     provideClientHydration(),
     BsModalService,
+    PaginationConfig,
     provideHttpClient(),
     {
       provide: HTTP_INTERCEPTORS,

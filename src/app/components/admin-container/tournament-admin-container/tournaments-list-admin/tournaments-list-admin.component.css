@@ -34,8 +34,3 @@ table th {
 a {
     text-decoration: none;
 }
-
-.table {
-    max-height: 120px;
-    border-collapse: collapse;
-}

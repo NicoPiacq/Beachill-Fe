@@ -1,11 +1,11 @@
 <link rel="stylesheet" type="text/css" href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css">
 <div class="row">
-    <form>
+    <form class="row">
         <div class="col-lg-9">
             <label for="search" class="form-label">Cerca un utente</label>
             <input type="text" id="search" name="search" placeholder="Inserisci l'email o il nome utente" class="form-control">
         </div>
-        <div clas="col-lg-3">
+        <div class="col-lg-3 d-flex align-items-end">
             <button type="submit" class="btn btn-outline-info">Cerca</button>
         </div>
     </form>
@@ -27,24 +27,24 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr>
+                                <tr *ngFor="let user of users | slice: (currentPage - 1) * itemsPerPage : currentPage * itemsPerPage">
                                     <td>
-                                        <span>Full name 1</span>
+                                        <span>{{ user.name }} {{ user.surname }}</span>
                                     </td>
                                     <td>
-                                        <span class="badge bg-primary">Utente</span>
+                                        <span class="badge bg-primary" *ngIf="user.role === 'USER'">Utente</span>
+                                        <span class="badge bg-success" *ngIf="user.role === 'MANAGER'">Manager</span>
+                                        <span class="badge bg-warning" *ngIf="user.role === 'ADMIN'">Amministratore</span>
+                                        <span class="badge bg-danger" *ngIf="user.role === 'SUPERADMIN'">Super Admin</span>
                                     </td>
                                     <td>
-                                        
+                                        {{ user.email }}
                                     </td>
                                     <td>
-                                        <span></span>
+                                        {{ user.registrationDate| date: 'dd/MM/yyyy' }}
                                     </td>
                                     <td>
-
-                                    </td>
-                                    <td>
-
+                                        {{ user.lastLogin| date: 'dd/MM/yyyy' }}
                                     </td>
                                     <td style="width: 20%;">
                                         <button class="btn btn-outline-info me-1" [routerLink]="['/admin/user/']">Gestisci</button>
@@ -53,6 +53,9 @@
                                 </tr>
                             </tbody>
                         </table>
+                    </div>
+                    <div class="d-flex align-items-center justify-content-center" *ngIf="users.length > 10">
+                        <pagination [totalItems]="users.length" [(ngModel)]="currentPage" [itemsPerPage]="itemsPerPage"></pagination>
                     </div>
                 </div>
             </div>
