@@ -34,4 +34,8 @@ export class AdminService {
       console.log("sono quaaaaa");
       return this.http.post<void>(`${this.URL}/tournament/generate/${id}`, null);
     }
+
+    generateDebugData(): Observable<any> {
+      return this.http.post<void>(`${this.URL}/insert-script`, null);
+    }
 }

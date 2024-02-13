@@ -76,6 +76,11 @@
                       <label for="email" class="form-label">Password</label>
                       <input type="password" id="password" name="password" class="form-control" formControlName="password">
                     </div>
+                    <div>
+                      <div class="alert alert-danger" role="alert" *ngIf="errorMessage">
+                        {{ errorMessage }}
+                      </div>
+                    </div>
                     <div class="col-12">
                       <button type="submit" class="btn btn-primary">Accedi</button>
                     </div>
@@ -110,7 +115,11 @@
                         <label for="repeatPassword" class="form-label">Ripeti password:</label>
                         <input type="password" id="repeatPassword" class="form-control" formControlName="repeatPassword">
                     </div>
-            
+                    
+                    <div class="alert alert-danger" role="alert" *ngIf="errorMessage">
+                      {{ errorMessage }}
+                    </div>
+
                     <div class="col-12">
                         <button type="submit" class="btn btn-primary">Registrati</button>
                     </div>

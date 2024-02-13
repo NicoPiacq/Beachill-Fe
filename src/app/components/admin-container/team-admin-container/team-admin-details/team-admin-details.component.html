@@ -4,11 +4,10 @@
     <div class="col-xl-12">
         <div class="row">
             <div class="col-lg-8">
-                <!-- Change password card-->
                 <div class="card mb-4">
-                    <div class="card-header">Dettaglio Torneo</div>
+                    <div class="card-header">Dettaglio Squadra</div>
                     <div class="card-body">
-                     <app-tournament-details-admin [tournamentDetailsProp]="tournament" [matchesProp]="matches" *ngIf = "tournamentId" (generateMatchTournamentProp)="generateMatchTournament($event)"></app-tournament-details-admin>
+                        <app-team-single-details [teamDetailsProp]="teamDetails"></app-team-single-details>
                     </div>
                 </div>
                 <!-- Existing tournaments -->
@@ -20,7 +19,7 @@
                         Team iscritti
                     </div>
                     <div class="card-body">
-                        <app-enrolled-teams-list-admin [enrolledTeamsProp]="teams"></app-enrolled-teams-list-admin>
+                        <!-- mettere componente lista iscritti qui -->
                     </div>
                 </div>
             </div>
@@ -30,10 +29,10 @@
                         Lista match
                     </div>
                     <div class="card-body">
-                        <div class = "container-fluid px text-center" *ngIf="matches.length < 1">
+                        <div class = "container-fluid px text-center">
                             <span class="text-center">Non sono presenti match per questo torneo</span>
                         </div>
-                        <app-matches-tournament-list-admin [matchesProp]="matches" *ngIf="matches.length > 0"></app-matches-tournament-list-admin>
+                        <!-- mettere componente matches qui -->
                     </div>
                 </div>
             </div>

@@ -21,7 +21,6 @@
                                     <th><span>Nome</span></th>
                                     <th><span>Capitano</span></th>
                                     <th><span>Data creazione</span></th>
-                                    <th><span>Punti totali</span></th>
                                     <th>&nbsp;</th>
                                 </tr>
                             </thead>
@@ -36,12 +35,8 @@
                                     <td>
                                         <span>Non esiste ancora ^^</span>
                                     </td>
-                                    <td>
-                                        {{ team.score }}
-                                    </td>
                                     <td style="width: 20%;">
-                                        <button class="btn btn-outline-info me-1" [routerLink]="['/admin/team/']">Gestisci</button>
-                                        <button class="btn btn-outline-info">Elimina</button>
+                                        <button class="btn btn-outline-info me-1" [routerLink]="['/admin/team', team.id]">Gestisci</button>
                                     </td>
                                 </tr>
                             </tbody>

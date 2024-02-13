@@ -21,6 +21,7 @@ export class MenuComponent implements OnInit {
   }
   hasLoggedIn: boolean = false;
   modalRef!: BsModalRef;
+  errorMessage: string = '';
 
   registrationForm!: FormGroup;
   registrationData: RegistrationDto = {
@@ -50,11 +51,13 @@ export class MenuComponent implements OnInit {
   }
 
   openModal(template: TemplateRef<any>) {
+    this.errorMessage = '';
     this.modalRef = this.modalService.show(template);
   }
 
   closeModal() {
     this.modalRef.hide();
+    this.errorMessage = '';
   }
 
   login() {
@@ -64,6 +67,9 @@ export class MenuComponent implements OnInit {
         next: () => {
           this.checkUser();
           this.modalRef.hide();
+        },
+        error: err => {
+          this.showMessageError(err);
         }
       });
     }
@@ -99,7 +105,16 @@ export class MenuComponent implements OnInit {
     if(this.registrationForm.valid) {
       this.registrationData = {...this.registrationForm.value};
       this.registrationData.role = 'USER';
-      this.authService.register(this.registrationData).subscribe();
+      this.authService.register(this.registrationData).subscribe({
+        error: err => { this.showMessageError(err); }
+      });
     }
+  }
+
+  showMessageError(message: string) {
+    this.errorMessage = message;
+    setTimeout(() => {
+      this.errorMessage = '';
+    }, 5000);
   }
 }

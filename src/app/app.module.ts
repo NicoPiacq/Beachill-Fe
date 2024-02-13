@@ -49,6 +49,8 @@ import { BsModalService, ModalModule } from 'ngx-bootstrap/modal';
 import { PaginationModule, PaginationConfig } from 'ngx-bootstrap/pagination';
 import { UserListAdminComponent } from './components/admin-container/user-admin-container/user-list-admin/user-list-admin.component';
 import { TeamsListAdminComponent } from './components/admin-container/team-admin-container/teams-list-admin/teams-list-admin.component';
+import { TeamAdminDetailsComponent } from './components/admin-container/team-admin-container/team-admin-details/team-admin-details.component';
+import { TeamSingleDetailsComponent } from './components/admin-container/team-admin-container/team-admin-details/team-single-details/team-single-details.component';
 
 @NgModule({
   declarations: [
@@ -92,6 +94,8 @@ import { TeamsListAdminComponent } from './components/admin-container/team-admin
     TeamStatsComponent,
     UserListAdminComponent,
     TeamsListAdminComponent,
+    TeamAdminDetailsComponent,
+    TeamSingleDetailsComponent,
   ],
   imports: [
     BrowserModule,
