@@ -1,23 +1,23 @@
 <div class="container-xl px-4 mt-4">
     <!-- Navigation bar -->
     <nav class="nav nav-borders d-flex justify-content-between" role="tablist">
-        <a class="nav-link active" data-bs-toggle="tab" href="#tournament-tab" role="tab">Tornei</a>
-        <a class="nav-link" data-bs-toggle="tab" href="#users-tab" role="tab">Utenti</a>
-        <a class="nav-link" data-bs-toggle="tab" href="#teams-tab" role="tab">Squadre</a>
-        <a class="nav-link" data-bs-toggle="tab" href="#website-tab" role="tab">Impostazioni sito</a>
+        <a class="nav-link active" data-bs-toggle="tab" href="#tournament-tab" role="tab" *ngIf="role === 'SUPERADMIN' || role === 'ADMIN'">Tornei</a>
+        <a class="nav-link" data-bs-toggle="tab" href="#users-tab" role="tab" *ngIf="role === 'SUPERADMIN'">Utenti</a>
+        <a class="nav-link" data-bs-toggle="tab" href="#teams-tab" role="tab" *ngIf="role === 'SUPERADMIN' || role === 'ADMIN'">Squadre</a>
+        <a class="nav-link" data-bs-toggle="tab" href="#website-tab" role="tab" *ngIf="role === 'SUPERADMIN'">Impostazioni sito</a>
     </nav>
     <hr class="mt-0 mb-4">
     <div class="tab-content">
-        <div class="tab-pane active show" id="tournament-tab" role="tabpanel">
+        <div class="tab-pane active show" id="tournament-tab" role="tabpanel" *ngIf="role === 'SUPERADMIN' || role === 'ADMIN'">
             <app-tournament-admin-container></app-tournament-admin-container>
         </div>
-        <div class="tab-pane show" id="users-tab" role="tabpanel">
+        <div class="tab-pane show" id="users-tab" role="tabpanel" *ngIf="role === 'SUPERADMIN'">
             <app-user-admin-container></app-user-admin-container>
         </div>
-        <div class="tab-pane show" id="teams-tab" role="tabpanel">
+        <div class="tab-pane show" id="teams-tab" role="tabpanel" *ngIf="role === 'SUPERADMIN' || role === 'ADMIN'">
             <app-team-admin-container></app-team-admin-container>
         </div>
-        <div class="tab-pane show" id="website-tab" role="tabpanel">
+        <div class="tab-pane show" id="website-tab" role="tabpanel" *ngIf="role === 'SUPERADMIN'">
             <div class="card ">
                 <label for="debugData" class="label-form"><b>Genera dati di debug</b></label>
                 <button name="debugData" class="btn btn-danger" (click)="generateDebugData()">GENERA DATI DEBUG</button>

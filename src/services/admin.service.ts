@@ -7,7 +7,6 @@ import { TournamentAdminDto } from "../model/dtos/tournament-admin";
 @Injectable({
     providedIn: 'root'
   })
-
 export class AdminService {
     
     private URL = 'http://localhost:8080/api/admin';

@@ -51,6 +51,8 @@ import { UserListAdminComponent } from './components/admin-container/user-admin-
 import { TeamsListAdminComponent } from './components/admin-container/team-admin-container/teams-list-admin/teams-list-admin.component';
 import { TeamAdminDetailsComponent } from './components/admin-container/team-admin-container/team-admin-details/team-admin-details.component';
 import { TeamSingleDetailsComponent } from './components/admin-container/team-admin-container/team-admin-details/team-single-details/team-single-details.component';
+import { UserAdminDetailsComponent } from './components/admin-container/user-admin-container/user-admin-details/user-admin-details.component';
+import { UserSingleDetailsComponent } from './components/admin-container/user-admin-container/user-admin-details/user-single-details/user-single-details.component';
 
 @NgModule({
   declarations: [
@@ -96,6 +98,8 @@ import { TeamSingleDetailsComponent } from './components/admin-container/team-ad
     TeamsListAdminComponent,
     TeamAdminDetailsComponent,
     TeamSingleDetailsComponent,
+    UserAdminDetailsComponent,
+    UserSingleDetailsComponent,
   ],
   imports: [
     BrowserModule,

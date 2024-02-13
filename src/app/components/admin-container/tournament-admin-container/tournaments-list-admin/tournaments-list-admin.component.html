@@ -21,8 +21,8 @@
                                 
                                 <td>{{ t.id }}</td>
                                 <td>{{ t.tournamentName }}</td>
-                                <td>{{ t.startDate }}</td>
-                                <td>{{ t.endDate }}</td>
+                                <td>{{ t.startDate | date: 'dd/MM/yyyy' }}</td>
+                                <td>{{ t.endDate | date: 'dd/MM/yyyy' }}</td>
                                 <td>{{ t.tournamentTypeName }}</td>
                                 <td>{{ t.place }}</td>
                                 <td><a class="btn btn-outline-info" [routerLink]="['/admin/tournament', t.id]">Gestisci</a>
@@ -35,7 +35,7 @@
                     </div>
                     <div class="card" *ngIf="tournaments.length < 1">
                         <div class="card-body">
-                            <span><i class="mdi mdi-close"></i>Non ci sono tornei</span>
+                            <span><i class="mdi mdi-close"></i>Non ci sono tornei da visualizzare</span>
                         </div>
                     </div>
                 </div>

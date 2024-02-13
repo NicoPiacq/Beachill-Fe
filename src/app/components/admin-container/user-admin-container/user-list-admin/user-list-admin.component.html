@@ -47,7 +47,7 @@
                                         {{ user.lastLogin| date: 'dd/MM/yyyy' }}
                                     </td>
                                     <td style="width: 20%;">
-                                        <button class="btn btn-outline-info me-1" [routerLink]="['/admin/user/']">Gestisci</button>
+                                        <button class="btn btn-outline-info me-1" [routerLink]="['/admin/user/', user.id]">Gestisci</button>
                                         <button class="btn btn-outline-info">Elimina</button>
                                     </td>
                                 </tr>

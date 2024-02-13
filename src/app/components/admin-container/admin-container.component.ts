@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { AdminService } from '../../../services/admin.service';
+import { AuthService } from '../../../services/auth.service';
 
 @Component({
   selector: 'app-admin-container',
@@ -8,10 +9,19 @@ import { AdminService } from '../../../services/admin.service';
 })
 export class AdminContainerComponent {
 
-  constructor(private adminService: AdminService) { }
+  role: string = "";
+  constructor(private adminService: AdminService, private authService: AuthService) {
+    this.getRole();
+   }
 
   generateDebugData() {
     this.adminService.generateDebugData().subscribe();
+  }
+
+  getRole() {
+    this.authService.getUserRole().subscribe({
+      next: r => this.role = r,
+    });
   }
 
 }

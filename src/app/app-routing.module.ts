@@ -16,6 +16,7 @@ import { ReservationPlaceDetailsContainerComponent } from './components/reservat
 import { InvitesListComponent } from './components/invites-list/invites-list.component';
 import { ReservationSubscribedPageComponent } from './components/reservation-subscribed-page/reservation-subscribed-page.component';
 import { TeamAdminDetailsComponent } from './components/admin-container/team-admin-container/team-admin-details/team-admin-details.component';
+import { UserAdminDetailsComponent } from './components/admin-container/user-admin-container/user-admin-details/user-admin-details.component';
 
 // IL ROUTING VA RISCRITTO CON LE CHILDREN, ALTRIMENTI VA RIEMPITO DI CANACTIVATE!
 const routes: Routes = [
@@ -25,6 +26,7 @@ const routes: Routes = [
   {path: 'admin', component: AdminContainerComponent, canActivate: [AuthAdminGuard]},
   {path: 'admin/tournament/:id', component: TournamentDetailsAdminContainerComponent, canActivate: [AuthAdminGuard]},
   {path: 'admin/team/:id', component: TeamAdminDetailsComponent, canActivate: [AuthAdminGuard]},
+  {path: 'admin/user/:id', component: UserAdminDetailsComponent, canActivate: [AuthAdminGuard]},
   {path: 'success-add-tournament-form', component: SuccessAddTournamentFormComponent},
   {path: 'teams', component: TeamsListComponent},
   {path: 'profile', component: ProfilePageComponent, canActivate: [AuthGuard]},

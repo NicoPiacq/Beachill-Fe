@@ -4,7 +4,7 @@ import { Router } from '@angular/router';
 import { UserAuthenticatedDto } from "../model/dtos/user-authenticated";
 import { RegistrationDto } from "../model/dtos/registration";
 import { LoginDto } from "../model/dtos/login";
-import { BehaviorSubject, catchError, tap, throwError } from "rxjs";
+import { BehaviorSubject, Observable, catchError, tap, throwError } from "rxjs";
 
 @Injectable({
     providedIn: 'root'
@@ -92,5 +92,7 @@ export class AuthService {
         return throwError(() => errorMessage);
       }
 
-      //GET ROLE -> fa una richiesta al backend e riceve il ruolo dell' utente.
+      getUserRole(): Observable<string> {
+        return this.http.get<string>(`${this.URL}/role`, { responseType: 'text' as 'json'} );
+      }
 }
