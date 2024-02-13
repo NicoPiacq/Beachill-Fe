@@ -16,23 +16,30 @@
             <input type="date" id="endDate" class="form-control" formControlName="endDate">
         </div>
 
-        <label for="tournamentTypeName" class="form-label">Scegli il tipo del torneo:</label>
-        <select id="tournamentTypeName" class="form-control" formControlName = "tournamentTypeName">
-            <option selected value="">Seleziona: </option>
-            <option [value]="t.tournamentTypeName" *ngFor="let t of tournamentTypes"> {{t.tournamentTypeName}} </option>
-            
+        <div class="col-md-6">
+            <label for="tournamentTypeName" class="form-label">Scegli il tipo del torneo:</label>
+            <select id="tournamentTypeName" class="form-control" formControlName = "tournamentTypeName">
+                <option [value]="t.tournamentTypeName" *ngFor="let t of tournamentTypes"> {{ t.tournamentTypeName }} </option>
+            </select>
+        </div>
 
-        </select>
+        <div class="col-md-6">
+            <label for="tournamentLevel" class="form-label">Scegli il livello del torneo:</label>
+            <select id="tournamentLevel" class="form-control" formControlName = "levelName">
+                <option [value]="t.levelName" *ngFor="let t of tournamentLevel"> {{t.levelName}} </option>
+            </select>
+        </div>
 
-        <label for="place" class="form-label">Scegli il luogo del torneo:</label>
-        <select id="place" class="form-control" formControlName = "place">
-            <option selected value="">Seleziona: </option>
-            <option [value]="p.place" *ngFor="let p of places"> {{p.place}} </option>
-        </select>
+        <div class="col-md-12">
+            <label for="place" class="form-label">Scegli il luogo del torneo:</label>
+            <select id="place" class="form-control" formControlName = "place">
+                <option [value]="p.place" *ngFor="let p of places"> {{p.place}} </option>
+            </select>
+        </div>
 
         <div class="col-12 text-center">
             <button type="submit" class="btn btn-primary"><b>CREA TORNEO</b></button>
-          </div>
+        </div>
     
         
 </form>

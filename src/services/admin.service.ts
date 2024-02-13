@@ -21,18 +21,17 @@ export class AdminService {
       return this.http.get<TournamentAdminDto>(`${this.URL}/tournament/${id}`);
     }
   
-    //da rivedere
     createTournament(tournament: TournamentDto): Observable<void> {
-        return this.http.post<void>(`${this.URL}/tournament/create`, tournament);
+        return this.http.post<void>(`${this.URL}/tournament`, tournament);
     }
   
     deleteTournament(id: number): Observable<any> {
-        return this.http.delete(`${this.URL}/tournament/delete/${id}`);
+        return this.http.delete(`${this.URL}/tournament/${id}`);
     }
 
     generateMatchTournament(id: number): Observable<any> {
       console.log("sono quaaaaa");
-      return this.http.post<void>(`${this.URL}/tournament/generate/${id}`, null);
+      return this.http.post<void>(`${this.URL}/tournament/match/${id}`, null);
     }
 
     generateDebugData(): Observable<any> {

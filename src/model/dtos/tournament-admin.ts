@@ -8,5 +8,6 @@ export interface TournamentAdminDto {
     tournamentTypeName: string;
     place: string;
     status: number;
-    userDto: User | null;
+    levelName: string;
+    userDto: User | undefined;
 }

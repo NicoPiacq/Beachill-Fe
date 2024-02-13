@@ -7,6 +7,8 @@ import { TournamentTypeDto } from '../../../model/dtos/tournament-type';
 import { TournamentsTypesService } from '../../../services/tournaments-types.service';
 import { PlacesService } from '../../../services/places.service';
 import { TournamentAdminDto } from '../../../model/dtos/tournament-admin';
+import { TournamentLevel } from '../../../model/dtos/tournament-level';
+import { AuthService } from '../../../services/auth.service';
 
 @Component({
   selector: 'app-add-tournament-form',
@@ -16,6 +18,7 @@ import { TournamentAdminDto } from '../../../model/dtos/tournament-admin';
 export class AddTournamentFormComponent implements OnInit{
   tournamentForm!: FormGroup;
   tournamentTypes: TournamentTypeDto[] = [];
+  tournamentLevel: TournamentLevel[] = [];
   places: PlaceDto[] = [];
 
   tournamentData: TournamentAdminDto = {
@@ -25,12 +28,13 @@ export class AddTournamentFormComponent implements OnInit{
     tournamentTypeName: '',
     place: '',
     status: -1,
-    userDto: null
+    levelName: '',
+    userDto: undefined
   };
 
   constructor(private formBuilder: FormBuilder, private adminService: AdminService, 
               private router: Router, private tournamentsTypesService: TournamentsTypesService,
-              private placesService: PlacesService){}
+              private placesService: PlacesService, private authService: AuthService){}
 
 
   ngOnInit(): void {
@@ -39,13 +43,15 @@ export class AddTournamentFormComponent implements OnInit{
 
   buildFullForm(){
     this.getAllTournamentTypes();
+    this.getAllTournamentLevels();
     this.getAllPlaces();
     this.tournamentForm = this.formBuilder.group({
       tournamentName: ['', Validators.required],
-      startDate: [''],
-      endDate: [''],
+      startDate: ['', Validators.required],
+      endDate: ['', Validators.required],
       tournamentTypeName: [''],
-      place: [''],
+      levelName: ['', Validators.required],
+      place: ['', Validators.required],
     });
   }
 
@@ -54,6 +60,13 @@ export class AddTournamentFormComponent implements OnInit{
          next: t => this.tournamentTypes = t
        })
   }
+
+  getAllTournamentLevels(){
+    this.tournamentsTypesService.getAllTournamentsLevels().subscribe({
+      next: t => this.tournamentLevel = t
+    });
+  }
+
   getAllPlaces(){
     this.placesService.getAllPlaces().subscribe({
       next: places => this.places = places
@@ -63,6 +76,9 @@ export class AddTournamentFormComponent implements OnInit{
   createNewTournament(){
     if(this.tournamentForm.valid){
       this.tournamentData = {...this.tournamentForm.value};
+      this.tournamentData.userDto = this.authService.authenticatedUser.value?.user;
+      this.tournamentData.status = 1;
+      console.log(this.tournamentData);
       this.adminService.createTournament(this.tournamentData).subscribe({
         next: ed => {
           this.router.navigate(["success-add-tournament-form"]);
