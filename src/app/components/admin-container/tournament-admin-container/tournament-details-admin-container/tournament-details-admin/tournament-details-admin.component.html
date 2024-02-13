@@ -1,4 +1,4 @@
-<div class="card-body">
+<div class="card-body" *ngIf="tournamentDetails !== undefined">
   <div class="row">
     <div class="col-sm-6">
       <strong>ID:</strong> {{ tournamentDetails.id }}
@@ -22,11 +22,14 @@
       <strong>Status:</strong> {{ tournamentDetails.status }}
     </div>
     <div class="col-sm-6">
+      <strong>Livello:</strong> {{ tournamentDetails.levelName }}
+    </div>
+    <div class="col-sm-6">
       <strong>Manager:</strong> {{ tournamentDetails.userDto?.name}} {{tournamentDetails.userDto?.surname}}
     </div>
   </div>
   <hr>
-  <div class="d-flex justify-content-between">
+  <div class="d-flex justify-content-between" *ngIf="tournamentDetails !== undefined">
     <button class="btn btn-outline-info" *ngIf="tournamentDetails.id !== undefined && matches.length < 1 " (click)="generateMatchTournament(tournamentDetails.id)">Genera i Match</button>
   </div>
 </div>

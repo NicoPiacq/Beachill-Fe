@@ -17,7 +17,7 @@ export class TournamentDetailsAdminContainerComponent {
   tournament!: TournamentAdminDto;
   tournamentId!: number;
   teams: EnrolledTeamsDto[] = [];
-  matches!: MatchDto[];
+  matches: MatchDto[] = [];
   
 
   constructor(private tournamentsService: TournamentsService, private enrolledTeamsService: EnrolledTeamsService,
