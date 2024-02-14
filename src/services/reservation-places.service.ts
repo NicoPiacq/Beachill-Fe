@@ -7,7 +7,6 @@ import { ReservationPlaceDto } from "../model/dtos/reservations-place";
   providedIn: 'root'
 })
 export class ReservationPlacesService {
-
   private URL = 'http://localhost:8080/api/reservation-place';
     
   constructor(private http: HttpClient) { }
@@ -20,7 +19,19 @@ export class ReservationPlacesService {
     return this.http.get<ReservationPlaceDto>(`${this.URL}/${placeId}`);
   }
 
+  getReservationPlacesByQuery(query: string): Observable<ReservationPlaceDto[]> {
+    return this.http.get<ReservationPlaceDto[]>(`${this.URL}/search?toFind=${query}`);
+  }
+
   addReservationPlace(place: ReservationPlaceDto): Observable<ReservationPlaceDto> {
     return this.http.post<ReservationPlaceDto>(`${this.URL}`, place);
+  }
+
+  updateReservationPlace(place: ReservationPlaceDto): Observable<ReservationPlaceDto> {
+    return this.http.patch<ReservationPlaceDto>(`${this.URL}/${place.id}`, place);
+  }
+
+  deleteReservationPlace(id: number) {
+    return this.http.delete(`${this.URL}/${id}`);
   }
 }

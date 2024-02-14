@@ -30,7 +30,7 @@
                             <td *ngIf="t.status === 1">iscrizioni aperte</td>
                             <td *ngIf="t.status === 0">iscrizioni chiuse</td>
                             <td>{{ t.tournamentTypeName }}</td>
-                            <td><a class="btn btn-outline-info" [routerLink]="['/tournament', t.id]">Dettagli</a></td>
+                            <td><a class="btn btn-primary" [routerLink]="['/tournament', t.id]">Dettagli</a></td>
                         </tr>
                         </tbody>
                     </table>

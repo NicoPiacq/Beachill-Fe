@@ -1,0 +1,50 @@
+<div class="container-fluid px">
+    <form class = "row g-3" (ngSubmit)="editUserInfo()" [formGroup]="editUserInfoForm">
+            <div class="alert alert-danger" role="alert" *ngIf="errorMessage" style="text-align: center;">
+                <strong>{{ errorMessage }}</strong>
+            </div>
+            <div class="alert alert-success" role="alert" *ngIf="successMessage" style="text-align: center;">
+                <strong>{{ successMessage }}</strong>
+            </div>
+            <div class="col-md-6">
+                <label for="name" class="form-label">Nome</label>
+                <input type="text" id="name" class="form-control" formControlName = "structureName" value="{{user.name}}">
+            </div>
+    
+            <div class="col-md-6">
+                <label for="surname" class="form-label">Cognome:</label>
+                <input type="text" id="surname" class="form-control" formControlName="surname" value="{{user.surname}}">
+            </div>
+    
+            <div class="col-md-12">
+                <label for="email" class="form-label">Email:</label>
+                <input type="text" id="email" class="form-control" formControlName="email" value="{{user.email}}">
+            </div>
+    
+            <div class="col-md-6">
+                <label for="registrationDate" class="form-label">Data di registrazione:</label>
+                <input type="date" id="registrationDate" class="form-control" formControlName="registrationDate" value="{{user.registrationDate}}" readonly>
+            </div>
+    
+            <div class="col-md-6">
+                <label for="lastLogin" class="form-label">Data ultimo accesso:</label>
+                <input type="date" id="lastLogin" class="form-control" formControlName="lastLogin" value="{{user.lastLogin}}" readonly>
+            </div>
+
+            <div class="col-md-6">
+                <label for="role" class="form-label">Ruolo:</label>
+                <select id="role" class="form-control" formControlName = "role">
+                    <option [value]="r" *ngFor="let r of roles"> {{ r }} </option>
+                </select>
+            </div>
+
+            <div class="col-md-6">
+                <label for="id" class="form-label">ID Utente:</label>
+                <input type="text" id="id" class="form-control" formControlName="id" readonly [value]="user.id" placeholder="{{user.id}}" >
+            </div>
+    
+            <div class="col-12 text-center">
+                <button type="submit" class="btn btn-secondary"><b>MODIFICA UTENTE</b></button>
+            </div>
+    </form>
+</div>

@@ -3,10 +3,10 @@
     <form class="row">
         <div class="col-lg-9">
             <label for="search" class="form-label">Cerca una struttura</label>
-            <input type="text" id="search" name="search" placeholder="Inserisci il nome della struttura" class="form-control">
+            <input type="text" id="search" name="search" placeholder="Inserisci il nome della struttura" class="form-control" [(ngModel)]="structureNameToFind" (ngModelChange)="delayedSearch()">
         </div>
         <div class="col-lg-3 d-flex align-items-end">
-            <button type="submit" class="btn btn-outline-info">Cerca</button>
+            <button type="submit" class="btn btn-outline-info" (click)="delayedSearch()">Cerca</button>
         </div>
     </form>
 </div>

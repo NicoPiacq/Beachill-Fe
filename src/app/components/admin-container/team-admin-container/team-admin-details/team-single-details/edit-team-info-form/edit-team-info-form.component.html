@@ -1,0 +1,44 @@
+<div class="container-fluid px">
+    <form class = "row g-3" (ngSubmit)="editUserInfo()" [formGroup]="editTeamInfoForm">
+            <div class="alert alert-danger" role="alert" *ngIf="errorMessage" style="text-align: center;">
+                <strong>{{ errorMessage }}</strong>
+            </div>
+            <div class="alert alert-success" role="alert" *ngIf="successMessage" style="text-align: center;">
+                <strong>{{ successMessage }}</strong>
+            </div>
+
+            <div class="col-md-12">
+                <label for="teamName" class="form-label">Nome squadra:</label>
+                <input type="text" id="teamName" class="form-control" formControlName = "teamName" value="{{team.teamName}}">
+            </div>
+
+            <div class="col-md-6">
+                <label for="name" class="form-label">Nome capitano:</label>
+                <input type="text" id="name" class="form-control" formControlName = "name" value="{{team.teamLeaderName}}" readonly>
+            </div>
+    
+            <div class="col-md-6">
+                <label for="surname" class="form-label">Cognome capitano:</label>
+                <input type="text" id="surname" class="form-control" formControlName="surname" value="{{team.teamLeaderSurname}}" readonly>
+            </div>
+    
+            <div class="col-md-12">
+                <label for="email" class="form-label">Punteggio:</label>
+                <input type="text" id="email" class="form-control" formControlName="email" value="{{team.score}}">
+            </div>
+
+            <div class="col-md-6">
+                <label for="id" class="form-label">ID Squadra:</label>
+                <input type="text" id="id" class="form-control" formControlName="id" readonly [value]="team.id" placeholder="{{team.id}}" >
+            </div>
+
+            <div class="col-md-6">
+                <label for="id" class="form-label">ID Capitano:</label>
+                <input type="text" id="id" class="form-control" formControlName="id" readonly [value]="team.idTeamLeader" placeholder="{{team.idTeamLeader}}" >
+            </div>
+    
+            <div class="col-12 text-center">
+                <button type="submit" class="btn btn-secondary"><b>MODIFICA SQUADRA</b></button>
+            </div>
+    </form>
+</div>

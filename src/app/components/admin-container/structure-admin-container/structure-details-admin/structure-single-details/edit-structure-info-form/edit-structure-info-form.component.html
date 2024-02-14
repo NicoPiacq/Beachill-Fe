@@ -1,0 +1,49 @@
+<div class="container-fluid px">
+    <form class = "row g-3" (ngSubmit)="editStructure()" [formGroup]="editStructureForm">
+            <div class="alert alert-danger" role="alert" *ngIf="errorMessage" style="text-align: center;">
+                <strong>{{ errorMessage }}</strong>
+            </div>
+            <div class="alert alert-success" role="alert" *ngIf="successMessage" style="text-align: center;">
+                <strong>{{ successMessage }}</strong>
+            </div>
+            <div class="col-md-12">
+                <label for="structureName" class="form-label">Inserisci il nome della struttura:</label>
+                <input type="text" id="structureName" class="form-control" formControlName = "structureName" value="{{structureData.name}}">
+            </div>
+    
+            <div class="col-md-12">
+                <label for="address" class="form-label">Indirizzo:</label>
+                <input type="text" id="address" class="form-control" formControlName="address" value="{{structureData.address}}">
+            </div>
+    
+            <div class="col-md-8">
+                <label for="city" class="form-label">Città:</label>
+                <input type="text" id="city" class="form-control" formControlName="city" value="{{structureData.city}}">
+            </div>
+    
+            <div class="col-md-4">
+                <label for="province" class="form-label">Provincia:</label>
+                <input type="text" id="province" class="form-control" formControlName="province" maxlength="2" value="{{structureData.province}}">
+            </div>
+    
+            <div class="col-md-12">
+                <label for="region" class="form-label">Regione:</label>
+                <input type="text" id="region" class="form-control" formControlName="region" value="{{structureData.region}}">
+            </div>
+
+            <div class="col-md-6">
+                <label for="managerId" class="form-label">Manager ID:</label>
+                <input type="text" id="managerId" class="form-control" formControlName="managerId" readonly [value]="structureData.id" placeholder="{{structureData.id}}" >
+            </div>
+
+            <div class="col-md-6">
+                <label for="structureId" class="form-label">ID Struttura:</label>
+                <input type="text" id="structureId" class="form-control" formControlName="id" readonly [value]="structureData.id" placeholder="{{structureData.id}}" >
+            </div>
+    
+            <div class="col-12 text-center">
+                <button type="submit" class="btn btn-secondary"><b>MODIFICA STRUTTURA</b></button>
+            </div>
+    </form>
+</div>
+    

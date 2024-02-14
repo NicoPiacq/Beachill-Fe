@@ -45,4 +45,12 @@ import { InvitationResponseDto } from "../model/dtos/invitation-response";
       return this.http.get<TeamDto[]>(`${this.URL}/search`, {params});
     }
 
+    editTeamInfo(teamData: TeamDto): Observable<any> {
+      return this.http.patch<any>(`${this.URL}`, teamData);
+    }
+
+    deleteTeamById(id: number): Observable<any> {
+      return this.http.delete<any>(`${this.URL}/${id}`);
+    }
+
   }

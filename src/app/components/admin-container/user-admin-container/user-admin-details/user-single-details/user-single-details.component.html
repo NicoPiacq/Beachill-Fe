@@ -21,8 +21,56 @@
     </div>
     <hr>
     <div class="d-flex justify-content-between">
-      <button class="btn btn-outline-info">Elimina utente</button>
-      <button class="btn btn-outline-info">Modifica utente</button>
+      <button class="btn btn-outline-info" (click)="openModalDelete(deleteModal)">Elimina utente</button>
+      <button class="btn btn-outline-info" (click)="openModal(editUserModal)">Modifica utente</button>
     </div>
   </div>
   
+  <ng-template #deleteModal>
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="errorModalLabel">Attenzione!</h5>
+        <button type="button" class="btn-close" (click)="closeModal()" aria-label="Chiudi"></button>
+      </div>
+      <div class="modal-body">
+        <div class="tab-content">
+          <div class="tab-pane active" id="errorModal" role="tabpanel">
+            <div>
+              <div class="row align-items-center">
+                <div class="col-md-2">
+                  <div>
+                    <img src="../../../../../assets/img/red_exclamation.png" alt="error" class="img-fluid" style="max-width: 50px;">
+                  </div>
+                </div>
+                <div class="col-md-10">
+                  <div>
+                    <b>{{ messageBox }}</b>
+                  </div>
+                </div>
+                <div class="row align-items-center" *ngIf="!hideButton">
+                    <div class="col-md-12 mt-3 justify-content-between">
+                        <div>
+                            <button class="btn btn-danger text-center me-4" type="button" (click)="deleteStructure()">Conferma eliminazione</button>
+                            <button class="btn btn-success text-center" type="button" (click)="closeModal()">Annulla</button>
+                        </div>
+                    </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </ng-template>
+
+  <ng-template #editUserModal>
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="createTeamModalLabel">Modifica dati utente</h5>
+        <button type="button" class="btn-close" (click)="closeModal()" aria-label="Chiudi"></button>
+      </div>
+      <div class="modal-body">
+        <app-edit-user-info-form [userProp]="user"></app-edit-user-info-form>
+      </div>
+    </div>
+</ng-template>

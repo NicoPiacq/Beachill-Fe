@@ -20,4 +20,16 @@ export class SuperadminService {
         return this.http.get<User>(`${this.URL}/user/${id}`);
     }
 
+    deleteUserById(id: number): Observable<any> {
+        return this.http.delete<any>(`${this.URL}/user/${id}`);
+    }
+
+    editUserInfo(user: User): Observable<any> { 
+        return this.http.patch<any>(`${this.URL}/user`, user);
+    }
+
+    getUserByQuery(query: string): Observable<User[]> {
+        return this.http.get<User[]>(`${this.URL}/user?query=${query}`);
+    }
+
 }

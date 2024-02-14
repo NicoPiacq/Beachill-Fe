@@ -34,7 +34,6 @@ export class AddStructureFormComponent implements OnInit {
       city: ['', Validators.required],
       province: ['', Validators.required],
       region: ['', Validators.required],
-      managerId: ['']
     });
   }
 
@@ -44,7 +43,7 @@ export class AddStructureFormComponent implements OnInit {
       return;
     }
     this.createStructureData = {...this.createStructureForm.value};
-
+    this.createStructureData.managerId = this.managerData.id;
     this.reservationService.addReservationPlace(this.createStructureData).subscribe({
       next: () => {
         this.showSuccessMessage('Struttura registrata correttamente');

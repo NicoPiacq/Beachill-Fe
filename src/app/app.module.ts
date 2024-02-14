@@ -62,6 +62,10 @@ import { StructureDetailsAdminComponent } from './components/admin-container/str
 import { StructureSingleDetailsComponent } from './components/admin-container/structure-admin-container/structure-details-admin/structure-single-details/structure-single-details.component';
 import { ReservationsAdminContainerComponent } from './components/admin-container/reservations-admin-container/reservations-admin-container.component';
 import { ReservationsListAdminComponent } from './components/admin-container/reservations-admin-container/reservations-list-admin/reservations-list-admin.component';
+import { EditStructureInfoFormComponent } from './components/admin-container/structure-admin-container/structure-details-admin/structure-single-details/edit-structure-info-form/edit-structure-info-form.component';
+import { EditUserInfoFormComponent } from './components/admin-container/user-admin-container/user-admin-details/user-single-details/edit-user-info-form/edit-user-info-form.component';
+import { EditTeamInfoFormComponent } from './components/admin-container/team-admin-container/team-admin-details/team-single-details/edit-team-info-form/edit-team-info-form.component';
+import { ChangePasswordFormComponent } from './components/profile-page/profile-page-tablepane/change-password-form/change-password-form.component';
 
 @NgModule({
   declarations: [
@@ -118,6 +122,10 @@ import { ReservationsListAdminComponent } from './components/admin-container/res
     StructureSingleDetailsComponent,
     ReservationsAdminContainerComponent,
     ReservationsListAdminComponent,
+    EditStructureInfoFormComponent,
+    EditUserInfoFormComponent,
+    EditTeamInfoFormComponent,
+    ChangePasswordFormComponent,
   ],
   imports: [
     BrowserModule,
