@@ -13,4 +13,5 @@ export interface MatchDto {
     fieldNumber: number;
     startDate: Date;
     winnerTeam: boolean;
+    status: number;
 }

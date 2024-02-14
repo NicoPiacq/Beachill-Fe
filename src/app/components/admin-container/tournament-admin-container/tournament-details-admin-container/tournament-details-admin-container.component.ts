@@ -47,7 +47,7 @@ export class TournamentDetailsAdminContainerComponent {
     this.enrolledTeamsService.getEnrolledTeamsByTournament(this.tournamentId).subscribe({
       next: teams => {
         this.teams = teams;
-        console.log(this.tournament);
+        console.log(this.teams);
       },
       error: err => {
         console.error('Errore nel recupero dei team iscritti:', err);
@@ -59,7 +59,7 @@ export class TournamentDetailsAdminContainerComponent {
     this.matchsService.getMatchesByTournament(this.tournamentId).subscribe({
       next: matches => {
         this.matches = matches;
-        console.log(this.tournament);
+        console.log(this.matches);
       },
       error: err => {
         console.error('Errore nel recupero dei match del torneo:', err);

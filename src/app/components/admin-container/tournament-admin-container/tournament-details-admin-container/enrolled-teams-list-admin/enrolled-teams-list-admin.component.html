@@ -9,12 +9,16 @@
                             <tr>
                                 <th>Squadra</th>
                                 <th>Round</th>
+                                <th>Status</th>
                             </tr>
                         </thead>
                         <tbody>
                             <tr class="align-middle" *ngFor="let team of teams">
                                 <td>{{ team.teamName }}</td>
                                 <td>{{ team.round }}</td>
+                                <td *ngIf="team.status == 2"> in attesa </td>
+                                <td *ngIf="team.status == 1"> iscritta </td>
+                                <td *ngIf="team.status == 0"> rifiutata </td>
                             </tr>
                         </tbody>
                     </table>

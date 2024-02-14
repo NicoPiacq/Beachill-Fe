@@ -18,6 +18,7 @@
                             <th></th>
                             <th>Vincitore</th>
                             <th>Data</th>
+                            <th>status</th>
                           </tr>
                         </thead>
                         <tbody>
@@ -29,6 +30,9 @@
                             <td>{{match.homeTeamName}} vs {{match.awayTeamName}}</td>
                             <td>{{match.winnerTeam}}</td>
                             <td>{{match.startDate}}</td>
+                            <td *ngIf="match.status === 2">in attesa</td>
+                            <td *ngIf="match.status === 1">confermato</td>
+                            <td *ngIf="match.status === 0">rifiutato</td>
                             <!-- <td><button class="btn btn-primary" [routerLink]="['/reservation-places', reservationPlace.id]">Visualizza</button></td> -->
                         </tr>
                         </tbody>

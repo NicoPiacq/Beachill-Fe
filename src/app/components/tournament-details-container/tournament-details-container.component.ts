@@ -17,7 +17,7 @@ export class TournamentDetailsContainerComponent implements OnInit {
   tournamentId!: number;
   tournament!: TournamentDto;
   teams: EnrolledTeamsDto[] = [];
-  matches!: MatchDto[];
+  matches: MatchDto[] = [];
 
   constructor(private tournamentsService: TournamentsService, private enrolledTeamsService: EnrolledTeamsService,
               private matchsService: MatchesService, private route: ActivatedRoute){}
@@ -46,7 +46,7 @@ export class TournamentDetailsContainerComponent implements OnInit {
     this.enrolledTeamsService.getEnrolledTeamsByTournament(this.tournamentId).subscribe({
       next: teams => {
         this.teams = teams;
-        console.log(this.tournament);
+        console.log(this.teams);
       },
       error: err => {
         console.error('Errore nel recupero dei team iscritti:', err);
@@ -58,7 +58,7 @@ export class TournamentDetailsContainerComponent implements OnInit {
     this.matchsService.getMatchesByTournament(this.tournamentId).subscribe({
       next: matches => {
         this.matches = matches;
-        console.log(this.tournament);
+        console.log(this.matches);
       },
       error: err => {
         console.error('Errore nel recupero dei match del torneo:', err);

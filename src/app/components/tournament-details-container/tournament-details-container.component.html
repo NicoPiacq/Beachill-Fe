@@ -7,10 +7,7 @@
 
 </app-enrolled-teams-list>
 
-<div class = "container-fluid px text-center" *ngIf="matches.length < 1">
-    <h1 class = "text-light bg-dark">Non sono ancora presenti match per questo torneo</h1>
-</div>
-<app-matches-tournament-list [matchesProp]="matches" *ngIf="matches.length > 0">
+<app-matches-tournament-list [matchesProp]="matches">
 
 </app-matches-tournament-list>
 

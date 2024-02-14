@@ -5,4 +5,5 @@ export interface EnrolledTeamsDto {
     teamName: string;
     tournamentId: number;
     tournamentName: string;
+    status: number;
 }
