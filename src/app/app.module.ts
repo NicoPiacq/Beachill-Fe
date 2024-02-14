@@ -25,7 +25,6 @@ import { AdminContainerComponent } from './components/admin-container/admin-cont
 import { TournamentAdminContainerComponent } from './components/admin-container/tournament-admin-container/tournament-admin-container.component';
 import { AddTournamentFormComponent } from './components/admin-container/tournament-admin-container/add-tournament-form/add-tournament-form.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { SuccessAddTournamentFormComponent } from './components/success-add-tournament-form/success-add-tournament-form.component';
 import { AuthInterceptorService } from '../services/interceptor.service';
 import { TeamsListComponent } from './components/teams-list/teams-list.component';
 import { TeamDetailsContainerComponent } from './components/team-details-container/team-details-container.component';
@@ -56,6 +55,13 @@ import { UserSingleDetailsComponent } from './components/admin-container/user-ad
 import { UsersFoundListComponent } from './components/team-details-container/enrolled-players-list/users-found-list/users-found-list.component';
 import { MatchInvitesListComponent } from './components/match-invites-list/match-invites-list.component';
 import { TeamsFoundListComponent } from './components/profile-page/matches-created-list/teams-found-list/teams-found-list.component';
+import { StructureAdminContainerComponent } from './components/admin-container/structure-admin-container/structure-admin-container.component';
+import { AddStructureFormComponent } from './components/admin-container/structure-admin-container/add-structure-form/add-structure-form.component';
+import { StructureListAdminComponent } from './components/admin-container/structure-admin-container/structure-list-admin/structure-list-admin.component';
+import { StructureDetailsAdminComponent } from './components/admin-container/structure-admin-container/structure-details-admin/structure-details-admin.component';
+import { StructureSingleDetailsComponent } from './components/admin-container/structure-admin-container/structure-details-admin/structure-single-details/structure-single-details.component';
+import { ReservationsAdminContainerComponent } from './components/admin-container/reservations-admin-container/reservations-admin-container.component';
+import { ReservationsListAdminComponent } from './components/admin-container/reservations-admin-container/reservations-list-admin/reservations-list-admin.component';
 
 @NgModule({
   declarations: [
@@ -78,7 +84,6 @@ import { TeamsFoundListComponent } from './components/profile-page/matches-creat
     MatchesTournamentListAdminComponent,
     TournamentDetailsAdminComponent,
     AddTournamentFormComponent,
-    SuccessAddTournamentFormComponent,
     TeamsListComponent,
     TeamDetailsContainerComponent,
     TeamDetailsComponent,
@@ -106,6 +111,13 @@ import { TeamsFoundListComponent } from './components/profile-page/matches-creat
     UsersFoundListComponent,
     MatchInvitesListComponent,
     TeamsFoundListComponent,
+    StructureAdminContainerComponent,
+    AddStructureFormComponent,
+    StructureListAdminComponent,
+    StructureDetailsAdminComponent,
+    StructureSingleDetailsComponent,
+    ReservationsAdminContainerComponent,
+    ReservationsListAdminComponent,
   ],
   imports: [
     BrowserModule,

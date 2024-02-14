@@ -1,0 +1,29 @@
+<div class="card-body">
+    <div class="row">
+      <div class="col-sm-6">
+        <strong>ID:</strong> {{ structure.id }}
+      </div>
+      <div class="col-sm-6">
+        <strong>Nome:</strong> {{ structure.name }}
+      </div>
+      <div class="col-sm-6">
+        <strong>Indirizzo:</strong> {{ structure.address }}
+      </div>
+      <div class="col-sm-6">
+        <strong>Città:</strong> {{ structure.city }} ({{ structure.province }})
+      </div>
+      <div class="col-sm-6">
+        <strong>Regione:</strong> {{ structure.region }}
+      </div>
+      <div class="col-sm-6">
+        <strong>Manager ID:</strong> {{ structure.managerId }}
+      </div>
+    </div>
+    <hr>
+    <div class="d-flex justify-content-between">
+      <button class="btn btn-outline-info">Elimina struttura</button>
+      <button class="btn btn-outline-info">Modifica dettagli struttura</button>
+      <button class="btn btn-outline-info">Modifica orari prenotazioni</button>
+    </div>
+  </div>
+  

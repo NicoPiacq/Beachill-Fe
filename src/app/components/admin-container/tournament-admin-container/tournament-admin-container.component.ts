@@ -29,7 +29,6 @@ export class TournamentAdminContainerComponent {
   fetchAllTournaments() {
     this.adminService.getAllTournaments().subscribe({
         next: cs => {
-          console.log(cs);
           if(this.getUserData()?.role === 'ADMIN'){
             this.tournaments = cs.filter(tournament => {
               return tournament.userDto?.id === this.getUserData()?.id;

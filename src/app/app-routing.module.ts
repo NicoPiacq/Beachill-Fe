@@ -4,7 +4,6 @@ import { TournamentsListComponent } from './components/tournaments-list/tourname
 import { HomeComponent } from './components/home/home.component';
 import { TournamentDetailsContainerComponent } from './components/tournament-details-container/tournament-details-container.component';
 import { AdminContainerComponent } from './components/admin-container/admin-container.component';
-import { SuccessAddTournamentFormComponent } from './components/success-add-tournament-form/success-add-tournament-form.component';
 import { TournamentDetailsAdminContainerComponent } from './components/admin-container/tournament-admin-container/tournament-details-admin-container/tournament-details-admin-container.component';
 import { AuthAdminGuard } from '../guards/auth-admin.guard';
 import { TeamsListComponent } from './components/teams-list/teams-list.component';
@@ -18,6 +17,7 @@ import { ReservationSubscribedPageComponent } from './components/reservation-sub
 import { TeamAdminDetailsComponent } from './components/admin-container/team-admin-container/team-admin-details/team-admin-details.component';
 import { UserAdminDetailsComponent } from './components/admin-container/user-admin-container/user-admin-details/user-admin-details.component';
 import { MatchInvitesListComponent } from './components/match-invites-list/match-invites-list.component';
+import { StructureDetailsAdminComponent } from './components/admin-container/structure-admin-container/structure-details-admin/structure-details-admin.component';
 
 // IL ROUTING VA RISCRITTO CON LE CHILDREN, ALTRIMENTI VA RIEMPITO DI CANACTIVATE!
 const routes: Routes = [
@@ -28,7 +28,7 @@ const routes: Routes = [
   {path: 'admin/tournament/:id', component: TournamentDetailsAdminContainerComponent, canActivate: [AuthAdminGuard]},
   {path: 'admin/team/:id', component: TeamAdminDetailsComponent, canActivate: [AuthAdminGuard]},
   {path: 'admin/user/:id', component: UserAdminDetailsComponent, canActivate: [AuthAdminGuard]},
-  {path: 'success-add-tournament-form', component: SuccessAddTournamentFormComponent},
+  {path: 'admin/place/:id', component: StructureDetailsAdminComponent, canActivate: [AuthAdminGuard]},
   {path: 'teams', component: TeamsListComponent},
   {path: 'profile', component: ProfilePageComponent, canActivate: [AuthGuard]},
   {path: 'team/:id', component: TeamDetailsContainerComponent, canActivate: [AuthGuard]},

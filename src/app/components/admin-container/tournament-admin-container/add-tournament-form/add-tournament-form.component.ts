@@ -21,6 +21,8 @@ export class AddTournamentFormComponent implements OnInit{
   tournamentLevel: TournamentLevel[] = [];
   places: PlaceDto[] = [];
 
+  errorMessage: string = "";
+  successMessage: string = "";
   tournamentData: TournamentAdminDto = {
     tournamentName: '',
     startDate: new Date,
@@ -81,16 +83,29 @@ export class AddTournamentFormComponent implements OnInit{
       console.log(this.tournamentData);
       this.adminService.createTournament(this.tournamentData).subscribe({
         next: ed => {
-          this.router.navigate(["success-add-tournament-form"]);
+          this.showSuccessMessage('Torneo creato correttamente');
+          setTimeout(() => {
+            this.tournamentForm.reset();
+          });
         },
         error: error => {
-          console.error('Errore durante la creazione del torneo:', error);
+          this.showErrorMessage('Errore durante la creazione del torneo: '+error);
         }
       })
     }
     else {
-      console.error('Form non valido.');
+      this.showErrorMessage('Errore: Form non valido.');
     }
+  }
+
+  showErrorMessage(message: string) {
+    this.errorMessage = message;
+    setTimeout(() => { this.errorMessage = ''; }, 5000);
+  }
+
+  showSuccessMessage(message: string) {
+    this.successMessage = message;
+    setTimeout(() => { this.successMessage = ''; }, 5000);
   }
 
 }

@@ -4,6 +4,7 @@
         <a class="nav-link active" data-bs-toggle="tab" href="#tournament-tab" role="tab" *ngIf="role === 'SUPERADMIN' || role === 'ADMIN'">Tornei</a>
         <a class="nav-link" data-bs-toggle="tab" href="#users-tab" role="tab" *ngIf="role === 'SUPERADMIN'">Utenti</a>
         <a class="nav-link" data-bs-toggle="tab" href="#teams-tab" role="tab" *ngIf="role === 'SUPERADMIN' || role === 'ADMIN'">Squadre</a>
+        <a class="nav-link" data-bs-toggle="tab" href="#places-tab" role="tab" *ngIf="role === 'SUPERADMIN' || role === 'MANAGER'">Strutture</a>
         <a class="nav-link" data-bs-toggle="tab" href="#website-tab" role="tab" *ngIf="role === 'SUPERADMIN'">Impostazioni sito</a>
     </nav>
     <hr class="mt-0 mb-4">
@@ -16,6 +17,9 @@
         </div>
         <div class="tab-pane show" id="teams-tab" role="tabpanel" *ngIf="role === 'SUPERADMIN' || role === 'ADMIN'">
             <app-team-admin-container></app-team-admin-container>
+        </div>
+        <div class="tab-pane show" id="places-tab" role="tabpanel" *ngIf="(role === 'SUPERADMIN' || role === 'MANAGER') && managerData !== undefined">
+            <app-structure-admin-container [managerDataProp]="managerData"></app-structure-admin-container>
         </div>
         <div class="tab-pane show" id="website-tab" role="tabpanel" *ngIf="role === 'SUPERADMIN'">
             <div class="card ">

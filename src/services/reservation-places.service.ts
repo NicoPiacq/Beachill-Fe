@@ -19,4 +19,8 @@ export class ReservationPlacesService {
   getReservationPlace(placeId: number): Observable<ReservationPlaceDto> {
     return this.http.get<ReservationPlaceDto>(`${this.URL}/${placeId}`);
   }
+
+  addReservationPlace(place: ReservationPlaceDto): Observable<ReservationPlaceDto> {
+    return this.http.post<ReservationPlaceDto>(`${this.URL}`, place);
+  }
 }

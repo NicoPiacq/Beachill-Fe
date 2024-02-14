@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { AdminService } from '../../../services/admin.service';
 import { AuthService } from '../../../services/auth.service';
+import { User } from '../../../model/dtos/user';
 
 @Component({
   selector: 'app-admin-container',
@@ -10,9 +11,11 @@ import { AuthService } from '../../../services/auth.service';
 export class AdminContainerComponent {
 
   role: string = "";
+  managerData: User | undefined;
   constructor(private adminService: AdminService, private authService: AuthService) {
     this.getRole();
-   }
+    this.getManagerData();
+  }
 
   generateDebugData() {
     this.adminService.generateDebugData().subscribe();
@@ -24,4 +27,7 @@ export class AdminContainerComponent {
     });
   }
 
+  getManagerData() {
+    this.managerData = this.authService.authenticatedUser.value?.user;
+  }
 }

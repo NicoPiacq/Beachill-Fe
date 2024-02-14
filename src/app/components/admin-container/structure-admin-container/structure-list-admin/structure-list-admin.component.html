@@ -1,0 +1,62 @@
+<link rel="stylesheet" type="text/css" href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css">
+<div class="row">
+    <form class="row">
+        <div class="col-lg-9">
+            <label for="search" class="form-label">Cerca una struttura</label>
+            <input type="text" id="search" name="search" placeholder="Inserisci il nome della struttura" class="form-control">
+        </div>
+        <div class="col-lg-3 d-flex align-items-end">
+            <button type="submit" class="btn btn-outline-info">Cerca</button>
+        </div>
+    </form>
+</div>
+<hr>
+<div class="container bootstrap snippets bootdey">
+    <div class="row">
+        <div class="col-lg-12">
+                    <div class="table-responsive">
+                        <table class="table user-list">
+                            <thead>
+                                <tr>
+                                    <th><span>ID</span></th>
+                                    <th><span>Nome</span></th>
+                                    <th><span>Indirizzo</span></th>
+                                    <th><span>Città</span></th>
+                                    <th><span>Regione</span></th>
+                                    <th><span>Manager ID</span></th>
+                                    <th>&nbsp;</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr *ngFor="let place of structures | slice: (currentPage - 1) * itemsPerPage : currentPage * itemsPerPage">
+                                    <td>
+                                        <span>{{ place.id }}</span>
+                                    </td>
+                                    <td>
+                                        <span>{{ place.name }}</span>
+                                    </td>
+                                    <td>
+                                        {{ place.address }}
+                                    </td>
+                                    <td>
+                                        {{ place.city }} ({{ place.province }})
+                                    </td>
+                                    <td>
+                                        {{ place.region }}
+                                    </td>
+                                    <td>
+                                        {{ place.managerId }}
+                                    </td>
+                                    <td style="width: 10%;">
+                                        <button class="btn btn-outline-info me-1" [routerLink]="['/admin/place/', place.id]">Gestisci</button>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="d-flex align-items-center justify-content-center" *ngIf="structures.length > 10">
+                        <pagination [totalItems]="structures.length" [(ngModel)]="currentPage" [itemsPerPage]="itemsPerPage"></pagination>
+                    </div>
+                </div>
+            </div>
+        </div>

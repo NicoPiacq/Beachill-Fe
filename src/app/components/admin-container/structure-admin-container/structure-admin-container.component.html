@@ -1,0 +1,29 @@
+<div class="row">
+    <div class="col-lg-8">
+        <!-- Change password card-->
+        <div class="card mb-4">
+            <div class="card-header">Registra una nuova struttura</div>
+            <div class="card-body">
+                <app-add-structure-form [managerDataProp]="managerData"></app-add-structure-form>
+            </div>
+        </div>
+        <!-- Existing tournaments -->
+    </div>
+    <div class="col-lg-4">
+        <div class="card mb-4">
+            <div class="card-header">Statistiche strutture</div>
+            <div class="card-body">
+                <p>Roba di statistiche sulle strutture finirà qui yes</p>
+                <!-- <button class="btn btn-danger-soft text-danger" type="button">I understand, delete my account</button> -->
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-12">
+        <div class="card mb-4">
+            <div class="card-header">Lista strutture registrate</div>
+            <div class="card-body">
+                <app-structure-list-admin [structuresProp]="structures"></app-structure-list-admin>
+            </div>
+        </div>
+    </div>
+</div>

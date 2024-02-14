@@ -1,6 +1,11 @@
 <div class="container-fluid px">
 <form class = "row g-3" (ngSubmit)="createNewTournament()" [formGroup]="tournamentForm">
-    
+        <div class="alert alert-danger" role="alert" *ngIf="errorMessage" style="text-align: center;">
+            <strong>{{ errorMessage }}</strong>
+        </div>
+        <div class="alert alert-success" role="alert" *ngIf="successMessage" style="text-align: center;">
+            <strong>{{ successMessage }}</strong>
+        </div>
         <div class="col-md-12">
             <label for="tournamentName" class="form-label">Scegli il nome del torneo:</label>
             <input type="text" id="tournamentName" class="form-control" formControlName = "tournamentName">
