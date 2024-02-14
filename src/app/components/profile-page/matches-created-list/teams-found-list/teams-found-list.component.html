@@ -4,7 +4,7 @@
         <div class="col-12 mt-3 mb-3 mb-lg-5">
             <div class="overflow-hidden card table-nowrap table-card">
                 <div class="card-header d-flex justify-content-between align-items-center">
-                    <h5 class="mb-0">Le tue prenotazioni</h5>
+                    <h5 class="mb-0">Team avversari</h5>
                 </div>
                 <div class="table-responsive">
                     <table class="table mb-0" *ngIf="teamsFound.length > 0">
@@ -19,7 +19,7 @@
                             <tr class="align-middle" *ngFor="let team of teamsFound">
                                 <td> {{ team.teamName }} </td>
                                 <td>{{ team.teamLeaderName }} {{ team.teamLeaderSurname }}</td>
-                                <td><button type="button" class="btn btn-outline-info" (click)="selectTeam(team.id)">Invita</button></td>
+                                <td><button type="button" class="btn btn-outline-info" (click)="selectTeam(team.id)">Manda invito</button></td>
                             </tr>
                         </tbody>
                     </table>

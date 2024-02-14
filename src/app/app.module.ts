@@ -23,7 +23,7 @@ import { MatchesTournamentListComponent } from './components/tournament-details-
 import { HomeComponent } from './components/home/home.component';
 import { AdminContainerComponent } from './components/admin-container/admin-container.component';
 import { TournamentAdminContainerComponent } from './components/admin-container/tournament-admin-container/tournament-admin-container.component';
-import { AddTournamentFormComponent } from './components/add-tournament-form/add-tournament-form.component';
+import { AddTournamentFormComponent } from './components/admin-container/tournament-admin-container/add-tournament-form/add-tournament-form.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { SuccessAddTournamentFormComponent } from './components/success-add-tournament-form/success-add-tournament-form.component';
 import { AuthInterceptorService } from '../services/interceptor.service';
@@ -55,7 +55,7 @@ import { UserAdminDetailsComponent } from './components/admin-container/user-adm
 import { UserSingleDetailsComponent } from './components/admin-container/user-admin-container/user-admin-details/user-single-details/user-single-details.component';
 import { UsersFoundListComponent } from './components/team-details-container/enrolled-players-list/users-found-list/users-found-list.component';
 import { MatchInvitesListComponent } from './components/match-invites-list/match-invites-list.component';
-import { TeamsFoundListComponent } from './components/profile-page/profile-page-tablepane/teams-found-list/teams-found-list.component';
+import { TeamsFoundListComponent } from './components/profile-page/matches-created-list/teams-found-list/teams-found-list.component';
 
 @NgModule({
   declarations: [

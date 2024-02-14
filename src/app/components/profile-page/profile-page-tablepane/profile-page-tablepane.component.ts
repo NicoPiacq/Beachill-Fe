@@ -19,11 +19,8 @@ export class ProfilePageTablepaneComponent implements OnInit {
   teamsFound: TeamDto[] = [];
 
   createTeamForm!: FormGroup;
-  createMatchForm!: FormGroup;
 
   modalRef!: BsModalRef;
-
-  searchTeamName: string = '';
 
   teamData: TeamDto = {
     teamName: '',
@@ -33,22 +30,13 @@ export class ProfilePageTablepaneComponent implements OnInit {
     score: 0
   };
 
-  matchData: MatchRequestDto = {
-    homeTeamId: -1,
-    awayTeamId: -1,
-    setNumber: 0,
-    startDate: new Date()
-  }
-
   constructor(private authService: AuthService, private teamsService: TeamsService, 
-              private formBuilder: FormBuilder, private router: Router,
-              private modalService: BsModalService) {}
+              private formBuilder: FormBuilder, private modalService: BsModalService) {}
 
   ngOnInit(): void {
       this.createTeamForm = this.formBuilder.group({
       teamName: ['', Validators.required]
     });
-    this.getCreatedTeams();
   }
 
   checkCaptain(id: number) {
@@ -56,12 +44,6 @@ export class ProfilePageTablepaneComponent implements OnInit {
       return true;
     }
     return false;
-  }
-
-  getCreatedTeams() {
-    this.createdTeams = this.joinedTeams.filter(team => {
-      return team.idTeamLeader === this.getUserData()?.user.player.id;
-    });
   }
 
   createNewTeam() {

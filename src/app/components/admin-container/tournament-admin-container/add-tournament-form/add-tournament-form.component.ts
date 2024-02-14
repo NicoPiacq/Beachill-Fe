@@ -1,14 +1,14 @@
 import { Component, OnInit } from '@angular/core';
-import { PlaceDto } from '../../../model/dtos/place';
+import { PlaceDto } from '../../../../../model/dtos/place';
 import { FormBuilder, Validators, FormGroup} from '@angular/forms';
-import { AdminService } from '../../../services/admin.service';
+import { AdminService } from '../../../../../services/admin.service';
 import { Router } from '@angular/router';
-import { TournamentTypeDto } from '../../../model/dtos/tournament-type';
-import { TournamentsTypesService } from '../../../services/tournaments-types.service';
-import { PlacesService } from '../../../services/places.service';
-import { TournamentAdminDto } from '../../../model/dtos/tournament-admin';
-import { TournamentLevel } from '../../../model/dtos/tournament-level';
-import { AuthService } from '../../../services/auth.service';
+import { TournamentTypeDto } from '../../../../../model/dtos/tournament-type';
+import { TournamentsTypesService } from '../../../../../services/tournaments-types.service';
+import { PlacesService } from '../../../../../services/places.service';
+import { TournamentAdminDto } from '../../../../../model/dtos/tournament-admin';
+import { TournamentLevel } from '../../../../../model/dtos/tournament-level';
+import { AuthService } from '../../../../../services/auth.service';
 
 @Component({
   selector: 'app-add-tournament-form',

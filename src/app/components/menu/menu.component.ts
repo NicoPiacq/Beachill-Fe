@@ -22,6 +22,8 @@ export class MenuComponent implements OnInit {
   hasLoggedIn: boolean = false;
   modalRef!: BsModalRef;
   errorMessage: string = '';
+  successMessage: string = '';
+  registrationDisabled: boolean = false;
 
   registrationForm!: FormGroup;
   registrationData: RegistrationDto = {
@@ -55,6 +57,11 @@ export class MenuComponent implements OnInit {
     this.modalRef = this.modalService.show(template);
   }
 
+  openModalWithMessage(template: TemplateRef<any>, message: string) {
+    this.showMessageSuccess(message);
+    this.modalRef = this.modalService.show(template);
+  }
+
   closeModal() {
     this.modalRef.hide();
     this.errorMessage = '';
@@ -67,6 +74,8 @@ export class MenuComponent implements OnInit {
         next: () => {
           this.checkUser();
           this.modalRef.hide();
+          this.registrationForm.reset();
+          this.loginForm.reset();
         },
         error: err => {
           this.showMessageError(err);
@@ -102,11 +111,24 @@ export class MenuComponent implements OnInit {
   }
 
   register() {
+    this.registrationDisabled = true;
     if(this.registrationForm.valid) {
       this.registrationData = {...this.registrationForm.value};
       this.registrationData.role = 'USER';
       this.authService.register(this.registrationData).subscribe({
-        error: err => { this.showMessageError(err); }
+        next: () => {
+          this.showMessageSuccess('Utente creato con successo! WOHOO!');
+          setTimeout(() => {
+            this.modalRef.hide();
+            this.registrationForm.reset();
+            this.loginForm.reset();
+            this.checkUser();
+          }, 4000);
+        },
+        error: err => { 
+          this.registrationDisabled = false;
+          this.showMessageError(err); 
+        }
       });
     }
   }
@@ -115,6 +137,13 @@ export class MenuComponent implements OnInit {
     this.errorMessage = message;
     setTimeout(() => {
       this.errorMessage = '';
+    }, 5000);
+  }
+
+  showMessageSuccess(message: string) {
+    this.successMessage = message;
+    setTimeout(() => {
+      this.successMessage = '';
     }, 5000);
   }
 }

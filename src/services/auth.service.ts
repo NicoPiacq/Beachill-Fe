@@ -22,7 +22,6 @@ export class AuthService {
             catchError(this.handleError),
             tap(resData => {
                 this.handleAuthentication(resData);
-                alert("UTENTE CREATO CON SUCCESSO! WOHOO!");
             })
         );
     }
@@ -57,7 +56,6 @@ export class AuthService {
         userData.expirationDate = userData.expirationDate + new Date().getTime();
         this.authenticatedUser.next(userData);
         localStorage.setItem('userData', JSON.stringify(userData));
-        //this.autoLogout(userData.expirationDate);
     }
 
     logout() {

@@ -4,7 +4,34 @@
             <h4 class="card-title mb-4">I tuoi match<button class="createMatch btn btn-primary" (click)="openModal(createMatchModal)"><i class="mdi mdi-book-plus me-2"></i>Crea un match</button></h4>
             <div class="row" *ngIf="matchesList.length > 0">
                 <div class="col-xl-4 col-md-6">
-                    <!-- body card -->
+                    <div class="table-responsive">
+                        <table class="table user-list">
+                            <thead>
+                                <tr>
+                                    <th><span>Tipo</span></th>
+                                    <th><span>Data</span></th>
+                                    <th><span></span></th>
+                                    <th><span>Vincitore</span></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr *ngFor="let match of matchesList">
+                                    <td>
+                                        {{ match.matchType }}
+                                    </td>
+                                    <td>
+                                        {{ match.startDate | date: 'dd/MM/yyyy' }}
+                                    </td>
+                                    <td>
+                                        {{match.homeTeamName}} vs {{match.awayTeamName}}
+                                    </td>
+                                    <td>
+                                        {{ match.winnerTeam }}
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
                 </div><!-- end col -->
             </div><!-- end row -->
             <div class="row" *ngIf="matchesList.length < 1">
@@ -28,24 +55,28 @@
         <div class="tab-content">
           <div class="tab-pane active" id="createTeam" role="tabpanel">
             <div class="container-fluid px">
-              <form class = "row g-3" (ngSubmit)="createNewMatch()" [formGroup]="createMatchForm">
-                  <div class="col-md-6">
+                <div class="col-md-13">
                     <label for="createdTeams" class="form-label">Scegli la tua squadra:</label>
-                    <select id="createdTeams" class="form-control" formControlName = "createdTeams">
+                    <select id="createdTeams" [(ngModel)]="chosenPersonalTeam" class="form-control">
                         <option [value]="t.id" *ngFor="let t of createdTeams"> {{ t.teamName }} </option>
                     </select>
-                  </div>
-                  <div class="col-md-13">
-                    <div>
-                      <input type="text" class="form-control" placeholder="Cerca un giocatore" [(ngModel)]="searchTeamName" (ngModelChange)="delayedSearch()"/>
-                      <button type="button" class="btn btn-primary" (click)="delayedSearch()">Cerca</button>
-                      <app-teams-found-list [teamsFoundProp]="teamsFound" ></app-teams-found-list>
-                    </div>
-                  </div>
-                  <div class="col-12">
-                      <button type="submit" class="btn btn-primary">Crea</button>
-                  </div>
-              </form>
+                </div>
+                <hr>
+                <div class="col-md-13">
+                    <label for="createdTeams" class="form-label">Scegli una data:</label>
+                    <input type="date" class="form-control" [(ngModel)]="matchDate" />
+                </div>
+                <hr>
+                <div class="col-md-13">
+                    <label for="searchAdversary" class="form-label">Cerca avversario:</label>
+                    <div style="display: flex;">
+                        <input type="text" name="searchAdversary" class="form-control" placeholder="Inserisci il nome della squadra" [(ngModel)]="searchTeamName" (ngModelChange)="delayedSearch()" style="flex-grow: 1; margin-right: 10px;"/>
+                        <button type="button" class="btn btn-primary" (click)="delayedSearch()">Cerca</button>
+                      </div>
+                </div>
+                <div class="col-md-13">
+                    <app-teams-found-list [teamsFoundProp]="teamsFound" (selectTeamEmitter)="createNewMatch($event)"></app-teams-found-list>
+                </div>
             </div>
           </div>
         </div>

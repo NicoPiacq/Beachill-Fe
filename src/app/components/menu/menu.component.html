@@ -19,8 +19,11 @@
           <li class="nav-item">
             <a class="nav-link" routerLink="/teams">Team</a>
           </li>
-		  <li class="nav-item">
+		      <li class="nav-item" *ngIf="hasLoggedIn">
             <a class="nav-link" routerLink="/reservation-places">Prenotazioni</a>
+          </li>
+          <li class="nav-item" *ngIf="!hasLoggedIn">
+            <a class="nav-link" (click)="openModalWithMessage(loginModal, 'Devi prima effettuare il login per accedere a questa funzionalità.')">Prenotazioni</a>
           </li>
           <li class="nav-item dropdown" *ngIf="hasLoggedIn"> <!-- sono un coglione con la firma -->
             <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -81,6 +84,9 @@
                       <div class="alert alert-danger" role="alert" *ngIf="errorMessage">
                         {{ errorMessage }}
                       </div>
+                      <div class="alert alert-success" role="alert" *ngIf="successMessage">
+                        {{ successMessage }}
+                      </div>
                     </div>
                     <div class="col-12">
                       <button type="submit" class="btn btn-primary">Accedi</button>
@@ -120,9 +126,12 @@
                     <div class="alert alert-danger" role="alert" *ngIf="errorMessage">
                       {{ errorMessage }}
                     </div>
+                    <div class="alert alert-success" role="alert" *ngIf="successMessage">
+                      {{ successMessage }}
+                    </div>
 
                     <div class="col-12">
-                        <button type="submit" class="btn btn-primary">Registrati</button>
+                        <button type="submit" class="btn btn-primary" [disabled]="registrationDisabled">Registrati</button>
                     </div>
                 </form>
               </div>
