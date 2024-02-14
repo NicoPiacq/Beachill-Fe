@@ -1,29 +1,38 @@
-<div class="container-fluid ">
-    <h1 class="hover-effect">Dettagli torneo:</h1>
+<div class="container">
+<div class="card mb-4">
+  <div class="card-header d-flex justify-content-between align-items-center">
+    <h5 class="mb-0">Dettagli Torneo</h5>
+</div>
+      <div class="card-body">
+    <div class="card-body" *ngIf="tournamentDetails !== undefined">
+      <div class="row">
+        <div class="col-sm-6">
+          <strong>Luogo:</strong> {{ tournamentDetails.place }}
+        </div>
+        <div class="col-sm-6">
+          <strong>Nome:</strong> {{ tournamentDetails.tournamentName }}
+        </div>
+        <div class="col-sm-6">
+          <strong>Livello:</strong> {{ tournamentDetails.levelName }}
+        </div>
+        <div class="col-sm-6">
+          <strong>Data inizio:</strong> {{ tournamentDetails.startDate }}
+        </div>
+        <div class="col-sm-6">
+          <strong>Data fine:</strong> {{ tournamentDetails.endDate }}
+        </div>
+        <div class="col-sm-6">
+          <strong>Tipo:</strong> {{ tournamentDetails.tournamentTypeName }}
+        </div>
+        <div class="col-sm-6">
+          <strong *ngIf="tournamentDetails.status === 1">Status: iscrizioni aperte</strong>
+        </div>
+        <div class="col-sm-6">
+          <strong *ngIf="tournamentDetails.status === 0">Status: iscrizioni chiuse</strong>
+        </div>
+      </div>
     </div>
-    <div class="container-fluid px">     
-        <table class="table table-dark table-striped table-hover">
-          <thead>
-            <tr>
-              <th>Id</th>
-              <th>Nome</th>
-              <th>Inizio</th>
-              <th>Fine</th>
-              <th>Tipo</th>
-              <th>Luogo</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-            
-              <td>{{ tournamentDetails.id }}</td>
-              <td>{{ tournamentDetails.tournamentName }}</td>
-              <td>{{ tournamentDetails.startDate }}</td>
-              <td>{{ tournamentDetails.endDate }}</td>
-              <td>{{ tournamentDetails.tournamentTypeName }}</td>
-              <td>{{ tournamentDetails.place }}</td>
-              
-            </tr>
-          </tbody>
-        </table>
-    </div>
+  </div>
+</div>
+</div>
+

@@ -7,4 +7,6 @@ export interface TournamentDto {
     endDate: Date;
     tournamentTypeName: string;
     place: string;
+    status: number;
+    levelName: string;
 }

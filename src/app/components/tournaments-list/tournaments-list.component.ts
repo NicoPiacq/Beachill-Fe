@@ -9,7 +9,7 @@ import { TournamentDto } from '../../../model/dtos/tournament';
 })
 export class TournamentsListComponent implements OnInit{
 
-  tournaments!: TournamentDto[];
+  tournaments: TournamentDto[] = [];
 
   constructor(private tournamentService: TournamentsService){}
 

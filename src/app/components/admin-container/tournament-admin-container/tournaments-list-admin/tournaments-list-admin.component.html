@@ -9,10 +9,12 @@
                           <tr>
                             <th>Id</th>
                             <th>Nome</th>
+                            <th>Livello</th>
                             <th>Inizio</th>
                             <th>Fine</th>
+                            <th>Status</th>
                             <th>Tipo</th>
-                            <th>Luogo</th>
+                            <th></th>
                             <th></th>
                           </tr>
                         </thead>
@@ -20,11 +22,15 @@
                             <tr class="align-middle" *ngFor="let t of tournaments | slice: (currentPage - 1) * itemsPerPage : currentPage * itemsPerPage">
                                 
                                 <td>{{ t.id }}</td>
+                                <td>{{ t.place }}</td>
                                 <td>{{ t.tournamentName }}</td>
+                                <td>{{t.levelName}}</td>
                                 <td>{{ t.startDate | date: 'dd/MM/yyyy' }}</td>
                                 <td>{{ t.endDate | date: 'dd/MM/yyyy' }}</td>
+                                <td *ngIf="t.status === 1">iscrizioni aperte</td>
+                                <td *ngIf="t.status === 0">iscrizioni chiuse</td>
                                 <td>{{ t.tournamentTypeName }}</td>
-                                <td>{{ t.place }}</td>
+                                
                                 <td><a class="btn btn-outline-info" [routerLink]="['/admin/tournament', t.id]">Gestisci</a>
                                 <button class="btn btn-outline-info" *ngIf="t.id !== undefined" (click)="deleteTournament(t.id)">Elimina</button></td>
                               </tr>

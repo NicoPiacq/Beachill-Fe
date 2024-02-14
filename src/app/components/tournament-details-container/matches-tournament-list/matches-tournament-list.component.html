@@ -1,43 +1,46 @@
-<div class="container-fluid ">
-    <h1 class="hover-effect">Match del torneo:</h1>
+
+<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" />
+<div class="container">
+    <div class="row">
+        <div class="col-12 mt-3 mb-3 mb-lg-5">
+            <div class="overflow-hidden card table-nowrap table-card">
+                <div class="card-header d-flex justify-content-between align-items-center">
+                    <h5 class="mb-0">Match</h5>
+                </div>
+                <div class="table-responsive">
+                    <table class="table mb-0" *ngIf="matches.length > 0">
+                        <thead class="small text-uppercase bg-body text-muted">
+                          <tr>
+                            <th>Numero Match</th>
+                            <th>Numero Girone</th>
+                            <th>Campo</th>
+                            <th>Tipo</th>
+                            <th></th>
+                            <th>Vincitore</th>
+                            <th>Data</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr *ngFor="let match of matches">
+                            <td>{{match.matchNumber}}</td>
+                            <td>{{match.groupStage}}</td>
+                            <td>{{match.fieldNumber}}</td>
+                            <td>{{match.matchType}}</td>
+                            <td>{{match.homeTeamName}} vs {{match.awayTeamName}}</td>
+                            <td>{{match.winnerTeam}}</td>
+                            <td>{{match.startDate}}</td>
+                            <!-- <td><button class="btn btn-primary" [routerLink]="['/reservation-places', reservationPlace.id]">Visualizza</button></td> -->
+                        </tr>
+                        </tbody>
+                    </table>
+                    <div class="card" *ngIf="matches.length < 1">
+                        <div class="card-body">
+                            <span><i class="mdi mdi-close"></i>Non sono ancora presenti match per questo torneo</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
-    <div class="container-fluid px">     
-        <table class="table table-dark table-striped table-hover">
-          <thead>
-            <tr>
-              <th>Numero Match</th>
-              <th>Numero Girone</th>
-              <th>Tipo</th>
-              <th>Squadra A</th>
-              <th>Squadra B</th>
-              <th>Campo</th>
-              <th>Data</th>
-              <th>Vincitore</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr *ngFor="let match of matches">
-                <td>{{match.matchNumber}}</td>
-                <td>{{match.groupStage}}</td>
-                <td>{{match.matchType}}</td>
-                <td>{{match.homeTeamName}}</td>
-                <td>{{match.awayTeamName}}</td>
-                <td>{{match.fieldNumber}}</td>
-                <td>{{match.startDate}}</td>
-                <td>{{match.winnerTeam}}</td>
-              <!-- <td>{{ t.id }}</td>
-              <td>{{ t.tournamentName }}</td>
-              <td>{{ t.startDate }}</td>
-              <td>{{ t.endDate }}</td>
-              <td>{{ t.tournamentTypeName }}</td>
-              <td>{{ t.place }}</td> -->
-              
-    
-              <!-- <td>
-              <button class="btn btn-primary hover-effect small-btn" (click)="deleteCourse(c.id!)"><i class="bi bi-trash"></i></button>
-            </td> -->
-            </tr>
-          </tbody>
-        </table>
-    </div>
-    
+</div>
+

@@ -19,7 +19,10 @@
       <strong>Luogo:</strong> {{ tournamentDetails.place }}
     </div>
     <div class="col-sm-6">
-      <strong>Status:</strong> {{ tournamentDetails.status }}
+      <strong *ngIf="tournamentDetails.status === 1">Status: iscrizioni aperte</strong>
+    </div>
+    <div class="col-sm-6">
+      <strong *ngIf="tournamentDetails.status === 0">Status: iscrizioni chiuse</strong>
     </div>
     <div class="col-sm-6">
       <strong>Livello:</strong> {{ tournamentDetails.levelName }}
