@@ -1,0 +1,44 @@
+<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" />
+
+<div class="container">
+    <div class="row">
+        <div class="col-12 mt-3 mb-3 mb-lg-5">
+            <div class="overflow-hidden card table-nowrap table-card">
+                <div class="card-header d-flex justify-content-between align-items-center">
+                    <h5 class="mb-0">I tuoi inviti ai match</h5>
+                    <button class="btn btn-outline-success btn-sm" (click)="getMatchInvites()"><i class="mdi mdi-refresh"></i></button>
+                </div>
+                <div class="table-responsive">
+                    <table class="table mb-0" *ngIf="matchInvites.length > 0">
+                        <thead class="small text-uppercase bg-body text-muted">
+                            <tr>
+                                <th>Tipo</th>                              
+                                <th></th>
+                                <th>Numero di set</th>
+                                <th>Data</th>
+                                <th class="text-end"></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr class="align-middle" *ngFor="let match of matchInvites">
+                                <td>{{ match.matchType }}</td>
+                                <td>{{ match.homeTeamName }} vs {{ match.awayTeamName }}</td>
+                                <td>{{ match.setNumber }}</td>
+                                <td>{{ match.startDate }}</td>
+                                <td class="text-end">
+                                    <button type="button" class="btn btn-success" (click)="setInvitationResponse(match.id, 1)">Accetta</button>
+                                    <button type="button" class="btn btn-danger" (click)="setInvitationResponse(match.id, 0)">Rifiuta</button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <div class="card" *ngIf="matchInvites.length === 0">
+                        <div class="card-body">
+                            <span><i class="mdi mdi-close"></i>Non hai nessun invito ai match</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

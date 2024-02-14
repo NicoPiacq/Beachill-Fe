@@ -14,4 +14,5 @@ export interface MatchDto {
     startDate: Date;
     winnerTeam: boolean;
     status: number;
+    setNumber: number;
 }

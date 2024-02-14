@@ -1,0 +1,35 @@
+<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" />
+<div class="container">
+    <div class="row">
+        <div class="col-12 mt-3 mb-3 mb-lg-5">
+            <div class="overflow-hidden card table-nowrap table-card">
+                <div class="card-header d-flex justify-content-between align-items-center">
+                    <h5 class="mb-0">Le tue prenotazioni</h5>
+                </div>
+                <div class="table-responsive">
+                    <table class="table mb-0" *ngIf="teamsFound.length > 0">
+                        <thead class="small text-uppercase bg-body text-muted">
+                            <tr>
+                                <th>Nome squadra</th>
+                                <th>Capitano</th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr class="align-middle" *ngFor="let team of teamsFound">
+                                <td> {{ team.teamName }} </td>
+                                <td>{{ team.teamLeaderName }} {{ team.teamLeaderSurname }}</td>
+                                <td><button type="button" class="btn btn-outline-info" (click)="selectTeam(team.id)">Invita</button></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <div class="card" *ngIf="teamsFound.length < 1">
+                        <div class="card-body">
+                            <span><i class="mdi mdi-close"></i>Cerca una squadra correttamente</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

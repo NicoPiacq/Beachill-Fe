@@ -17,6 +17,7 @@ import { InvitesListComponent } from './components/invites-list/invites-list.com
 import { ReservationSubscribedPageComponent } from './components/reservation-subscribed-page/reservation-subscribed-page.component';
 import { TeamAdminDetailsComponent } from './components/admin-container/team-admin-container/team-admin-details/team-admin-details.component';
 import { UserAdminDetailsComponent } from './components/admin-container/user-admin-container/user-admin-details/user-admin-details.component';
+import { MatchInvitesListComponent } from './components/match-invites-list/match-invites-list.component';
 
 // IL ROUTING VA RISCRITTO CON LE CHILDREN, ALTRIMENTI VA RIEMPITO DI CANACTIVATE!
 const routes: Routes = [
@@ -30,10 +31,11 @@ const routes: Routes = [
   {path: 'success-add-tournament-form', component: SuccessAddTournamentFormComponent},
   {path: 'teams', component: TeamsListComponent},
   {path: 'profile', component: ProfilePageComponent, canActivate: [AuthGuard]},
-  {path: 'team/:id', component: TeamDetailsContainerComponent},
-  {path: 'reservation-places', component: ReservationContainerComponent},
-  {path: 'reservation-places/:id', component: ReservationPlaceDetailsContainerComponent},
-  {path: 'invites', component: InvitesListComponent, canActivate: [AuthGuard]},
+  {path: 'team/:id', component: TeamDetailsContainerComponent, canActivate: [AuthGuard]},
+  {path: 'reservation-places', component: ReservationContainerComponent, canActivate: [AuthGuard]},
+  {path: 'reservation-places/:id', component: ReservationPlaceDetailsContainerComponent, canActivate: [AuthGuard]},
+  {path: 'invites-team', component: InvitesListComponent, canActivate: [AuthGuard]},
+  {path: 'invites-match', component: MatchInvitesListComponent, canActivate: [AuthGuard]},
   {path: 'reservations', component: ReservationSubscribedPageComponent, canActivate: [AuthGuard]},
   
   //non mettere roba dopo gli asterischi pd

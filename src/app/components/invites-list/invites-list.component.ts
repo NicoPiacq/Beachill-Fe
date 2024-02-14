@@ -23,10 +23,14 @@ export class InvitesListComponent implements OnInit {
   constructor(private authService: AuthService, private teamsService: TeamsService) {}
   
   ngOnInit(): void {
+    this.getInvitesList();
+  }
+
+  getInvitesList() {
     this.teamsService.getInvitationsByPlayer().subscribe({
       next: invites => this.invitesList = invites,
       error: error => console.log(error)
-    })
+    });
   }
 
   setInvitationResponse(teamId: number, teamComponentId: number, status: number) {

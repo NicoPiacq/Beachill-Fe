@@ -5,6 +5,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { TeamsService } from '../../../../services/teams.service';
 import { Router } from '@angular/router';
 import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
+import { MatchRequestDto } from '../../../../model/dtos/match-request';
 
 @Component({
   selector: 'app-profile-page-tablepane',
@@ -14,9 +15,16 @@ import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
 export class ProfilePageTablepaneComponent implements OnInit {
 
   @Input("joinedTeamsProp") joinedTeams!: TeamDto[];
+  createdTeams: TeamDto[] = [];
+  teamsFound: TeamDto[] = [];
 
   createTeamForm!: FormGroup;
+  createMatchForm!: FormGroup;
+
   modalRef!: BsModalRef;
+
+  searchTeamName: string = '';
+
   teamData: TeamDto = {
     teamName: '',
     teamLeaderName: '',
@@ -24,6 +32,13 @@ export class ProfilePageTablepaneComponent implements OnInit {
     idTeamLeader: -1,
     score: 0
   };
+
+  matchData: MatchRequestDto = {
+    homeTeamId: -1,
+    awayTeamId: -1,
+    setNumber: 0,
+    startDate: new Date()
+  }
 
   constructor(private authService: AuthService, private teamsService: TeamsService, 
               private formBuilder: FormBuilder, private router: Router,
@@ -33,6 +48,7 @@ export class ProfilePageTablepaneComponent implements OnInit {
       this.createTeamForm = this.formBuilder.group({
       teamName: ['', Validators.required]
     });
+    this.getCreatedTeams();
   }
 
   checkCaptain(id: number) {
@@ -40,6 +56,12 @@ export class ProfilePageTablepaneComponent implements OnInit {
       return true;
     }
     return false;
+  }
+
+  getCreatedTeams() {
+    this.createdTeams = this.joinedTeams.filter(team => {
+      return team.idTeamLeader === this.getUserData()?.user.player.id;
+    });
   }
 
   createNewTeam() {
@@ -57,6 +79,7 @@ export class ProfilePageTablepaneComponent implements OnInit {
       error: error => alert("ERRORE GRAVE: "+error)
     })
   }
+
 
   getUserData() {
     return this.authService.authenticatedUser.value;

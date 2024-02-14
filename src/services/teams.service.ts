@@ -1,4 +1,4 @@
-import { HttpClient } from "@angular/common/http";
+import { HttpClient, HttpParams } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { Observable } from "rxjs";
 import { TeamDto } from "../model/dtos/team";
@@ -38,6 +38,11 @@ import { InvitationResponseDto } from "../model/dtos/invitation-response";
 
     createTeam(teamData: TeamDto): Observable<any> {
       return this.http.post<any>(`${this.URL}`, teamData);
+    }
+
+    getTeamsByQuery(query: string): Observable<TeamDto[]> {
+      let params = new HttpParams().set('toFind', query);
+      return this.http.get<TeamDto[]>(`${this.URL}/search`, {params});
     }
 
   }

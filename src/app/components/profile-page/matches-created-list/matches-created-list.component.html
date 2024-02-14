@@ -1,7 +1,7 @@
 <div class="card">
     <div class="tab-content p-4">
         <div class="tab-pane active show" id="team-tab" role="tabpanel">
-            <h4 class="card-title mb-4">I tuoi match<button class="createMatch btn btn-primary"><i class="mdi mdi-book-plus me-2"></i>Crea un match</button></h4>
+            <h4 class="card-title mb-4">I tuoi match<button class="createMatch btn btn-primary" (click)="openModal(createMatchModal)"><i class="mdi mdi-book-plus me-2"></i>Crea un match</button></h4>
             <div class="row" *ngIf="matchesList.length > 0">
                 <div class="col-xl-4 col-md-6">
                     <!-- body card -->
@@ -17,3 +17,38 @@
         </div><!-- end team pane -->
     </div>
 </div><!-- end card -->
+
+<ng-template #createMatchModal>
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="createTeamModalLabel">Crea un match</h5>
+        <button type="button" class="btn-close" (click)="closeModal()" aria-label="Chiudi"></button>
+      </div>
+      <div class="modal-body">
+        <div class="tab-content">
+          <div class="tab-pane active" id="createTeam" role="tabpanel">
+            <div class="container-fluid px">
+              <form class = "row g-3" (ngSubmit)="createNewMatch()" [formGroup]="createMatchForm">
+                  <div class="col-md-6">
+                    <label for="createdTeams" class="form-label">Scegli la tua squadra:</label>
+                    <select id="createdTeams" class="form-control" formControlName = "createdTeams">
+                        <option [value]="t.id" *ngFor="let t of createdTeams"> {{ t.teamName }} </option>
+                    </select>
+                  </div>
+                  <div class="col-md-13">
+                    <div>
+                      <input type="text" class="form-control" placeholder="Cerca un giocatore" [(ngModel)]="searchTeamName" (ngModelChange)="delayedSearch()"/>
+                      <button type="button" class="btn btn-primary" (click)="delayedSearch()">Cerca</button>
+                      <app-teams-found-list [teamsFoundProp]="teamsFound" ></app-teams-found-list>
+                    </div>
+                  </div>
+                  <div class="col-12">
+                      <button type="submit" class="btn btn-primary">Crea</button>
+                  </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+</ng-template>

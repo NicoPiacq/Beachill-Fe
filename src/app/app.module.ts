@@ -53,6 +53,9 @@ import { TeamAdminDetailsComponent } from './components/admin-container/team-adm
 import { TeamSingleDetailsComponent } from './components/admin-container/team-admin-container/team-admin-details/team-single-details/team-single-details.component';
 import { UserAdminDetailsComponent } from './components/admin-container/user-admin-container/user-admin-details/user-admin-details.component';
 import { UserSingleDetailsComponent } from './components/admin-container/user-admin-container/user-admin-details/user-single-details/user-single-details.component';
+import { UsersFoundListComponent } from './components/team-details-container/enrolled-players-list/users-found-list/users-found-list.component';
+import { MatchInvitesListComponent } from './components/match-invites-list/match-invites-list.component';
+import { TeamsFoundListComponent } from './components/profile-page/profile-page-tablepane/teams-found-list/teams-found-list.component';
 
 @NgModule({
   declarations: [
@@ -100,6 +103,9 @@ import { UserSingleDetailsComponent } from './components/admin-container/user-ad
     TeamSingleDetailsComponent,
     UserAdminDetailsComponent,
     UserSingleDetailsComponent,
+    UsersFoundListComponent,
+    MatchInvitesListComponent,
+    TeamsFoundListComponent,
   ],
   imports: [
     BrowserModule,

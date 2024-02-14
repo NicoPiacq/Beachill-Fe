@@ -5,6 +5,7 @@
             <div class="overflow-hidden card table-nowrap table-card">
                 <div class="card-header d-flex justify-content-between align-items-center">
                     <h5 class="mb-0">Le tue prenotazioni</h5>
+                    <button class="btn btn-outline-success btn-sm" (click)="getReservationList()"><i class="mdi mdi-refresh"></i></button>
                 </div>
                 <div class="table-responsive">
                     <table class="table mb-0" *ngIf="reservationList.length > 0">

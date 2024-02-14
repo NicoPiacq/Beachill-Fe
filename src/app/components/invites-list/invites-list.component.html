@@ -5,7 +5,8 @@
         <div class="col-12 mt-3 mb-3 mb-lg-5">
             <div class="overflow-hidden card table-nowrap table-card">
                 <div class="card-header d-flex justify-content-between align-items-center">
-                    <h5 class="mb-0">I tuoi inviti</h5>
+                    <h5 class="mb-0">I tuoi inviti ai team</h5>
+                    <button class="btn btn-outline-success btn-sm" (click)="getInvitesList()"><i class="mdi mdi-refresh"></i></button>
                 </div>
                 <div class="table-responsive">
                     <table class="table mb-0" *ngIf="invitesList.length > 0">
@@ -13,7 +14,6 @@
                             <tr>
                                 <th>Nome team</th>
                                 <th>Capitano</th>
-                                <th>Punteggio</th>
                                 <th class="text-end"></th>
                             </tr>
                         </thead>
@@ -28,7 +28,6 @@
                                     </div>
                                 </td>
                                 <td>{{ invite.teamDto.teamLeaderName }} {{ invite.teamDto.teamLeaderSurname }}</td>
-                                <td> <span class="d-inline-block align-middle">{{ invite.teamDto.score }}</span></td>
                                 <td class="text-end">
                                     <button type="button" class="btn btn-success" (click)="setInvitationResponse(invite.teamDto.id!, invite.id, 1)">Accetta</button>
                                     <button type="button" class="btn btn-danger" (click)="setInvitationResponse(invite.teamDto.id!, invite.id, 0)">Rifiuta</button>
@@ -38,7 +37,7 @@
                     </table>
                     <div class="card" *ngIf="invitesList.length === 0">
                         <div class="card-body">
-                            <span><i class="mdi mdi-close"></i>Non hai nessun invito</span>
+                            <span><i class="mdi mdi-close"></i>Non hai nessun invito ai team</span>
                         </div>
                     </div>
                 </div>

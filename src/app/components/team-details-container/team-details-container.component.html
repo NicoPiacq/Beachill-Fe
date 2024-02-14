@@ -1,9 +1,9 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/MaterialDesign-Webfont/7.2.96/css/materialdesignicons.min.css" integrity="sha512-LX0YV/MWBEn2dwXCYgQHrpa9HJkwB+S+bnBpifSOTO1No27TqNMKYoAn6ff2FBh03THAzAiiCwQ+aPX+/Qt/Ow==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 <div class="container mt-3">
-    <div class="row">
+    <div class="row" *ngIf="team">
         <div class="col-xl-8">
-            <app-team-details [teamDetailsProp]="team" *ngIf="team!"></app-team-details>
-            <app-enrolled-players-list [enrolledPlayersProp] = "players!"></app-enrolled-players-list>
+            <app-team-details [teamDetailsProp]="team"></app-team-details>
+            <app-enrolled-players-list [enrolledPlayersProp]="players!" [teamIdProp]="team.id!"></app-enrolled-players-list>
         </div>
         <div class="col-xl-4">
             <app-team-stats [teamStatsProp]="team" *ngIf="team!"></app-team-stats>
