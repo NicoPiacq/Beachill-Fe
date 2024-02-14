@@ -30,7 +30,7 @@ export class EnrolledPlayersListComponent {
   constructor(private authService: AuthService, private formBuilder: FormBuilder,
               private modalService: BsModalService, private playerService: PlayersService) {}
 
-  checkCaptain(id: number, playerId: number) {
+  checkCaptain(id: number | undefined, playerId: number) {
     if(playerId === id) {
       return true;
     }

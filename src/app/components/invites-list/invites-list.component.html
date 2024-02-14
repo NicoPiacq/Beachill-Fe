@@ -29,8 +29,8 @@
                                 </td>
                                 <td>{{ invite.teamDto.teamLeaderName }} {{ invite.teamDto.teamLeaderSurname }}</td>
                                 <td class="text-end">
-                                    <button type="button" class="btn btn-success" (click)="setInvitationResponse(invite.teamDto.id!, invite.id, 1)">Accetta</button>
-                                    <button type="button" class="btn btn-danger" (click)="setInvitationResponse(invite.teamDto.id!, invite.id, 0)">Rifiuta</button>
+                                    <button type="button" class="btn btn-success" (click)="setInvitationResponse(invite.teamDto.id!, invite.id, 1, confirmationModal)">Accetta</button>
+                                    <button type="button" class="btn btn-danger" (click)="setInvitationResponse(invite.teamDto.id!, invite.id, 0, confirmationModal)">Rifiuta</button>
                                 </td>
                             </tr>
                         </tbody>
@@ -45,3 +45,31 @@
         </div>
     </div>
 </div>
+
+<ng-template #confirmationModal>
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="successModalLabel">Invito {{ statusText }}</h5>
+      </div>
+      <div class="modal-body">
+        <div class="tab-content">
+          <div class="tab-pane active" id="successModal" role="tabpanel">
+            <div>
+              <div class="row align-items-center">
+                <div class="col-md-2">
+                  <div>
+                    <img src="../../../../../assets/img/green_check.png" alt="success" class="img-fluid" style="max-width: 50px;">
+                  </div>
+                </div>
+                <div class="col-md-10">
+                  <div>
+                    <b>{{ statusMessage }}</b>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </ng-template>

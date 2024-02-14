@@ -19,7 +19,6 @@ export class ReservationContainerComponent {
 		this.reservationPlacesService.getAllReservationPlaces().subscribe({
 			next: rp => {
 				this.reservationPlaces = rp;
-				console.log(this.reservationPlaces);
 			},
 			error: (error) => {
 				console.error('Errore nel recupero delle strutture:', error);

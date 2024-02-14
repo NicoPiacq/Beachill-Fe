@@ -35,7 +35,7 @@ export class MatchInvitesListComponent implements OnInit{
     this.invitationResponse.status = status;
     this.matchService.setInvitationResponse(this.invitationResponse).subscribe({
       next: () => {
-        this.router.navigate(['/match-list']);
+        this.router.navigate(['/profile']);
       }
     });
   }

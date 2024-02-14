@@ -17,7 +17,7 @@ export class MatchesService {
     }
 
     getMatchesByPlayer(): Observable<MatchDto[]> {
-        return this.http.get<MatchDto[]>(`${this.URL}`);
+        return this.http.get<MatchDto[]>(`${this.URL}/player`);
     }
 
     getAllMatchesByTeam(id: number): Observable<MatchDto[]> {

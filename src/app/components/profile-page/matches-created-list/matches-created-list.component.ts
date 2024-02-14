@@ -1,4 +1,4 @@
-import { Component, Input, OnInit, TemplateRef } from '@angular/core';
+import { Component, Input, OnInit, TemplateRef, ViewChild } from '@angular/core';
 import { MatchDto } from '../../../../model/dtos/match';
 import { TeamsService } from '../../../../services/teams.service';
 import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
@@ -19,6 +19,7 @@ export class MatchesCreatedListComponent implements OnInit {
   teamsFound: TeamDto[] = [];
   chosenPersonalTeam!: number;
   chosenAdversaryTeam!: number;
+  numberOfSets: number = 0;
   matchDate: Date = new Date();
 
   matchData: MatchRequestDto = {
@@ -28,7 +29,10 @@ export class MatchesCreatedListComponent implements OnInit {
     startDate: new Date()
   }
 
+  @ViewChild('successModal') successModal!: TemplateRef<any>;
+  @ViewChild('errorModal') errorModal!: TemplateRef<any>;
   modalRef!: BsModalRef;
+  modalMessageRef!: BsModalRef;
 
   searchTeamName: string = '';
 
@@ -41,6 +45,19 @@ export class MatchesCreatedListComponent implements OnInit {
 
   openModal(template: TemplateRef<any>) {
     this.modalRef = this.modalService.show(template);
+  }
+
+  openModalMessage(template: TemplateRef<any>) {
+    this.modalMessageRef = this.modalService.show(template, {
+      ignoreBackdropClick: true,
+      keyboard: false,
+      class: 'modal-dialog-centered',
+      backdrop: 'static'
+    });
+  }
+
+  closeModalMessage() {
+    this.modalMessageRef.hide();
   }
 
   closeModal() {
@@ -56,20 +73,34 @@ export class MatchesCreatedListComponent implements OnInit {
   private searchTeams() {
     this.teamsService.getTeamsByQuery(this.searchTeamName).subscribe({
       next: (data) => this.teamsFound = data,
-      error: error => alert("ERRORE GRAVE: "+error)
+      error: error => this.openModalMessage(this.errorModal)
     });
   }
 
   createNewMatch(teamAdversaryId: number) {
+
+    if(this.chosenPersonalTeam == undefined || teamAdversaryId == undefined || this.numberOfSets == 0 || this.matchDate == undefined) {
+      console.log(this.chosenAdversaryTeam, this.chosenPersonalTeam, this.numberOfSets, this.matchDate)
+      this.openModalMessage(this.errorModal);
+      return;
+    }
+
     this.matchData.homeTeamId = this.chosenPersonalTeam;
     this.matchData.startDate = this.matchDate;
     this.matchData.awayTeamId = teamAdversaryId;
+    this.matchData.setNumber = this.numberOfSets;
     this.matchService.sendInvitation(this.matchData).subscribe({
       next: () =>{ 
-        alert("Invito inviato!");
-        location.reload();
+        this.openModalMessage(this.successModal);
+        setTimeout(() => {
+          location.reload();
+        }, 3000);
       },
-      error: error => alert("ERRORE GRAVE: "+error)
+      error: error => this.openModalMessage(this.errorModal)
     });
+  }
+
+  getMatchType(type: string) {
+    return type[0].toUpperCase() + type.substring(1).toLowerCase();
   }
 }
