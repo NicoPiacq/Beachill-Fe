@@ -30,7 +30,7 @@ export class AddStructureFormComponent implements OnInit {
 
   ngOnInit(): void {
     this.createStructureForm = this.formBuilder.group({
-      structureName: ['', Validators.required],
+      name: ['', Validators.required],
       address: ['', Validators.required],
       city: ['', Validators.required],
       province: ['', Validators.required],
@@ -45,9 +45,11 @@ export class AddStructureFormComponent implements OnInit {
     }
     this.createStructureData = {...this.createStructureForm.value};
     this.createStructureData.managerId = this.managerData.id;
+    console.log(this.createStructureData);
     this.managerService.addReservationPlace(this.createStructureData).subscribe({
       next: () => {
         this.showSuccessMessage('Struttura registrata correttamente');
+        this.createStructureForm.reset();
       },
       error: (error) => {this.showErrorMessage('Errore durante la registrazione della struttura!\n'+error);}
     });

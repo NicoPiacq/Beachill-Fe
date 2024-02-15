@@ -2,10 +2,15 @@
 <div class="container">
     <div class="row">
         <div class="col-12 mt-3 mb-3 mb-lg-5">
-            <div class="overflow-hidden card table-nowrap table-card">
-                <div class="card-header d-flex justify-content-between align-items-center">
-                    <h5 class="mb-0">Tutti i tornei</h5>
+            <div class="overflow-hidden card">
+                <div class="image-container">
+                    <img src="../../../../assets/img/bg/tournaments_bv.jpg" alt="Fields" class="background-image">
+                    <div class="overlay-text mt-4">
+                        <h1 class="title">Iscrizione ad un torneo</h1>
+                        <p class="subtitle"><b>Iscriviti con uno dei tuoi team ai nostri tornei!</b></p>
+                    </div>
                 </div>
+            <div class="overlay-div mt-3 overflow-hidden card table-nowrap table-card">
                 <div class="table-responsive">
                     <table class="table mb-0" *ngIf="tournaments.length > 0">
                         <thead class="small text-uppercase bg-body text-muted">

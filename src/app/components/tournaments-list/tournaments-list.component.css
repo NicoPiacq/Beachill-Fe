@@ -34,3 +34,31 @@ table th {
 a {
     text-decoration: none;
 }
+
+.image-container {
+    position: relative;
+    width: 100%;
+  }
+  
+  .background-image {
+    width: 100%;
+    height: auto;
+    position: absolute;
+    z-index: 1;
+  }
+  
+  .overlay-text {
+    position: relative;
+    z-index: 2;
+    color: white;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+  }
+  
+  .title, .subtitle {
+    text-align: center;
+  }
+
+  .overlay-div {
+    position: relative;
+    z-index: 1; /* Assicura che la sovrapposizione venga visualizzata sopra l'immagine */
+  }
