@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ReservationPlaceDto } from '../../../../../model/dtos/reservations-place';
 import { ReservationPlacesService } from '../../../../../services/reservation-places.service';
 import { User } from '../../../../../model/dtos/user';
+import { ManagerService } from '../../../../../services/manager.service';
 
 @Component({
   selector: 'app-add-structure-form',
@@ -25,7 +26,7 @@ export class AddStructureFormComponent implements OnInit {
   }
 
   @Input('managerDataProp') managerData!: User;
-  constructor(private formBuilder: FormBuilder, private reservationService: ReservationPlacesService) { }
+  constructor(private formBuilder: FormBuilder, private reservationService: ReservationPlacesService, private managerService: ManagerService) { }
 
   ngOnInit(): void {
     this.createStructureForm = this.formBuilder.group({
@@ -44,7 +45,7 @@ export class AddStructureFormComponent implements OnInit {
     }
     this.createStructureData = {...this.createStructureForm.value};
     this.createStructureData.managerId = this.managerData.id;
-    this.reservationService.addReservationPlace(this.createStructureData).subscribe({
+    this.managerService.addReservationPlace(this.createStructureData).subscribe({
       next: () => {
         this.showSuccessMessage('Struttura registrata correttamente');
       },

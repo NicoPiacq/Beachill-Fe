@@ -3,6 +3,7 @@ import { ReservationPlaceDto } from '../../../../../../model/dtos/reservations-p
 import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
 import { ReservationPlacesService } from '../../../../../../services/reservation-places.service';
 import { Router } from '@angular/router';
+import { ManagerService } from '../../../../../../services/manager.service';
 
 @Component({
   selector: 'app-structure-single-details',
@@ -12,7 +13,8 @@ import { Router } from '@angular/router';
 export class StructureSingleDetailsComponent {
   @Input('structureProp') structure!: ReservationPlaceDto;
 
-  constructor(private modalService: BsModalService, private reservationPlaceService: ReservationPlacesService, private router: Router) { }
+  constructor(private modalService: BsModalService, private reservationPlaceService: ReservationPlacesService, 
+              private managerService: ManagerService, private router: Router) { }
   messageBox: string = "";
   hideButton: boolean = false;
 
@@ -34,7 +36,7 @@ export class StructureSingleDetailsComponent {
   deleteStructure() {
     this.hideButton = true;
     this.messageBox = "Struttura eliminata correttamente";
-    this.reservationPlaceService.deleteReservationPlace(this.structure.id).subscribe();
+    this.managerService.deleteReservationPlace(this.structure.id).subscribe();
     setTimeout(() => {
       this.modalRef.hide();
       this.router.navigate(['/admin']);

@@ -29,8 +29,34 @@
                         Lista match
                     </div>
                     <div class="card-body">
+                        <table class="table mb-0" *ngIf="matches.length > 0">
+                            <thead class="small text-uppercase bg-body text-muted">
+                                <tr>
+                                    <th>Stato invito</th>
+                                    <th>Data incontro</th>
+                                    <th>Tipo</th>
+                                    <th>Torneo</th>
+                                    <th>Squadre</th>
+                                    <th>Vincitore</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr class="align-middle" *ngFor="let match of matches">
+                                    <td *ngIf="match.status === 1">Confermato</td>
+                                    <td *ngIf="match.status === 2">In attesa</td>
+                                    <td *ngIf="match.status === 0">Rifiutato</td>
+                                    <td>{{ match.startDate! | date: 'dd/MM/yyyy'  }}</td>
+                                    <td>{{ getMatchType(match.matchType) }}</td>
+                                    <td>{{ match.tournamentName! }}</td>
+                                    <td>{{ match.homeTeamName! }} vs {{ match.awayTeamName! }}</td>
+                                    <td>{{ match.winnerTeam! }}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="card-body" *ngIf="matches.length < 1">
                         <div class = "container-fluid px text-center">
-                            <span class="text-center">Non sono presenti match per questo torneo</span>
+                            <span class="text-center">Non sono presenti match per questa squadra</span>
                         </div>
                         <!-- mettere componente matches qui -->
                     </div>

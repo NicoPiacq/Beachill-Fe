@@ -29,7 +29,7 @@ export class SuperadminService {
     }
 
     getUserByQuery(query: string): Observable<User[]> {
-        return this.http.get<User[]>(`${this.URL}/user?query=${query}`);
+        return this.http.get<User[]>(`${this.URL}/user?toFind=${query}`);
     }
 
 }

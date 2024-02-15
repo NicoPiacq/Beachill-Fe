@@ -2,6 +2,7 @@ import { Component, Input, OnInit } from '@angular/core';
 import { ReservationPlaceDto } from '../../../../../../../model/dtos/reservations-place';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { ReservationPlacesService } from '../../../../../../../services/reservation-places.service';
+import { ManagerService } from '../../../../../../../services/manager.service';
 
 @Component({
   selector: 'app-edit-structure-info-form',
@@ -14,7 +15,7 @@ export class EditStructureInfoFormComponent implements OnInit{
 
   editStructureForm!: FormGroup;
 
-  constructor(private formBuilder: FormBuilder, private reservationPlaceService: ReservationPlacesService) {}
+  constructor(private formBuilder: FormBuilder, private reservationPlaceService: ReservationPlacesService, private managerService: ManagerService) {}
 
   ngOnInit() {
     this.editStructureForm = this.formBuilder.group({
@@ -33,7 +34,7 @@ export class EditStructureInfoFormComponent implements OnInit{
 
   editStructure() {
     let structureDataTemp = {...this.editStructureForm.value};
-    this.reservationPlaceService.updateReservationPlace(structureDataTemp).subscribe({
+    this.managerService.updateReservationPlace(structureDataTemp).subscribe({
       next: () => {
         this.showSuccessMessage('Struttura modificata correttamente');
       },

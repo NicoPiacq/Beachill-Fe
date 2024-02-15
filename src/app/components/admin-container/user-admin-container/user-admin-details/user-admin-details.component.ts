@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 import { User } from '../../../../../model/dtos/user';
 import { ActivatedRoute } from '@angular/router';
 import { SuperadminService } from '../../../../../services/superadmin.service';
+import { MatchesService } from '../../../../../services/matches.service';
+import { MatchDto } from '../../../../../model/dtos/match';
 
 @Component({
   selector: 'app-user-admin-details',
@@ -12,10 +14,12 @@ export class UserAdminDetailsComponent {
 
   userData!: User;
   userId: number;
+  matches: MatchDto[] = [];
 
-  constructor(private activatedRoute: ActivatedRoute, private superadminService: SuperadminService) {
+  constructor(private activatedRoute: ActivatedRoute, private superadminService: SuperadminService, private matchService: MatchesService) { 
     this.userId = this.activatedRoute.snapshot.params['id'];
     this.loadUserDetails();
+    this.loadUserMatches();
   }
   
   loadUserDetails() {
@@ -25,5 +29,15 @@ export class UserAdminDetailsComponent {
     });
   }
 
+  loadUserMatches() {
+    this.matchService.getMatchesByUserId(this.userId).subscribe({
+      next: matches => this.matches = matches,
+      error: err => console.error(err)
+    });
+  }
+
+  getMatchType(type: string) {
+    return type[0].toUpperCase() + type.substring(1).toLowerCase();
+  }
 
 }

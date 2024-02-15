@@ -35,4 +35,8 @@ export class MatchesService {
     sendInvitation(matchData: MatchRequestDto): Observable<any> {
         return this.http.post<any>(`${this.URL}`, matchData);
     }
+
+    getMatchesByUserId(id: number): Observable<MatchDto[]> {
+        return this.http.get<MatchDto[]>(`${this.URL}/user/${id}`);
+    }
 }
