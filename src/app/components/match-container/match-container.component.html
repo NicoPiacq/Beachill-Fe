@@ -1,1 +1,66 @@
-<p>match-container works! (only logic)</p>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/MaterialDesign-Webfont/7.2.96/css/materialdesignicons.min.css" integrity="sha512-LX0YV/MWBEn2dwXCYgQHrpa9HJkwB+S+bnBpifSOTO1No27TqNMKYoAn6ff2FBh03THAzAiiCwQ+aPX+/Qt/Ow==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+<div class="container mt-3">
+<div class="row" *ngIf="match">
+    <div class="col-xl-12">
+        <div class="card">
+            <div class="card-body pb-0 text-center">
+                <h1>Dettaglio partita</h1>
+                <div class="row align-items-center">
+                    <div class="col-md-3">
+                        <div class="text-center border-end">
+                            <img src="https://bootdey.com/img/Content/avatar/avatar1.png" class="img-fluid avatar-xxl rounded-circle" alt="">
+                            <h4 class="text-primary font-size-20 mt-3 mb-2"><a [routerLink]="['/team', match.homeTeamId]">{{ match.homeTeamName }}</a></h4>
+                        </div>
+                    </div><!-- end col -->
+                    <div class="col-md-6">
+                        <div class="text-center" *ngIf="match.matchType === 'PRIVATO'">
+                            <h1 class="text-primary font-size-20 mt-3 mb-2">VS</h1>
+                            <h5 class="text-secondary font-size-20 mt-3 mb-2">{{ match.startDate }}</h5>
+                            <h6 class="text-secondary font-size-20 mt-3 mb-2">Numero di set: {{ match.setNumber }}</h6>
+                        </div>
+                        <div class="text-center" *ngIf="match.matchType !== 'PRIVATO'">
+                            <h4 class="text-primary font-size-20 mt-3 mb-2"><b>VS</b></h4>
+                            <h5 class="text-primary font-size-20 mt-3 mb-2">{{ match.startDate | date: 'dd/MM/yyyy' }}</h5>
+                            <h6 class="text-primary font-size-20 mt-3 mb-2">Numero di set: {{ match.setNumber }} | Tipo: {{ match.matchType }}</h6>
+                        </div> 
+                    </div><!-- end col -->
+                    <div class="col-md-3">
+                        <div class="text-center border-start">
+                            <img src="https://bootdey.com/img/Content/avatar/avatar1.png" class="img-fluid avatar-xxl rounded-circle" alt="">
+                            <h4 class="text-primary font-size-20 mt-3 mb-2"><a [routerLink]="['/team', match.awayTeamId]">{{ match.awayTeamName }}</a></h4>
+                        </div>
+                    </div><!-- end col -->
+                </div><!-- end row -->
+            </div><!-- end card body -->
+            <hr>
+            <div class="card-body pb-3 text-center">
+                <h1>Dettagli set</h1>
+                <p>Dato che sei l'amministratore della partita, potrai aggiornare il punteggio della partita qui</p>
+            </div>
+            <div class="row align-items-center">
+                <div class="col-md-12">
+                    <div class="table-responsive">
+                        <table class="table table-nowrap align-middle cont">
+                            <thead class="text-center">
+                                <tr>
+                                    <th scope="col-1">{{ match.homeTeamName }}</th>
+                                    <th scope="col-2">Set</th>
+                                    <th scope="col-3">{{ match.awayTeamName }}</th>
+                                </tr>
+                            </thead>
+                            <tbody class="text-center">
+                                <tr scope="row" *ngFor="let set of matchSets">
+                                    <td *ngIf="set.homeTeamScore > 0">{{ set.homeTeamScore }}</td>
+                                    <td *ngIf="set.homeTeamScore < 1">-</td>
+                                    <td><button class="btn btn-primary">Aggiorna punti</button></td>
+                                    <td *ngIf="set.awayTeamScore > 0">{{ set.awayTeamScore }}</td>
+                                    <td *ngIf="set.homeTeamScore < 1">-</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div><!-- end card -->
+    </div>
+    

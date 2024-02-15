@@ -15,4 +15,5 @@ export interface MatchDto {
     winnerTeam: boolean;
     status: number;
     setNumber: number;
+    adminId: number;
 }

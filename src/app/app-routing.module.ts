@@ -18,6 +18,7 @@ import { TeamAdminDetailsComponent } from './components/admin-container/team-adm
 import { UserAdminDetailsComponent } from './components/admin-container/user-admin-container/user-admin-details/user-admin-details.component';
 import { MatchInvitesListComponent } from './components/match-invites-list/match-invites-list.component';
 import { StructureDetailsAdminComponent } from './components/admin-container/structure-admin-container/structure-details-admin/structure-details-admin.component';
+import { MatchContainerComponent } from './components/match-container/match-container.component';
 
 // IL ROUTING VA RISCRITTO CON LE CHILDREN, ALTRIMENTI VA RIEMPITO DI CANACTIVATE!
 const routes: Routes = [
@@ -37,6 +38,7 @@ const routes: Routes = [
   {path: 'invites-team', component: InvitesListComponent, canActivate: [AuthGuard]},
   {path: 'invites-match', component: MatchInvitesListComponent, canActivate: [AuthGuard]},
   {path: 'reservations', component: ReservationSubscribedPageComponent, canActivate: [AuthGuard]},
+  {path: 'match/:id', component: MatchContainerComponent},
   
   //non mettere roba dopo gli asterischi pd
   {path: '**', component: HomeComponent}

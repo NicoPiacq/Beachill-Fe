@@ -17,6 +17,7 @@
                                         <th>Torneo</th>
                                         <th>Squadre</th>
                                         <th>Vincitore</th>
+                                        <th></th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -26,6 +27,7 @@
                                         <td>{{ match.tournamentName! }}</td>
                                         <td>{{ match.homeTeamName! }} vs {{ match.awayTeamName! }}</td>
                                         <td>{{ match.winnerTeam! }}</td>
+                                        <td><button class="btn btn-secondary" [routerLink]="['/match', match.id]">Dettagli</button></td>
                                     </tr>
                                 </tbody>
                             </table>

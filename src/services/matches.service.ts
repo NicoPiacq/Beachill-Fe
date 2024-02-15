@@ -4,6 +4,7 @@ import { Observable } from "rxjs";
 import { MatchDto } from "../model/dtos/match";
 import { StatusMatchResponseDto } from "../model/dtos/status-match-response";
 import { MatchRequestDto } from "../model/dtos/match-request";
+import { SetMatchDto } from "../model/dtos/set-match";
 
 @Injectable({
     providedIn: 'root'
@@ -11,6 +12,10 @@ import { MatchRequestDto } from "../model/dtos/match-request";
 export class MatchesService {
     private URL = 'http://localhost:8080/api/match';
     constructor(private http: HttpClient) { }
+
+    getMatchDetails(id: number): Observable<MatchDto> {
+        return this.http.get<MatchDto>(`${this.URL}/${id}`);
+    }
 
     getMatchesByTournament(id: number): Observable<MatchDto[]> {
         return this.http.get<MatchDto[]>(`${this.URL}/all/tournament/${id}`);
@@ -38,5 +43,9 @@ export class MatchesService {
 
     getMatchesByUserId(id: number): Observable<MatchDto[]> {
         return this.http.get<MatchDto[]>(`${this.URL}/user/${id}`);
+    }
+
+    getSetsData(id: number): Observable<SetMatchDto[]> {
+        return this.http.get<SetMatchDto[]>(`${this.URL}/${id}/set`);
     }
 }

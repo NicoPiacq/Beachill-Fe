@@ -2,6 +2,16 @@
     .rounded-lg-3 { border-radius: .3rem; }
 }
 
+.bgdiv {
+  background-image: url('/assets/img/players/main_div.png');
+  background-size:contain;
+}
+
+.left-align {
+  position: absolute;
+  left: 0;
+}
+
 .rounded-image {
     border-radius: 15px;
 }

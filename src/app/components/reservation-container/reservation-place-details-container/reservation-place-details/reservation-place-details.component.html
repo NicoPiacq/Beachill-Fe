@@ -50,12 +50,12 @@
             </div><!--end row-->
         
             <div class="row">
-                <div class="col-lg-4 col-md-6 col-12 pt-2" *ngFor="let slot of slots">
+                <div class="col-lg-4 col-md-6 col-12 pt-2" *ngFor="let slot of slots; let i = index">
                     <div class="card border-0 bg-light rounded shadow">
                         <div class="card-body p-4">
                             <span class="badge rounded-pill bg-primary float-md-end mb-3 mb-sm-0" *ngIf="!slot.reserved">Disponibile</span>
                             <span class="badge rounded-pill bg-danger float-md-end mb-3 mb-sm-0" *ngIf="slot.reserved">Prenotato</span>
-                            <h5>Cosa mettiamo qui?</h5>
+                            <h5>Turno {{ i+1 }}</h5>
                             <div class="mt-3">
                                 <span class="text-muted d-block"><i class="mdi mdi-calendar" aria-hidden="true"></i>{{ slot.reservationDate | date: 'dd-MM-yyyy' }}</span>
                                 <span class="text-muted d-block"><i class="mdi mdi-calendar-clock" aria-hidden="true"></i>{{slot.startTime}} - {{slot.endTime}}</span>
