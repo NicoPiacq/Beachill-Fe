@@ -14,8 +14,29 @@
         <div class="card mb-4">
             <div class="card-header">Tornei in corso</div>
             <div class="card-body">
-                <p>Si vedrà una minilista di tornei in corso qui. 
-                    <br>Under construction!</p>
+              <div class="table-responsive">
+                <table class="table user-list" *ngIf="tournamentsUnderway.length > 0">
+                    <thead>
+                        <tr>
+                            <th>Nome</th>
+                            <th>Inizio</th>
+                            <th>Fine</th>
+                          </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="align-middle" *ngFor="let t of tournamentsUnderway">
+                          <td>{{ t.tournamentName }}</td>
+                          <td>{{ t.startDate | date: 'dd/MM/yyyy' }}</td>
+                          <td>{{ t.endDate | date: 'dd/MM/yyyy' }}</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div class="card" *ngIf="tournamentsUnderway.length < 1">
+                    <div class="card-body">
+                        <span><i class="mdi mdi-close"></i>Non ci sono tornei in corso</span>
+                    </div>
+                </div>
+            </div>
             </div>
         </div>
         <div class="card mb-4">

@@ -3,6 +3,7 @@ import { TeamDto } from '../../../../../../model/dtos/team';
 import { BsModalRef, BsModalService } from 'ngx-bootstrap/modal';
 import { Router } from '@angular/router';
 import { TeamsService } from '../../../../../../services/teams.service';
+import { SuperadminService } from '../../../../../../services/superadmin.service';
 
 @Component({
   selector: 'app-team-single-details',
@@ -14,7 +15,7 @@ export class TeamSingleDetailsComponent {
 
   @Input("teamDetailsProp") teamDetails!: TeamDto;
 
-  constructor(private modalService: BsModalService, private router: Router, private teamsService: TeamsService) { }
+  constructor(private modalService: BsModalService, private router: Router, private superAdminService: SuperadminService) { }
   
   messageBox: string = "";
   hideButton: boolean = false;
@@ -43,7 +44,7 @@ export class TeamSingleDetailsComponent {
 
     this.hideButton = true;
     this.messageBox = "Squadra eliminata correttamente";
-    this.teamsService.deleteTeamById(this.teamDetails.id).subscribe();
+    this.superAdminService.deleteTeamById(this.teamDetails.id).subscribe();
     setTimeout(() => {
       this.modalRef.hide();
       this.router.navigate(['/admin']);

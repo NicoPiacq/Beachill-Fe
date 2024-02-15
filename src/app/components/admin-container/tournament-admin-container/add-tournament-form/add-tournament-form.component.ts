@@ -23,6 +23,8 @@ export class AddTournamentFormComponent implements OnInit{
 
   errorMessage: string = "";
   successMessage: string = "";
+  buttonDisabled: boolean = false;
+  
   tournamentData: TournamentAdminDto = {
     tournamentName: '',
     startDate: new Date,
@@ -76,6 +78,7 @@ export class AddTournamentFormComponent implements OnInit{
   }
 
   createNewTournament(){
+    this.buttonDisabled = true;
     if(this.tournamentForm.valid){
       this.tournamentData = {...this.tournamentForm.value};
       this.tournamentData.userDto = this.authService.authenticatedUser.value?.user;
@@ -86,14 +89,17 @@ export class AddTournamentFormComponent implements OnInit{
           this.showSuccessMessage('Torneo creato correttamente');
           setTimeout(() => {
             this.tournamentForm.reset();
+            location.reload();
           });
         },
         error: error => {
+          this.buttonDisabled = false;
           this.showErrorMessage('Errore durante la creazione del torneo: '+error);
         }
       })
     }
     else {
+      this.buttonDisabled = false;
       this.showErrorMessage('Errore: Form non valido.');
     }
   }

@@ -10,19 +10,42 @@
                         <app-team-single-details [teamDetailsProp]="teamDetails"></app-team-single-details>
                     </div>
                 </div>
-                <!-- Existing tournaments -->
             </div>
             <div class="col-lg-4">
-                <!-- Tournament undergoing -->
                 <div class="card mb-4">
                     <div class="card-header">
                         Membri della squadra
                     </div>
                     <div class="card-body">
-                        <!-- mettere componente lista iscritti qui -->
+                        <div class="table-responsive">
+                        <table class="table mb-0" *ngIf="players.length > 0">
+                            <thead class="small text-uppercase bg-body text-muted">
+                                <tr>
+                                    <th>Stato</th>
+                                    <th>Membro</th>
+                                    <th>Punteggio</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr class="align-middle" *ngFor="let player of players">
+                                    <td *ngIf="player.status === 1">Attivo</td>
+                                    <td *ngIf="player.status === 2">In attesa</td>
+                                    <td *ngIf="player.status === 0">Rifiutato</td>
+                                    <td>{{ player.playerName }} {{ player.playerSurname }}</td>
+                                    <td></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="card-body" *ngIf="players.length < 1">
+                        <div class = "px text-center">
+                            <span>Non sono presenti giocatori in questa squadra</span>
+                        </div>
                     </div>
                 </div>
             </div>
+        </div>
+    </div>
             <div class="col-lg-12">
                 <div class="card mb-4">
                     <div class="card-header">
@@ -64,7 +87,6 @@
             </div>
         </div>
     </div>
-</div>
 
 
 

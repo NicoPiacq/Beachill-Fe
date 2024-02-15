@@ -2,6 +2,7 @@ import { Component, Input } from '@angular/core';
 import { TeamDto } from '../../../../../../../model/dtos/team';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { TeamsService } from '../../../../../../../services/teams.service';
+import { SuperadminService } from '../../../../../../../services/superadmin.service';
 
 @Component({
   selector: 'app-edit-team-info-form',
@@ -15,7 +16,7 @@ export class EditTeamInfoFormComponent {
   errorMessage: string = "";
   successMessage: string = "";
 
-  constructor(private teamsService: TeamsService, private formBuilder: FormBuilder) { }
+  constructor(private teamsService: TeamsService, private formBuilder: FormBuilder, private superAdminService: SuperadminService) { }
   
   ngOnInit(): void {
     this.editTeamInfoForm = this.formBuilder.group({
@@ -23,20 +24,20 @@ export class EditTeamInfoFormComponent {
       teamName: [this.team.teamName],
       name: [this.team.teamLeaderName],
       surname: [this.team.teamLeaderSurname],
-      score: [this.team.score],
       idTeamLeader: [this.team.idTeamLeader]
     });
   }
 
   editUserInfo() {
     let editTeamInfo = {...this.editTeamInfoForm.value};
-    this.teamsService.editTeamInfo(editTeamInfo).subscribe({
+    console.log(editTeamInfo);
+    this.superAdminService.editTeamInfo(editTeamInfo).subscribe({
       next: () => {
         this.showSuccessMessage("Dettagli squadra aggiornati con successo!\n");
         setTimeout(() => { window.location.reload(); }, 2000);
       },
       error: (err) => {
-        this.showErrorMessage("Errore durante l'aggiornamento dei dettagli della squadra!"+err);
+        this.showErrorMessage("Errore durante l'aggiornamento dei dettagli della squadra!\nERRORE: "+err.message);
       }
     });
   }

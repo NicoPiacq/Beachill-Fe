@@ -2,6 +2,7 @@ import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { Observable } from "rxjs";
 import { User } from "../model/dtos/user";
+import { TeamDto } from "../model/dtos/team";
 
 @Injectable({
     providedIn: 'root'
@@ -29,7 +30,19 @@ export class SuperadminService {
     }
 
     getUserByQuery(query: string): Observable<User[]> {
-        return this.http.get<User[]>(`${this.URL}/user?toFind=${query}`);
+        return this.http.get<User[]>(`${this.URL}/user/search?toFind=${query}`);
+    }
+
+    deleteTournamentById(id: number): Observable<any> {
+        return this.http.delete<any>(`${this.URL}/tournament/${id}`);
+    }
+
+    deleteTeamById(id: number): Observable<any> {
+        return this.http.delete<any>(`${this.URL}/team/${id}`);
+    }
+
+    editTeamInfo(teamData: TeamDto): Observable<any> {
+        return this.http.patch<any>(`${this.URL}/team`, teamData);
     }
 
 }

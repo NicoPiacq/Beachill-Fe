@@ -26,6 +26,7 @@ export class TeamAdminDetailsComponent implements OnInit {
   ngOnInit(): void {
     this.getTeamDetails();
     this.loadTeamMatches();
+    this.loadEnrolledPlayers();
   }
 
   getTeamDetails() {

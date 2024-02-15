@@ -4,6 +4,7 @@ import { AdminService } from '../../../../services/admin.service';
 import { TournamentAdminDto } from '../../../../model/dtos/tournament-admin';
 import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
 import { AuthService } from '../../../../services/auth.service';
+import { SuperadminService } from '../../../../services/superadmin.service';
 
 @Component({
   selector: 'app-tournament-admin-container',
@@ -12,6 +13,7 @@ import { AuthService } from '../../../../services/auth.service';
 })
 export class TournamentAdminContainerComponent {
   tournaments: TournamentAdminDto[] = [];
+  tournamentsUnderway: TournamentAdminDto[] = [];
   filteredTournaments: TournamentAdminDto[] = [];
   
   messageBox: string = "Sei sicuro di voler eliminare questo torneo? Non sarà possibile recuperarlo successivamente!";
@@ -20,7 +22,7 @@ export class TournamentAdminContainerComponent {
   hideButton: boolean = false;
 
   constructor(private tournamentService: TournamentsService, private adminService: AdminService,
-              private modalService: BsModalService, private authService: AuthService){}
+              private modalService: BsModalService, private authService: AuthService, private superAdminService: SuperadminService){}
 
   ngOnInit(){
     this.fetchAllTournaments();
@@ -36,6 +38,9 @@ export class TournamentAdminContainerComponent {
           } else {
             this.tournaments = cs;
           }
+          this.tournamentsUnderway = this.tournaments.filter(tournament => {
+            return new Date(tournament.startDate) <= new Date() && new Date() <= new Date(tournament.endDate);
+          });
         },
         error: (error) => {
             console.error('Errore nel recupero dei tornei:', error);
@@ -44,16 +49,29 @@ export class TournamentAdminContainerComponent {
   }
 
   deleteTournament(id: number){
-    this.adminService.deleteTournament(id).subscribe({
-      error: error => console.error(error)
-    });
-    this.messageBox = "Torneo eliminato con successo!";
-    this.hideButton = true;
-    setTimeout(() => {
-      this.bsModalRef.hide();
-      this.deleteId = -1;
-      location.reload();
-    }, 3000);
+    if(this.getUserData()?.role === 'SUPERADMIN') {
+      this.superAdminService.deleteTournamentById(id).subscribe({
+        error: error => console.error(error)
+      });
+      this.messageBox = "Torneo eliminato con successo!";
+      this.hideButton = true;
+      setTimeout(() => {
+        this.bsModalRef.hide();
+        this.deleteId = -1;
+        location.reload();
+      }, 3000);
+    } else {
+      this.adminService.deleteTournament(id).subscribe({
+        error: error => console.error(error)
+      });
+      this.messageBox = "Torneo eliminato con successo!";
+      this.hideButton = true;
+      setTimeout(() => {
+        this.bsModalRef.hide();
+        this.deleteId = -1;
+        location.reload();
+      }, 3000);
+    }
   }
 
   deleteTournamentWarning(id: number, template: TemplateRef<any>) {

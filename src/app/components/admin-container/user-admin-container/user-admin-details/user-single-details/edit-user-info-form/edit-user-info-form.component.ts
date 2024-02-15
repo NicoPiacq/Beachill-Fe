@@ -32,6 +32,7 @@ export class EditUserInfoFormComponent implements OnInit{
 
   editUserInfo() {
     let editUserInfo = {...this.editUserInfoForm.value};
+    console.log(editUserInfo);
     this.superAdminService.editUserInfo(editUserInfo).subscribe({
       next: () => {
         this.showSuccessMessage("Dettagli utente aggiornati con successo!\nL'utente dovrà ricollegarsi prima di vedere i cambiamenti!");
