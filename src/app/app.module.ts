@@ -66,6 +66,7 @@ import { EditStructureInfoFormComponent } from './components/admin-container/str
 import { EditUserInfoFormComponent } from './components/admin-container/user-admin-container/user-admin-details/user-single-details/edit-user-info-form/edit-user-info-form.component';
 import { EditTeamInfoFormComponent } from './components/admin-container/team-admin-container/team-admin-details/team-single-details/edit-team-info-form/edit-team-info-form.component';
 import { ChangePasswordFormComponent } from './components/profile-page/profile-page-tablepane/change-password-form/change-password-form.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -134,7 +135,8 @@ import { ChangePasswordFormComponent } from './components/profile-page/profile-p
     ReactiveFormsModule,
     FormsModule,
     ModalModule,
-    PaginationModule.forRoot()
+    PaginationModule.forRoot(),
+    BrowserAnimationsModule
   ],
   providers: [
     provideClientHydration(),
