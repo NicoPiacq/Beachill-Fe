@@ -48,4 +48,12 @@ export class MatchesService {
     getSetsData(id: number): Observable<SetMatchDto[]> {
         return this.http.get<SetMatchDto[]>(`${this.URL}/${id}/set`);
     }
+
+    saveSetPoints(set: SetMatchDto): Observable<any> {
+        return this.http.patch<any>(`${this.URL}/set`, set);
+    }
+
+    finishMatch(id: number): Observable<any> {
+        return this.http.patch<any>(`${this.URL}/${id}`, {});
+    }
 }

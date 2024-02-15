@@ -12,7 +12,8 @@ export interface MatchDto {
     awayTeamName: string;
     fieldNumber: number;
     startDate: Date;
-    winnerTeam: boolean;
+    winnerTeamId: number;
+    winnerTeamName: string;
     status: number;
     setNumber: number;
     adminId: number;

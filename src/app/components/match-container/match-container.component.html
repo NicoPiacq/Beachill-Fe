@@ -3,6 +3,14 @@
 <div class="row" *ngIf="match">
     <div class="col-xl-12">
         <div class="card">
+            <div class="card-body pb-3 text-center" *ngIf="match.status === 0">
+                <span><b>L'invito a questa partita è stato rifiutato dal {{ match.awayTeamName }}</b></span>
+            </div>
+            <div class="card-body pb-3 text-center" *ngIf="match.status === 2">
+                <span><b>{{ match.awayTeamName }} deve ancora rispondere a questo invito</b></span>
+            </div>
+        </div>
+        <div class="card" *ngIf="match.status === 1 || match.status === 3">
             <div class="card-body pb-0 text-center">
                 <h1>Dettaglio partita</h1>
                 <div class="row align-items-center">
@@ -12,16 +20,18 @@
                             <h4 class="text-primary font-size-20 mt-3 mb-2"><a [routerLink]="['/team', match.homeTeamId]">{{ match.homeTeamName }}</a></h4>
                         </div>
                     </div><!-- end col -->
-                    <div class="col-md-6">
+                    <div class="col-md-6" *ngIf="match.winnerTeamName !== undefined">
                         <div class="text-center" *ngIf="match.matchType === 'PRIVATO'">
                             <h1 class="text-primary font-size-20 mt-3 mb-2">VS</h1>
-                            <h5 class="text-secondary font-size-20 mt-3 mb-2">{{ match.startDate }}</h5>
+                            <h5 class="text-secondary font-size-20 mt-3 mb-2">{{ match.startDate | date: 'dd/MM/yyyy' }}</h5>
                             <h6 class="text-secondary font-size-20 mt-3 mb-2">Numero di set: {{ match.setNumber }}</h6>
+                            <h6 class="text-secondary font-size-20 mt-3 mb-2" *ngIf="match.winnerTeamName !== undefined">Vincitore: {{ match.winnerTeamName }}</h6>
                         </div>
                         <div class="text-center" *ngIf="match.matchType !== 'PRIVATO'">
                             <h4 class="text-primary font-size-20 mt-3 mb-2"><b>VS</b></h4>
                             <h5 class="text-primary font-size-20 mt-3 mb-2">{{ match.startDate | date: 'dd/MM/yyyy' }}</h5>
                             <h6 class="text-primary font-size-20 mt-3 mb-2">Numero di set: {{ match.setNumber }} | Tipo: {{ match.matchType }}</h6>
+                            <h6 class="text-secondary font-size-20 mt-3 mb-2" *ngIf="match.winnerTeamName !== undefined">Vincitore: {{ match.winnerTeamName }}</h6>
                         </div> 
                     </div><!-- end col -->
                     <div class="col-md-3">
@@ -31,11 +41,15 @@
                         </div>
                     </div><!-- end col -->
                 </div><!-- end row -->
+                <div class="text-center pb-3" *ngIf="match.status !== 3 && match.adminId === getUserData()?.id">
+                    <button class="btn btn-danger" (click)="finishMatch()">Termina partita</button>
+                </div>
             </div><!-- end card body -->
             <hr>
             <div class="card-body pb-3 text-center">
                 <h1>Dettagli set</h1>
-                <p>Dato che sei l'amministratore della partita, potrai aggiornare il punteggio della partita qui</p>
+                <p *ngIf="match.adminId === getUserData()?.id">Dato che sei l'amministratore della partita, potrai aggiornare il punteggio della partita qui</p>
+                <p *ngIf="match.adminId !== getUserData()?.id">Qui potrai visualizzare i punteggi registrati dall'amministratore della partita</p>
             </div>
             <div class="row align-items-center">
                 <div class="col-md-12">
@@ -49,12 +63,14 @@
                                 </tr>
                             </thead>
                             <tbody class="text-center">
-                                <tr scope="row" *ngFor="let set of matchSets">
+                                <tr scope="row" *ngFor="let set of matchSets; let i = index">
                                     <td *ngIf="set.homeTeamScore > 0">{{ set.homeTeamScore }}</td>
                                     <td *ngIf="set.homeTeamScore < 1">-</td>
-                                    <td><button class="btn btn-primary">Aggiorna punti</button></td>
+                                    <td *ngIf="match.adminId === getUserData()?.id && match.status !== 3"><button class="btn btn-primary" (click)="openModal(addPointsModal, i+1, set)">Aggiorna punti Set {{i+1}}</button></td>
+                                    <td *ngIf="match.adminId === getUserData()?.id && match.status === 3">SET {{i+1}}</td>
+                                    <td *ngIf="match.adminId !== getUserData()?.id">SET {{i+1}}</td>
                                     <td *ngIf="set.awayTeamScore > 0">{{ set.awayTeamScore }}</td>
-                                    <td *ngIf="set.homeTeamScore < 1">-</td>
+                                    <td *ngIf="set.awayTeamScore === 0">-</td>
                                 </tr>
                             </tbody>
                         </table>
@@ -63,4 +79,37 @@
             </div>
         </div><!-- end card -->
     </div>
+
+    <ng-template #addPointsModal>
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="createTeamModalLabel">Aggiungi punti al Set {{setNumberSelected}}</h5>
+            <button type="button" class="btn-close" (click)="closeModal()" aria-label="Chiudi"></button>
+          </div>
+          <div class="modal-body">
+            <div class="tab-content">
+              <div class="tab-pane active" id="createTeam" role="tabpanel">
+                <div class="container-fluid px">
+                    <form (ngSubmit)="updateSetPoints()" [formGroup]="pointsToAddForm">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="mb-3 text-center">
+                                    <label for="homeTeamScore" class="form-label">Punteggio di {{ match.homeTeamName }}</label>
+                                    <input type="number" class="form-control" placeholder="Punteggio" min="0" max="21" formControlName="homeTeamScore">
+                                    <hr>
+                                    <label for="homeTeamScore" class="form-label">Punteggio di {{ match.awayTeamName }}</label>
+                                    <input type="number" class="form-control" placeholder="Punteggio" min="0" max="21" formControlName="awayTeamScore">
+                                </div>
+                                <div class="text-center">
+                                    <button type="submit" class="btn btn-success">Aggiorna punti</button>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+          </div>
+        </div>
+    </div>
+</ng-template>
     

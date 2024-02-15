@@ -40,7 +40,6 @@ export class MatchesCreatedListComponent implements OnInit {
               private matchService: MatchesService) { }
   
   ngOnInit(): void {
-    console.log(this.createdTeams);
   }
 
   openModal(template: TemplateRef<any>) {
@@ -80,7 +79,6 @@ export class MatchesCreatedListComponent implements OnInit {
   createNewMatch(teamAdversaryId: number) {
 
     if(this.chosenPersonalTeam == undefined || teamAdversaryId == undefined || this.numberOfSets == 0 || this.matchDate == undefined) {
-      console.log(this.chosenAdversaryTeam, this.chosenPersonalTeam, this.numberOfSets, this.matchDate)
       this.openModalMessage(this.errorModal);
       return;
     }

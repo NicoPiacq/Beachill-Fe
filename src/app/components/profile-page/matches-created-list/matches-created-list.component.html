@@ -21,11 +21,12 @@
                                     <td *ngIf="match.status === 1">Confermato</td>
                                     <td *ngIf="match.status === 2">In attesa</td>
                                     <td *ngIf="match.status === 0">Rifiutato</td>
+                                    <td *ngIf="match.status === 3">Terminato</td>
                                     <td>{{ match.startDate! | date: 'dd/MM/yyyy'  }}</td>
                                     <td>{{ getMatchType(match.matchType) }}</td>
                                     <td>{{ match.tournamentName! }}</td>
                                     <td><a [routerLink]="['/match', match.id]">{{ match.homeTeamName! }} vs {{ match.awayTeamName! }}</a></td>
-                                    <td>{{ match.winnerTeam! }}</td>
+                                    <td>{{ match.winnerTeamName! }}</td>
                                   </tr>
                             </tbody>
                         </table>
