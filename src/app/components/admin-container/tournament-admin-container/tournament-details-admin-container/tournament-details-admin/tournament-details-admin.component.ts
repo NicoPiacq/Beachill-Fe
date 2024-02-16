@@ -12,11 +12,19 @@ export class TournamentDetailsAdminComponent {
   @Input('tournamentDetailsProp') tournamentDetails!: TournamentAdminDto
   @Input('matchesProp') matches: MatchDto[] = [];
   @Output('generateMatchTournamentProp') generateMatchTournamentClicked: EventEmitter<number> = new EventEmitter<number>();
+  @Output('simulateMatchTournamentProp') simulateMatchTournamentClicked: EventEmitter<number> = new EventEmitter<number>();
+  @Output('assignSecondPhaseProp') assignSecondPhaseClicked: EventEmitter<number> = new EventEmitter<number>();
 
   generateMatchTournament(id: number){
     console.log("sono nella funzione di tournament DETAILS admin container: id = " + id);
-
-  
     this.generateMatchTournamentClicked.emit(id);
+  }
+
+  simulateMatchTournament(id: number){
+    this.simulateMatchTournamentClicked.emit(id);
+  }
+
+  assignSecondPhase(id: number){
+    this.assignSecondPhaseClicked.emit(id);
   }
 }

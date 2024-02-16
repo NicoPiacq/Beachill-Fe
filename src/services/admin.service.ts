@@ -29,11 +29,19 @@ export class AdminService {
     }
 
     generateMatchTournament(id: number): Observable<any> {
-      console.log("sono quaaaaa");
       return this.http.post<void>(`${this.URL}/tournament/match/${id}`, null);
+    }
+    
+    simulateMatchTournament(id: number): Observable<any> {
+      return this.http.post<void>(`${this.URL}/tournament/random-group-phase/${id}`, null);
+    }
+
+    assignedSecondPhase(id: number): Observable<any>{
+        return this.http.post<void>(`${this.URL}/tournament/group-phase-standing/${id}`, null);
     }
 
     generateDebugData(): Observable<any> {
       return this.http.post<void>(`${this.URL}/insert-script`, null);
     }
+
 }

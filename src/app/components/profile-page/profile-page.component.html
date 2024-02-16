@@ -60,10 +60,35 @@
         <div class="card">
             <div class="card-body">
                 <div class="pb-2">
-                    <h4 class="card-title mb-3">Le tue statistiche</h4>
-                    <ul class="ps-3 mb-0">
-                        <li class="mb-2">SI CICLA BABY</li>
-                    </ul> <!-- end ul -->
+                    <h4 class="card-title mb-4">Le tue statistiche:</h4>
+                <div *ngIf="scoreList.length > 0">
+                    <div class="col-xl-4 col-md-6">
+                            <div>
+                                <div>
+                                    <div>
+                                        <table class="table mb-6">
+                                            <thead class="small text-uppercase bg-body text-muted">
+                                              <tr>
+                                                <th>Tipo classifica</th>
+                                                <th>Punteggio</th>
+                                                <th>Win / Lose</th>
+                                                <!-- <th>Quoziente punti</th> -->
+                                              </tr>
+                                            </thead>
+                                            <tbody>
+                                              <tr *ngFor="let score of scoreList">
+                                                <td>{{ score.scoreType }}</td>
+                                                <td>{{ score.score }}</td>
+                                                <td>{{ score.matchWin }} / {{ score.matchLose }}</td>
+                                                <!-- <td>{{ score.pointScored / score.pointConceded }}</td> -->
+                                            </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div><!-- end card-body -->
+                            </div><!-- end card -->
+                    </div><!-- end col -->
+                </div><!-- end row -->
                 </div>
             </div><!-- end cardbody -->
         </div><!-- end card -->

@@ -2,9 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../../../services/auth.service';
 import { TeamDto } from '../../../model/dtos/team';
 import { TeamsService } from '../../../services/teams.service';
-import { get } from 'http';
 import { MatchDto } from '../../../model/dtos/match';
 import { MatchesService } from '../../../services/matches.service';
+import { ScoreService } from '../../../services/score.service';
+import { ScoreDto } from '../../../model/dtos/score-dto';
 
 @Component({
   selector: 'app-profile-page',
@@ -16,9 +17,11 @@ export class ProfilePageComponent implements OnInit {
   joinedTeams: TeamDto[] = [];
   createdTeams: TeamDto[] = [];
   matchesList: MatchDto[] = [];
+  scoreList: ScoreDto[] = [];
+
 
   constructor(private authService: AuthService, private teamsService: TeamsService,
-              private matchService: MatchesService) {}
+              private matchService: MatchesService, private scoreService: ScoreService) {}
 
   ngOnInit(): void {
     this.teamsService.getTeamsByPlayer(this.getUserData()?.user.player.id).subscribe({
@@ -29,6 +32,7 @@ export class ProfilePageComponent implements OnInit {
       error: error => console.error(error)
     });
     this.loadMatches();
+    this.loadScores();
   }
 
   filterCreatedTeams() {
@@ -49,4 +53,12 @@ export class ProfilePageComponent implements OnInit {
       error: error => alert(error)
     });
   }
+
+  loadScores() {
+    this.scoreService.getRankingByPlayerId(this.getUserData()?.user.player.id).subscribe({
+      next: scores => this.scoreList = scores,
+      error: error => alert(error)
+    });
+  }
+
 }

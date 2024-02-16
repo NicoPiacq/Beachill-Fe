@@ -8,8 +8,8 @@
                         <table class="table mb-0" *ngIf="matchesList.length! > 0">
                             <thead class="small text-uppercase bg-body text-muted">
                                 <tr>
-                                    <th>Stato invito</th>
-                                    <th>Data incontro</th>
+                                    <th>Stato</th>
+                                    <th>Data</th>
                                     <th>Tipo</th>
                                     <th>Torneo</th>
                                     <th>Squadre</th>
@@ -18,7 +18,7 @@
                             </thead>
                             <tbody>
                                 <tr class="align-middle" *ngFor="let match of matchesList!">
-                                    <td *ngIf="match.status === 1">Confermato</td>
+                                    <td *ngIf="match.status === 1">Da giocare</td>
                                     <td *ngIf="match.status === 2">In attesa</td>
                                     <td *ngIf="match.status === 0">Rifiutato</td>
                                     <td *ngIf="match.status === 3">Terminato</td>

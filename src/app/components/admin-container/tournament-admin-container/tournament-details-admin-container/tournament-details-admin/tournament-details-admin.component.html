@@ -34,5 +34,7 @@
   <hr>
   <div class="d-flex justify-content-between" *ngIf="tournamentDetails !== undefined">
     <button class="btn btn-outline-info" *ngIf="tournamentDetails.id !== undefined && matches.length < 1 " (click)="generateMatchTournament(tournamentDetails.id)">Genera i Match</button>
+    <button class="btn btn-outline-info" *ngIf="tournamentDetails.id !== undefined && matches.length > 0 " (click)="simulateMatchTournament(tournamentDetails.id)">Simula i match del girone</button>
+    <button class="btn btn-outline-info" *ngIf="tournamentDetails.id !== undefined && matches.length > 0 " (click)="assignSecondPhase(tournamentDetails.id)">Genera seconda fase</button>
   </div>
 </div>

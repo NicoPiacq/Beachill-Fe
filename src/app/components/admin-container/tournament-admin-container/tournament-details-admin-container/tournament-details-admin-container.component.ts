@@ -72,4 +72,12 @@ export class TournamentDetailsAdminContainerComponent {
     this.adminService.generateMatchTournament(id).subscribe({});
   }
 
+  simulateMatchTournament(id: number){
+    this.adminService.simulateMatchTournament(id).subscribe({});
+  }
+
+  assignSecondPhase(id: number){
+    this.adminService.assignedSecondPhase(id).subscribe({});
+  }
+
 }

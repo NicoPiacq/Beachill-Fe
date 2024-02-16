@@ -8,7 +8,9 @@
                 <div class="card mb-4">
                     <div class="card-header">Dettaglio Torneo</div>
                     <div class="card-body">
-                     <app-tournament-details-admin [tournamentDetailsProp]="tournament" [matchesProp]="matches" *ngIf = "tournamentId" (generateMatchTournamentProp)="generateMatchTournament($event)"></app-tournament-details-admin>
+                     <app-tournament-details-admin [tournamentDetailsProp]="tournament" [matchesProp]="matches" 
+                     *ngIf = "tournamentId" (generateMatchTournamentProp)="generateMatchTournament($event)"
+                     (simulateMatchTournamentProp)="simulateMatchTournament($event)" (assignSecondPhaseProp)="assignSecondPhase($event)"></app-tournament-details-admin>
                     </div>
                 </div>
                 <!-- Existing tournaments -->
