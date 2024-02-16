@@ -5,12 +5,13 @@ import { MatchDto } from "../model/dtos/match";
 import { StatusMatchResponseDto } from "../model/dtos/status-match-response";
 import { MatchRequestDto } from "../model/dtos/match-request";
 import { SetMatchDto } from "../model/dtos/set-match";
+import { environment } from "./environment";
 
 @Injectable({
     providedIn: 'root'
 })
 export class MatchesService {
-    private URL = 'http://localhost:8080/api/match';
+    private URL = environment.host + '/api/match';
     constructor(private http: HttpClient) { }
 
     getMatchDetails(id: number): Observable<MatchDto> {

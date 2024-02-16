@@ -5,12 +5,13 @@ import { SchedulePropDto } from "../model/dtos/schedule-prop";
 import { ReservationSlotDto } from "../model/dtos/reservation-slot";
 import { ReservationDto } from "../model/dtos/reservation";
 import { ReservationRequestDto } from "../model/dtos/reservation-request";
+import { environment } from "./environment";
 
 @Injectable({
     providedIn: 'root'
 })
 export class ReservationService {
-    private URL = 'http://localhost:8080/api/reservation';
+    private URL = environment.host + '/api/reservation';
     
     constructor(private http: HttpClient) { }
 

@@ -5,6 +5,7 @@ import { UserAuthenticatedDto } from "../model/dtos/user-authenticated";
 import { RegistrationDto } from "../model/dtos/registration";
 import { LoginDto } from "../model/dtos/login";
 import { BehaviorSubject, Observable, catchError, tap, throwError } from "rxjs";
+import { environment } from "./environment";
 
 @Injectable({
     providedIn: 'root'
@@ -13,7 +14,7 @@ export class AuthService {
 
     constructor(private http: HttpClient, private router: Router) {}
 
-    private URL = 'http://localhost:8080/api/user';
+    private URL = environment.host + '/api/user';
     private tokenExpirationTimer!: any;
     authenticatedUser = new BehaviorSubject<UserAuthenticatedDto | null>(null);
 

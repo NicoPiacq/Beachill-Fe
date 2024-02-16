@@ -3,13 +3,14 @@ import { Injectable } from "@angular/core";
 import { Observable } from "rxjs";
 import { ScoreDto } from "../model/dtos/score-dto";
 import { ScoreTypeDto } from "../model/dtos/score-type";
+import { environment } from "./environment";
 
 @Injectable({
     providedIn: 'root'
   })
 
 export class ScoreService {
-    private URL = 'http://localhost:8080/api/ranking';
+    private URL = environment.host + '/api/ranking';
     constructor(private http: HttpClient) { }
 
     getRankingByPlayerId(id: number | undefined): Observable<any> {

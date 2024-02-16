@@ -5,6 +5,7 @@ import { TeamDto } from "../model/dtos/team";
 import { ObjectEncodingOptions } from "fs";
 import { TeamComponentDto } from "../model/dtos/team-component";
 import { InvitationResponseDto } from "../model/dtos/invitation-response";
+import { environment } from "./environment";
 
   @Injectable({
     providedIn: 'root'
@@ -12,7 +13,7 @@ import { InvitationResponseDto } from "../model/dtos/invitation-response";
 
   export class TeamsService {
     
-    private URL = 'http://localhost:8080/api/team';
+    private URL = environment.host + '/api/team';
     constructor(private http: HttpClient) { }
 
 

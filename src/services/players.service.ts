@@ -5,14 +5,15 @@ import { Observable } from "rxjs";
 import { TeamComponentDto } from "../model/dtos/team-component";
 import { User } from "../model/dtos/user";
 import { InvitePlayerRequestDto } from "../model/dtos/invite-player-request";
+import { environment } from "./environment";
 
 @Injectable({
     providedIn: 'root'
   })
 
   export class PlayersService {
-    private URL = 'http://localhost:8080/api/player';
-    private URL_TEAM = 'http://localhost:8080/api/team';
+    private URL = environment.host + '/api/player';
+    private URL_TEAM = environment.host + '/api/team';
     constructor(private http: HttpClient) { }
 
     getAllPlayer(): Observable<PlayerDto[]> {

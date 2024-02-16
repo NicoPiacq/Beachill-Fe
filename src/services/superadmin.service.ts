@@ -3,13 +3,14 @@ import { Injectable } from "@angular/core";
 import { Observable } from "rxjs";
 import { User } from "../model/dtos/user";
 import { TeamDto } from "../model/dtos/team";
+import { environment } from "./environment";
 
 @Injectable({
     providedIn: 'root'
   })
 export class SuperadminService {
 
-    private URL: string = 'http://localhost:8080/api/super-admin';
+    private URL: string = environment.host + '/api/super-admin';
 
     constructor(private http: HttpClient) { }
 

@@ -3,13 +3,14 @@ import { Injectable } from "@angular/core";
 import { Observable } from "rxjs";
 import { TournamentDto } from "../model/dtos/tournament";
 import { TournamentAdminDto } from "../model/dtos/tournament-admin";
+import { environment } from "./environment";
 
 @Injectable({
     providedIn: 'root'
   })
 export class AdminService {
     
-    private URL = 'http://localhost:8080/api/admin';
+    private URL = environment.host + '/api/admin';
     constructor(private http: HttpClient) { }
 
     getAllTournaments(): Observable<TournamentAdminDto[]> {

@@ -2,6 +2,7 @@ import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { Observable } from "rxjs";
 import { TournamentDto } from "../model/dtos/tournament";
+import { environment } from "./environment";
 
 
 
@@ -10,7 +11,7 @@ import { TournamentDto } from "../model/dtos/tournament";
   })
 
 export class TournamentsService {
-    private URL = 'http://localhost:8080/api/tournament';
+    private URL = environment.host + '/api/tournament';
     constructor(private http: HttpClient) { }
 
     getAllTournaments(): Observable<TournamentDto[]> {
