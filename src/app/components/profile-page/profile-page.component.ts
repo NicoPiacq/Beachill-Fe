@@ -61,4 +61,8 @@ export class ProfilePageComponent implements OnInit {
     });
   }
 
+  getScoreType(scoreType: string): string {
+    return scoreType[0].toUpperCase() + scoreType.slice(1).toLowerCase();
+  }
+
 }

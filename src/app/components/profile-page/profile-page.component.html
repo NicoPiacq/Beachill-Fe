@@ -62,7 +62,7 @@
                 <div class="pb-2">
                     <h4 class="card-title mb-4">Le tue statistiche:</h4>
                 <div *ngIf="scoreList.length > 0">
-                    <div class="col-xl-4 col-md-6">
+                    <div class="col-xl-12 col-md-12">
                             <div>
                                 <div>
                                     <div>
@@ -71,13 +71,13 @@
                                               <tr>
                                                 <th>Tipo classifica</th>
                                                 <th>Punteggio</th>
-                                                <th>Win / Lose</th>
-                                                <!-- <th>Quoziente punti</th> -->
+                                                <th>Ratio</th>
+                                                <th>Quoziente punti</th>
                                               </tr>
                                             </thead>
                                             <tbody>
                                               <tr *ngFor="let score of scoreList">
-                                                <td>{{ score.scoreType }}</td>
+                                                <td>{{ getScoreType(score.scoreType) }}</td>
                                                 <td>{{ score.score }}</td>
                                                 <td>{{ score.matchWin }} / {{ score.matchLose }}</td>
                                                 <!-- <td>{{ score.pointScored / score.pointConceded }}</td> -->

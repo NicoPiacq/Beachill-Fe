@@ -19,18 +19,19 @@ import { UserAdminDetailsComponent } from './components/admin-container/user-adm
 import { MatchInvitesListComponent } from './components/match-invites-list/match-invites-list.component';
 import { StructureDetailsAdminComponent } from './components/admin-container/structure-admin-container/structure-details-admin/structure-details-admin.component';
 import { MatchContainerComponent } from './components/match-container/match-container.component';
+import { ScoreboardContainerComponent } from './components/scoreboard-container/scoreboard-container.component';
 
 // IL ROUTING VA RISCRITTO CON LE CHILDREN, ALTRIMENTI VA RIEMPITO DI CANACTIVATE!
 const routes: Routes = [
   {path: '', component: HomeComponent},
   {path: 'tournaments', component: TournamentsListComponent},
   {path: 'tournament/:id', component: TournamentDetailsContainerComponent},
+  {path: 'scoreboard', component: ScoreboardContainerComponent},
   {path: 'admin', component: AdminContainerComponent, canActivate: [AuthAdminGuard]},
   {path: 'admin/tournament/:id', component: TournamentDetailsAdminContainerComponent, canActivate: [AuthAdminGuard]},
   {path: 'admin/team/:id', component: TeamAdminDetailsComponent, canActivate: [AuthAdminGuard]},
   {path: 'admin/user/:id', component: UserAdminDetailsComponent, canActivate: [AuthAdminGuard]},
   {path: 'admin/place/:id', component: StructureDetailsAdminComponent, canActivate: [AuthAdminGuard]},
-  {path: 'teams', component: TeamsListComponent},
   {path: 'profile', component: ProfilePageComponent, canActivate: [AuthGuard]},
   {path: 'team/:id', component: TeamDetailsContainerComponent, canActivate: [AuthGuard]},
   {path: 'reservation-places', component: ReservationContainerComponent, canActivate: [AuthGuard]},

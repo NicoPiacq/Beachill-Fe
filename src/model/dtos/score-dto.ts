@@ -7,4 +7,6 @@ export interface ScoreDto {
     pointScored: number;
     pointConceded: number;
     playerId: number;
+    playerName: string;
+    playerSurname: string;
 }

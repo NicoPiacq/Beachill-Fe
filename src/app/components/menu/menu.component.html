@@ -16,9 +16,9 @@
           <li class="nav-item">
             <a class="nav-link active" aria-current="page" routerLink="/tournaments">Tornei</a>
           </li>
-          <!-- <li class="nav-item">
-            <a class="nav-link" routerLink="/teams">Team</a>
-          </li> -->
+          <li class="nav-item">
+            <a class="nav-link" routerLink="/scoreboard">Classifica</a>
+          </li>
 		      <li class="nav-item" *ngIf="hasLoggedIn">
             <a class="nav-link" routerLink="/reservation-places">Prenotazioni</a>
           </li>
@@ -39,7 +39,7 @@
             </ul>
           </li>
           <li class="nav-item" *ngIf="hasLoggedIn && checkRoleAdmin()">
-            <a class="nav-link active" aria-current="page" routerLink="/admin">Admin</a>
+            <a class="nav-link active" aria-current="page" routerLink="/admin"><i>Pannello di controllo</i></a>
           </li>
         </ul>
         <!-- <form class="d-flex" role="search">

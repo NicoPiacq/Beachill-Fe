@@ -1,0 +1,64 @@
+body {
+    margin-top:20px;
+    background:#eee;
+}  
+
+.card {
+    box-shadow: 0 20px 27px 0 rgb(0 0 0 / 5%);
+}
+
+.btn {
+    margin: 2px;
+}
+
+.avatar.sm {
+    width: 2.25rem;
+    height: 2.25rem;
+    font-size: .818125rem;
+}
+
+.table-nowrap .table td, .table-nowrap .table th {
+    white-space: nowrap;
+}
+
+.table>:not(caption)>*>* {
+    padding: 0.75rem 1.25rem;
+    border-bottom-width: 1px;
+}
+
+table th {
+    font-weight: 600;
+    background-color: #eeecfd !important;
+}
+
+a {
+    text-decoration: none;
+}
+
+.image-container {
+    position: relative;
+    width: 100%;
+  }
+  
+  .background-image {
+    width: 100%;
+    height: auto;
+    position: absolute;
+    z-index: 1;
+  }
+  
+  .overlay-text {
+    position: relative;
+    z-index: 2;
+    color: white;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+  }
+  
+  .title, .subtitle {
+    text-align: center;
+  }
+
+  .overlay-div {
+    position: relative;
+    z-index: 1; /* Assicura che la sovrapposizione venga visualizzata sopra l'immagine */
+  }

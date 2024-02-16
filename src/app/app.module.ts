@@ -67,6 +67,7 @@ import { EditUserInfoFormComponent } from './components/admin-container/user-adm
 import { EditTeamInfoFormComponent } from './components/admin-container/team-admin-container/team-admin-details/team-single-details/edit-team-info-form/edit-team-info-form.component';
 import { ChangePasswordFormComponent } from './components/profile-page/profile-page-tablepane/change-password-form/change-password-form.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ScoreboardContainerComponent } from './components/scoreboard-container/scoreboard-container.component';
 
 @NgModule({
   declarations: [
@@ -127,6 +128,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     EditUserInfoFormComponent,
     EditTeamInfoFormComponent,
     ChangePasswordFormComponent,
+    ScoreboardContainerComponent,
   ],
   imports: [
     BrowserModule,
