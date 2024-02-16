@@ -70,14 +70,23 @@ export class TournamentDetailsAdminContainerComponent {
   generateMatchTournament(id: number){
     console.log("sono nella funzione di tournament admin container")
     this.adminService.generateMatchTournament(id).subscribe({});
+      setTimeout(() => {
+        location.reload()
+      }, 1500);
   }
 
   simulateMatchTournament(id: number){
     this.adminService.simulateMatchTournament(id).subscribe({});
+    setTimeout(() => {
+      location.reload()
+    }, 1500);
   }
 
   assignSecondPhase(id: number){
     this.adminService.assignedSecondPhase(id).subscribe({});
+    setTimeout(() => {
+      location.reload()
+    }, 1500);
   }
 
 }
